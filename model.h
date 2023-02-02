@@ -13,10 +13,10 @@ typedef struct Rocketship
 
 };
 
-typedef struct Asteroids
+typedef struct Asteroid
 {
     /* data */
-    
+
 };
 
 
