@@ -5,7 +5,7 @@ int main()
 {
 	void *base = Physbase();
 
-	plotPixel(base, 300, int 300);
+	plotPixel(base, 300, 300);
 
 	return 0;
 }
