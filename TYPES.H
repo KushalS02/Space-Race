@@ -10,5 +10,6 @@ typedef unsigned long UINT32;
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 400
+#define SCREEN_BYTE_SIZE 8000
 
 #endif
