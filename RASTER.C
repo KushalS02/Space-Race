@@ -25,6 +25,7 @@ void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 	for (i = 0; i < length; i++){
 
 		*(draw++) |= 0xff;
+	}
 
 }
 
