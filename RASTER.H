@@ -17,6 +17,8 @@ void plotBitmap16(UINT16* base, int x, int y, UINT16* bitmap, int height);
 
 void plotScreen(UINT32* base, UINT32* bitmap);
 
+void plotRectangle(UINT8* base, int x, int y, int width, int height);
+
 /* clearing functions */
 
 void clearRegion(void* base, int x, int y, int width, int height);

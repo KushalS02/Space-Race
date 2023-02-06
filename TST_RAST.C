@@ -5,7 +5,7 @@ int main()
 {
 	void *base = Physbase();
 
-	plotScreen(base, 1000);
+	plotHorizontalLine(base, 10, 10, 50)
 	plotPixel(base, 300, 300);
 
 

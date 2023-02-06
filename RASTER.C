@@ -11,13 +11,20 @@ void plotPixel(UINT8* base, int x, int y) {
 
 void plotVerticalLine(UINT8* base, int x, int y, int height) {
 
-
+	
 
 }
 
 void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 
-	
+	int i;
+	int counter = length >> 3;
+
+	UINT8 *draw = base + (y * 80) + (x >> 3);
+
+	for (i = 0; i < length; i++){
+
+		*(draw++) |= 0xff;
 
 }
 
@@ -40,6 +47,19 @@ void plotScreen(UINT32* base, UINT32* bitmap) {
 	for (i = 0; i < SCREEN_BYTE_SIZE; i++) {
 		*(base + 1) = bitmap[i];
 	}
+
+}
+
+void plotRectangle(UINT8* base, int x, int y, int width, int height) {
+
+	register int i = 0;
+
+	UINT8 *_base = base;
+
+	for (i = 0; i < height; i++) {
+
+	}
+
 
 }
 
