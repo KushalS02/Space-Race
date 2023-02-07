@@ -9,13 +9,15 @@ typedef struct
 
 typedef struct 
 {
-    /* data */
+    unsigned int x, y;
+    int deltaY;
 
 } Rocketship;
 
 typedef struct 
 {
-    /* data */
+    unsigned int x, y;
+    int deltaX;
 
 } Asteroid;
 
@@ -30,6 +32,8 @@ typedef struct
     /* data */
 
 } Highscore;
+
+
 
 
 
