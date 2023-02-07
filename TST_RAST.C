@@ -5,8 +5,8 @@ int main()
 {
 	void *base = Physbase();
 
-	plotHorizontalLine(base, 10, 10, 50);
-	plotRectangle(base, 35, 50, 10, 20);
+	plotHorizontalLine(base, 10, 10, 400);
+	plotRectangle(base, 35, 50, 60, 120);
 	plotPixel(base, 300, 300);
 
 
