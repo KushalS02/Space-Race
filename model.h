@@ -23,17 +23,21 @@ typedef struct
 
 typedef struct 
 {
-    /* data */
+    unsigned int x, y;
 
 } Score;
 
 typedef struct 
 {
-    /* data */
+    unsigned int x, y;
 
 } Highscore;
 
+typedef struct 
+{
+    /* data */
 
+} Screen;
 
 
 
