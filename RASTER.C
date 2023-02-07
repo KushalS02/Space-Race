@@ -20,11 +20,11 @@ void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 	int i;
 	int counter = length >> 3;
 
-	UINT8 *draw = base + (y * 80) + (x >> 3);
+	UINT8 *drawLine = base + (y * 80) + (x >> 3);
 
-	for (i = 0; i < length; i++){
+	for (i = 0; i < counter; i++){
 
-		*(draw++) |= 0xff;
+		*(drawLine++) |= 0xff;
 	}
 
 }
@@ -55,9 +55,12 @@ void plotRectangle(UINT8* base, int x, int y, int width, int height) {
 
 	register int i = 0;
 
-	UINT8 *_base = base;
+	UINT8 *newBase = base;
 
 	for (i = 0; i < height; i++) {
+
+		plotHorizontalLine(newBase, x, y, width);
+		newBase += 80;
 
 	}
 
