@@ -60,6 +60,7 @@ void plotRectangle(UINT8* base, int x, int y, int width, int height) {
 	for (i = 0; i < height; i++) {
 
 		plotHorizontalLine(newBase, x, y, width);
+		
 		newBase += 80;
 
 	}
