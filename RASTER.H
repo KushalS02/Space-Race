@@ -23,6 +23,6 @@ void plotRectangle(UINT8* base, int x, int y, int width, int height);
 
 void clearRegion(void* base, int x, int y, int width, int height);
 
-
+void clearScreen(void* base, int x, int y, int width, int height);
 
 #endif
