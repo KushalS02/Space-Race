@@ -7,17 +7,29 @@ typedef struct
 
 };
 
-typedef struct Rocketship
+typedef struct 
 {
     /* data */
 
-};
+} Rocketship;
 
-typedef struct Asteroid
+typedef struct 
 {
     /* data */
 
-};
+} Asteroid;
+
+typedef struct 
+{
+    /* data */
+
+} Score;
+
+typedef struct 
+{
+    /* data */
+
+} Highscore;
 
 
 
