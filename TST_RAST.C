@@ -6,7 +6,7 @@ int main()
 	void *base = Physbase();
 
 	
-	plotRectangle(base, 0, 0, 400, 640);
+	plotRectangle(base, 0, 0, 640, 400);
 	
 
 
