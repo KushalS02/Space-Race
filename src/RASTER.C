@@ -100,7 +100,7 @@ void plotBitmap32(UINT32* base, UINT32* bitmap, int x, int y, int height) {
 
 	for (i = 0; i < height; i++) {
 		*plotLocation ^= *(bitmap++);
-		plotLocation += 40;
+		plotLocation += 20;
 	}
 }
 
