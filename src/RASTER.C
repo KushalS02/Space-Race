@@ -11,6 +11,16 @@ void plotPixel(UINT8* base, int x, int y) {
 
 }
 
+void clearPixel(UINT8* base, int x, int y) {
+
+	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
+
+		*(base + y * 80 + (x >> 3)) &= 0 << 7 - (x & 7); 
+
+	}
+
+}
+
 void plotVerticalLine(UINT8* base, int x, int y, int height) {
 
 	int i;
@@ -19,6 +29,20 @@ void plotVerticalLine(UINT8* base, int x, int y, int height) {
 
 		*(base + ((y + i) * 80) + (x >> 3)) |= 1 << 7 - (x & 7);
 
+	}
+
+}
+
+void clearHorizontalLine(UINT8* base, int x, int y, int length) {
+
+	int i;
+	int counter = length >> 3;
+
+	UINT8 *drawLine = base + (y * 80) + (x >> 3);
+
+	for (i = 0; i < counter; i++){
+
+		*(drawLine++) &= 0x00;
 	}
 
 }
@@ -66,7 +90,18 @@ for (i = 0; i < height; i++) {
 	plotLocation += 40;
 
 }
+}
 
+void plotBitmap32(UINT32* base, UINT32* bitmap, int x, int y, int height) {
+	
+	int i = 0;
+	
+	UINT32 *plotLocation = base + (y * 20) + (x >> 5);
+
+	for (i = 0; i < height; i++) {
+		*plotLocation ^= *(bitmap++);
+		plotLocation += 40;
+	}
 }
 
 void plotScreen(UINT32* base, UINT32* bitmap) {
@@ -90,7 +125,6 @@ void plotRectangle(UINT8* base, int x, int y, int width, int height) {
 		plotHorizontalLine(newBase, x, y, width);
 		
 		newBase += 80;
-
 	}
 
 
@@ -118,4 +152,18 @@ void clearRegion(void* base, int x, int y, int width, int height) {
 
 
 
+}
+
+void clearScreen(UINT8 *base) {
+	
+	int i = 0;
+
+	UINT8 *newBase = base;
+
+	for (i = 0; i < SCREEN_HEIGHT; i++) {
+
+		clearHorizontalLine(newBase, 0, 0, SCREEN_WIDTH);
+		
+		newBase += 80;
+	}
 }
