@@ -8,5 +8,6 @@
 
 extern UINT32 shipv2[];
 extern UINT8 astrv1[];
+extern UINT8 astrv2[];
 
 #endif
