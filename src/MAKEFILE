@@ -12,3 +12,4 @@ sprites.o: sprites.c sprites.h
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s
+	

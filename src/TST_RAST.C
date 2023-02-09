@@ -8,9 +8,13 @@ int main()
 
 	clearScreen(base);
 
+	plotPixel(base, 50, 50)
+
+	/*
 	plotRectangle(base, 0, 0, 640, 400);
 
 	plotBitmap32(base, shipv2, 0, 0, SHIPV2_HEIGHT);
+	*/
 
 	return 0;
 }
