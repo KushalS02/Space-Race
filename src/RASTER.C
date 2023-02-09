@@ -69,9 +69,9 @@ UINT8 *plotLocation = base + (y * 80) + (x >> 3);
 
 for (i = 0; i < height; i++) {
 
-	*plotLocation |= *(bitmap++);
+	*plotLocation ^= *(bitmap++);
 
-	plotLocation += 40;
+	plotLocation += 80;
 
 }
 
@@ -85,7 +85,7 @@ UINT16 *plotLocation = base + (y * 40) + (x >> 4);
 
 for (i = 0; i < height; i++) {
 
-	*plotLocation &= *(bitmap++);
+	*plotLocation ^= *(bitmap++);
 
 	plotLocation += 40;
 
