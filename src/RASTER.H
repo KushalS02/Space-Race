@@ -5,7 +5,7 @@
 
 /* plotting funcions */
 
-void plotPixel(UINT8* UINT8, int x, int y); 
+void plotPixel(UINT8* base, int x, int y); 
 
 void plotVerticalLine(UINT8* base, int x, int y, int height); 
 
