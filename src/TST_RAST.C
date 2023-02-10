@@ -8,7 +8,7 @@ int main()
 
 	clearScreen(base);
 
-	plotPixel(base, 50, 50)
+	plotPixel(base, 50, 50);
 
 	plotBitmap8(base, astrv1, 100, 100, ASTRV1_HEIGHT);
 
