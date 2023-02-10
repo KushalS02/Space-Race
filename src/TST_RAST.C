@@ -5,6 +5,7 @@
 int main()
 {
 	void *base = Physbase();
+	short i;
 
 	clearScreen(base);
 
@@ -17,7 +18,11 @@ int main()
 	plotRectangle(base, 0, 0, 640, 400);
 	*/
 
-	plotBitmap32(base, shipv2, 0, 0, SHIPV2_HEIGHT);
+	plotBitmap32(base, shipv2, 304, 353, SHIPV2_HEIGHT);
+
+	for(i = 0; i < 20; i++) {
+		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
+	}
 
 	return 0;
 }
