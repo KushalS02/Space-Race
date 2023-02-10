@@ -17,7 +17,6 @@ int main()
 	*/
 
 	plotBitmap32(base, shipv2, 0, 0, SHIPV2_HEIGHT);
-	
 
 	return 0;
 }

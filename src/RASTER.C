@@ -67,13 +67,13 @@ int i;
 
 UINT8 *plotLocation = base + (y * 80) + (x >> 3);
 
-for (i = 0; i < height; i++) {
+	for (i = 0; i < height; i++) {
 
-	*plotLocation ^= *(bitmap++);
+		*plotLocation ^= *(bitmap++);
 
-	plotLocation += 80;
+		plotLocation += 80;
 
-}
+	}
 
 }
 
