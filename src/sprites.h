@@ -5,6 +5,7 @@
 
 #define SHIPV2_HEIGHT 47
 #define ASTRV1_HEIGHT 4
+#define ASTRV2_HEIGHT 8
 
 extern UINT32 shipv2[];
 extern UINT8 astrv1[];
