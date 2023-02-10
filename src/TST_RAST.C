@@ -9,7 +9,13 @@ int main()
 
 	clearScreen(base);
 
-	/* plotPixel(base, 50, 50); */
+	plotPixel(base, 50, 50); 
+
+	plotVerticalLine(base, 80, 80, 50);
+
+	plotHorizontalLine(base, 120, 120, 80);
+
+	plotRectangle(base, 200, 100, 100, 50);
 
 	plotBitmap8(base, astrv2, 100, 100, ASTRV2_HEIGHT);
 
