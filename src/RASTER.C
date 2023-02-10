@@ -5,7 +5,7 @@ void plotPixel(UINT8* base, int x, int y) {
 
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
 
-		*(base + y * 80 + (x >> 3)) |= 1 << 7 - (x & 7); 
+		*(base + y * 80 + (x >> 3)) ^= 1 << 7 - (x & 7); 
 
 	}
 
@@ -27,7 +27,7 @@ void plotVerticalLine(UINT8* base, int x, int y, int height) {
 
 	for (i = 0; i < height; i++) {
 
-		*(base + ((y + i) * 80) + (x >> 3)) |= 1 << 7 - (x & 7);
+		*(base + ((y + i) * 80) + (x >> 3)) ^= 1 << 7 - (x & 7);
 
 	}
 
@@ -56,7 +56,7 @@ void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 
 	for (i = 0; i < counter; i++){
 
-		*(drawLine++) |= 0xff;
+		*(drawLine++) ^= 0xff;
 	}
 
 }
