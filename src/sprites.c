@@ -18,6 +18,15 @@ UINT8 astrv2[] = {
     0x3c
 };
 
+UINT32 chkLine[] = {
+  0xcccccccc,
+  0xcccccccc, 
+  0x33333333,
+  0x33333333,
+  0xcccccccc,
+  0xcccccccc
+};
+
 UINT32 shipv2[]  = {
 0x00024000,
 0x00024000,
