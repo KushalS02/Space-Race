@@ -4,5 +4,6 @@
         "TST_RAST.C": "cpp",
         "RASTER.C": "cpp",
         "events.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
