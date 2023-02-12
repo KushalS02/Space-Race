@@ -1,6 +1,7 @@
 #include <osbind.h>
 #include "raster.h"
 #include "sprites.h"
+#include "const.h"
 
 int main()
 {
