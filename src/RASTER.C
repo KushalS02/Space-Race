@@ -1,5 +1,5 @@
 #include "raster.h"
-
+#include "const.h"
 
 void plotPixel(UINT8* base, int x, int y) {
 
