@@ -9,7 +9,7 @@ int main()
 	
 	short i;
 
-	clearRegion(base, 0, 0, 640, 400);
+	clearScreen(base);
 
 	plotPixel(base, 50, 50); 
 
