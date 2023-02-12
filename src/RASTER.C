@@ -163,36 +163,85 @@ void clearHorizontalLine32(UINT32* base, int x, int y, int length) {
 
 void clearHorizontalLine(void *base, int x, int y, int length) {
 
-	if (length <= 8)
+	if (length <= 8) {
+
 		clearHorizontalLine8(base, x, y, length);
-	else if (length <= 16) 
+
+	} else if (length <= 16) {
+
 		clearHorizontalLine16(base, x, y, length);
-	else
-	clearHorizontalLine32(base, x, y, length);
+
+	} else {
+
+		clearHorizontalLine32(base, x, y, length);
+
+	}
 
 }
 
 void clearRegion8(UINT8 *base, int x, int y, int width, int height) {
 
+	int i;
 
+	UINT8 *clearArea = base;
+
+	for (i = 0; i < height; i++) {
+
+		clearHorizontalLine(clearArea, x, y, width);
+
+		clearArea += 80;
+
+	}
 
 }
 
 void clearRegion16(UINT16 *base, int x, int y, int width, int height) {
 
+	int i;
 
+	UINT16 *clearArea = base;
+
+	for (i = 0; i < height; i++) {
+
+		clearHorizontalLine(clearArea, x, y, width);
+
+		clearArea += 40;
+
+	}
 
 }
 
 void clearRegion32(UINT32 *base, int x, int y, int width, int height) {
 
+	int i;
 
+	UINT32 *clearArea = base;
+
+	for (i = 0; i < height; i++) {
+
+		clearHorizontalLine(clearArea, x, y, width);
+
+		clearArea += 20;
+
+	}
 
 }
 
 void clearRegion(void* base, int x, int y, int width, int height) {
 
+	if (width <= 8) {
+		
+		clearRegion8(base, x, y, width, height);
 
+	} else if (width <= 16) {
+
+		clearRegion16(base, x, y, width, height);
+
+	} else {
+
+		clearRegion32(base, x, y, width, height);
+
+	}
 
 }
 
