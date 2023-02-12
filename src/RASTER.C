@@ -33,20 +33,6 @@ void plotVerticalLine(UINT8* base, int x, int y, int height) {
 
 }
 
-void clearHorizontalLine(UINT8* base, int x, int y, int length) {
-
-	int i;
-	int counter = length >> 3;
-
-	UINT8 *drawLine = base + (y * 80) + (x >> 3);
-
-	for (i = 0; i < counter; i++){
-
-		*(drawLine++) &= 0x00;
-	}
-
-}
-
 void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 
 	int i;
@@ -130,6 +116,62 @@ void plotRectangle(UINT8* base, int x, int y, int width, int height) {
 
 }
 
+void clearHorizontalLine8(UINT8* base, int x, int y, int length) {
+
+	int i;
+	int counter = length >> 3;
+
+	UINT8 *clearLine = base + (y * 80) + (x >> 3);
+
+	for (i = 0; i < counter; i++){
+
+		*(clearLine++) &= 0x00;
+	}
+
+}
+
+void clearHorizontalLine16(UINT16* base, int x, int y, int length) {
+
+	int i;
+
+	int counter = length >> 4;
+
+	UINT16 *clearLine = base + (y * 40) + (x >> 4);
+
+	for(i = 0; i < counter; i++) {
+
+		*(clearLine) = 0xffff;
+
+	}
+
+}
+
+void clearHorizontalLine32(UINT32* base, int x, int y, int length) {
+
+	int i;
+
+	int counter = length >> 5;
+
+	UINT32 *clearLine = base + (y * 20) + (x >> 5);
+
+	for(i = 0; i < counter; i++) {
+
+		*(clearLine) = 0xffffffff;
+		
+	}
+}
+
+void clearHorizontalLine(void *base, int x, int y, int length) {
+
+	if (length <= 8)
+		clearHorizontalLine8(base, x, y, length);
+	else if (length <= 16) 
+		clearHorizontalLine16(base, x, y, length);
+	else
+	clearHorizontalLine32(base, x, y, length);
+
+}
+
 void clearRegion8(UINT8 *base, int x, int y, int width, int height) {
 
 
@@ -162,7 +204,7 @@ void clearScreen(UINT8 *base) {
 
 	for (i = 0; i < SCREEN_HEIGHT; i++) {
 
-		clearHorizontalLine(newBase, 0, 0, SCREEN_WIDTH);
+		clearHorizontalLine8(newBase, 0, 0, SCREEN_WIDTH);
 		
 		newBase += 80;
 	}

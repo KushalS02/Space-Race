@@ -2,6 +2,7 @@
 #define RASTER_H
 
 #include "types.h"
+#include "const.h"
 
 /* plotting funcions */
 
@@ -32,5 +33,13 @@ void clearRegion16(UINT16 *base, int x, int y, int width, int height);
 void clearRegion32(UINT32 *base, int x, int y, int width, int height);
 
 void clearScreen(UINT8 *base);
+
+void clearHorizontalLine8(UINT8* base, int x, int y, int length);
+
+void clearHorizontalLine16(UINT16* base, int x, int y, int length);
+
+void clearHorizontalLine32(UINT32* base, int x, int y, int length);
+
+void clearHorizontalLine(void *base, int x, int y, int length);
 
 #endif
