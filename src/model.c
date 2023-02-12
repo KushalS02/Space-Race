@@ -37,6 +37,7 @@ void initializeScore(Model *model) {
 
 void gameOver(Model *model) {
 
-    model->is
+    model->playing = false;
+    model->gameOver = true;
 
 }
