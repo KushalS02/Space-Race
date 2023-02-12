@@ -55,10 +55,38 @@ typedef struct
 
 } Highscore;
 
+typedef struct {
+
+    Rocketship player;
+    Asteroid asteroid;
+    Score score;
+    Highscore highscore;
+    bool isGameOver;
+    bool playing;
+
+} Model;
+
 /*
 The other functions
 */
 void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction);
 
+void initializeRocketship(Rocketship *rocketship);
+
+void moveAsteroid(Asteroid *asteroid);
+
+void initializeAsteroid(Asteroid *asteroid);
+
+void collides(Hitbox hitbox);
+
+/*
+Score
+*/
+void initializeScore(Model *model);
+
+/*
+Game over
+*/
+void gameOver(Model *model);
 
 #endif
