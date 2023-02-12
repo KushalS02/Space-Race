@@ -1,8 +1,12 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "types.h"
+#include "TYPES.H"
+#include "const.h"
 
+/*
+All the typedef for structures 
+*/
 typedef struct 
 {
     UINT16 topLeftX;
@@ -23,6 +27,7 @@ typedef struct
 
     unsigned int x, y;
     int deltaY;
+    rocketShipDirection direction;
     Hitbox hitbox;
 
 } Rocketship;
@@ -49,5 +54,11 @@ typedef struct
     unsigned int x, y, highscore;
 
 } Highscore;
+
+/*
+The other functions
+*/
+void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction);
+
 
 #endif

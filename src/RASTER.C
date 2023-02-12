@@ -245,6 +245,7 @@ void clearRegion(void* base, int x, int y, int width, int height) {
 
 }
 
+
 void clearScreen(UINT8 *base) {
 	
 	int i = 0;

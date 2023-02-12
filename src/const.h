@@ -8,26 +8,23 @@
 #define SCREEN_BYTE_SIZE 8000
 
 /*
-
 Sprites Constants
-
 */
-
 #define SHIPV2_HEIGHT 47
 #define ASTRV2_HEIGHT 8
 #define CHKLINE_HEIGHT 6
 
 /*
-
 Rocketship Constants 
-
 */
-
+#define ROCKETSHIP_STARTING_X 304
+#define ROCKETSHIP_STARTING_Y 353
 
 /*
-
 Asteroids Constants
-
 */
+
+
+
 
 #endif

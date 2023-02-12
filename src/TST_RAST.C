@@ -21,7 +21,7 @@ int main()
 
 	plotBitmap8(base, astrv2, 100, 100, ASTRV2_HEIGHT);
 
-	plotBitmap32(base, shipv2, 304, 353, SHIPV2_HEIGHT);
+	plotBitmap32(base, shipv2, ROCKETSHIP_STARTING_X, ROCKETSHIP_STARTING_Y, SHIPV2_HEIGHT);
 
 	for(i = 0; i < 20; i++) {
 		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
