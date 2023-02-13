@@ -34,7 +34,7 @@ typedef struct
 
 typedef struct 
 {
-
+    int row;
     unsigned int x, y;
     int deltaX;
     Hitbox hitbox;
@@ -44,14 +44,16 @@ typedef struct
 typedef struct 
 {
 
-    unsigned int x, y, score;
+    int x, y;
+    unsigned int score;
 
 } Score;
 
 typedef struct 
 {
 
-    unsigned int x, y, highscore;
+    int x, y;
+    unsigned int highscore;
 
 } Highscore;
 

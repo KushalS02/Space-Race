@@ -2,6 +2,20 @@
 
 void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
 
+    switch (direction) {
+        
+        case up;
+
+
+            break;
+
+        case down;
+
+            break;
+
+        default;
+        break;
+    }
 
 
 }
