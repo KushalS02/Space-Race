@@ -4,7 +4,7 @@ tst_rast: tst_rast.o raster.o rast_asm.o sprites.o background.o
 tst_rast.o: tst_rast.c raster.h const.h background.h
 	cc68x -g -c tst_rast.c
 
-background.o: background.c background.h 
+background.o: background.c background.h const.h
 	cc68x -g -c background.c
 
 raster.o: raster.c raster.h const.h
