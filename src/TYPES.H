@@ -12,7 +12,7 @@ typedef unsigned long UINT32;
 
 typedef enum {
 
-    up, dowm, stop
+    up, down, stop
 
 } rocketShipDirection;
 
