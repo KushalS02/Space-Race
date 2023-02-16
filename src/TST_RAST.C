@@ -2,7 +2,6 @@
 #include "raster.h"
 #include "sprites.h"
 #include "const.h"
-#include "background.h"
 
 int main()
 {
@@ -27,8 +26,6 @@ int main()
 	for(i = 0; i < 20; i++) {
 		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
 	}
-
-	plotScreen(base, background);
 
 	return 0;
 }
