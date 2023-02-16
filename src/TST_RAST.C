@@ -11,7 +11,7 @@ int main()
 
 	clearScreen(base);
 
-	plotScreen(base, background);
+	/* plotScreen(base, background); */
 
 	plotPixel(base, 135, 120); 
 
