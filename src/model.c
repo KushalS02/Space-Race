@@ -4,12 +4,19 @@ void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
 
     switch (direction) {
         
-        case up;
+        case up:
 
+        if (positionInBound(rocketShip->Y - ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
+            rocketShip->y -= ROCKETSHIP_SPEED;
+        }
 
             break;
 
-        case down;
+        case down:
+
+        if (positionInBound(rocketShip->Y + ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
+            rocketShip->y += ROCKETSHIP_SPEED;
+        }
 
             break;
 
@@ -22,6 +29,9 @@ void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
 
 void initializeRocketship(Rocketship *rocketship) {
 
+rocketship->x = ROCKETSHIP_STARTING_X;
+rocketship->y =  ROCKETSHIP_STARTING_Y;
+rocketship->isHit = true;
 
 
 }

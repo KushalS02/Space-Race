@@ -28,6 +28,7 @@ typedef struct
     unsigned int x, y;
     int deltaY;
     rocketShipDirection direction;
+    bool isHit;
     Hitbox hitbox;
 
 } Rocketship;

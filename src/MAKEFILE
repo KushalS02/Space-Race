@@ -1,7 +1,7 @@
-tst_rast: tst_rast.o raster.o rast_asm.o sprites.o
+tst_rast: tst_rast.o raster.o rast_asm.o sprites.o 
 	cc68x -g tst_rast.o raster.o sprites.o rast_asm.o -o tst_rast
 
-tst_rast.o: tst_rast.c raster.h const.h
+tst_rast.o: tst_rast.c raster.h const.h 
 	cc68x -g -c tst_rast.c
 
 raster.o: raster.c raster.h const.h
