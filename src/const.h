@@ -30,4 +30,16 @@ Asteroids Constants
 #define ASTEROID_SPEED 1
 #define ASTEROID_ROWS 20
 
+/*
+Scorebox Position
+*/
+#define SCOREBOX_X 10
+#define SCOREBOX_Y 10
+
+/*
+Highscore box Position
+*/
+#define HIGHSCOREBOX_X 384
+#define HIGHSCOREBOX_Y 10
+
 #endif

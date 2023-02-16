@@ -37,7 +37,10 @@ typedef struct
 
     unsigned int x, y;
     int deltaX;
+    int row;
+    int col;
     Hitbox hitbox;
+    asteroidDirecton direction;
 
 } Asteroid;
 
@@ -46,21 +49,21 @@ typedef struct
 
     unsigned int x, y, score;
 
-} Score;
+} Scorebox;
 
 typedef struct 
 {
 
     unsigned int x, y, highscore;
 
-} Highscore;
+} HighscoreBox;
 
 typedef struct {
 
     Rocketship player;
     Asteroid asteroid;
-    Score score;
-    Highscore highscore;
+    Scorebox scorebox;
+    HighscoreBox highscorebox;
     bool gameOver;
     bool playing;
 
@@ -73,16 +76,23 @@ void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction);
 
 void initializeRocketship(Rocketship *rocketship);
 
-void moveAsteroid(Asteroid *asteroid);
+void moveAsteroid(Model *model);
 
 void initializeAsteroid(Asteroid *asteroid);
 
 void collides(Hitbox hitbox);
 
 /*
+Helpers
+*/
+void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col);
+
+/*
 Score
 */
-void initializeScore(Model *model);
+void initializeScoreBox(Model *model);
+void initializeHighscoreBox(Model *model);
+void updateScorebox(Scorebox* scorebox, int point);
 
 /*
 Game over

@@ -16,4 +16,10 @@ typedef enum {
 
 } rocketShipDirection;
 
+typedef enum {
+
+    left, right
+
+} asteroidDirecton;
+
 #endif

@@ -29,16 +29,35 @@ void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
 
 void initializeRocketship(Rocketship *rocketship) {
 
-rocketship->x = ROCKETSHIP_STARTING_X;
-rocketship->y =  ROCKETSHIP_STARTING_Y;
-rocketship->isHit = true;
+    rocketship->x = ROCKETSHIP_STARTING_X;
+    rocketship->y =  ROCKETSHIP_STARTING_Y;
+    rocketship->isHit = true;
 
 
 }
 
-void moveAsteroid(Asteroid *asteroid) {
+void moveAsteroid(Model *model) {
+
+    Asteroid *asteroid = &model->asteroid;
+    Hitbox *hitbox = &asteroid->hitbox;
+
+    switch (asteroid->direction) {
+
+        case right:
 
 
+        break; 
+
+        case left:
+
+
+        break;
+
+        default:
+        break:
+
+
+    }
 
 }
 
@@ -53,9 +72,28 @@ void collides(Hitbox hitbox) {
 
 }
 
-void initializeScore(Model *model) {
+void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col) {
 
+    asteroid->x = x;
+    asteroid->y = y;
+    asteroid->row = row;
+    asteroid->col = col;
 
+}
+
+void initializeScoreBox(Model *model) {
+
+    model->scorebox.score = 0;
+    model->scorebox.x = SCOREBOX_X;
+    model->scorebox.y = SCOREBOX_Y;
+
+}
+
+void initializeHighscoreBox(Model *model) {
+
+    model->highscorebox.highscore = 0;
+    model->highscorebox.x = HIGHSCOREBOX_X;
+    model->highscorebox.y = HIGHSCOREBOX_Y;
 
 }
 
