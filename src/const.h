@@ -30,6 +30,4 @@ Asteroids Constants
 #define ASTEROID_SPEED 1
 #define ASTEROID_ROWS 20
 
-
-
 #endif

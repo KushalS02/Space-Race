@@ -28,14 +28,13 @@ typedef struct
     unsigned int x, y;
     int deltaY;
     rocketShipDirection direction;
-    bool isHit;
     Hitbox hitbox;
 
 } Rocketship;
 
 typedef struct 
 {
-    int row;
+
     unsigned int x, y;
     int deltaX;
     Hitbox hitbox;
@@ -45,16 +44,14 @@ typedef struct
 typedef struct 
 {
 
-    int x, y;
-    unsigned int score;
+    unsigned int x, y, score;
 
 } Score;
 
 typedef struct 
 {
 
-    int x, y;
-    unsigned int highscore;
+    unsigned int x, y, highscore;
 
 } Highscore;
 
@@ -64,7 +61,7 @@ typedef struct {
     Asteroid asteroid;
     Score score;
     Highscore highscore;
-    bool isGameOver;
+    bool gameOver;
     bool playing;
 
 } Model;
