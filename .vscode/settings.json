@@ -3,7 +3,8 @@
         "TYPES.H": "cpp",
         "TST_RAST.C": "cpp",
         "RASTER.C": "cpp",
-        "events.h": "c"
+        "events.h": "c",
+        "const.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

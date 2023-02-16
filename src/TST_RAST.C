@@ -2,7 +2,6 @@
 #include "raster.h"
 #include "sprites.h"
 #include "const.h"
-#include "background.h"
 
 int main()
 {
