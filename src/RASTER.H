@@ -22,6 +22,16 @@ void plotScreen(UINT32* base, UINT32* bitmap);
 
 void plotRectangle(UINT8* base, int x, int y, int width, int height);
 
+/* 
+Print char, string and number
+*/
+
+void printChar(UINT8 *base, int x, int y, char ch);
+
+void printString(UINT8 *base, int x, int y, char *string);
+
+void printNumber(UINT8 *base, int x, int y, UINT16 num);
+
 /* clearing functions */
 
 void clearRegion(void* base, int x, int y, int width, int height);

@@ -259,3 +259,53 @@ void clearScreen(UINT8 *base) {
 		newBase += 80;
 	}
 }
+
+void printChar(UINT8 *base, int x, int y, char ch) {
+
+	int i;
+
+	UINT8 *charHexCode = GLYPH_START(ch);
+
+	for (i = 0; i < 8; i++, charHexCode++) {
+
+		*(base + (y + i) * 80 + (x >> 3)) = *charHexCode;
+
+	}
+
+}
+
+void printString(UINT8 *base, int x, int y, char *string) {
+
+  int i = 0;
+
+  while (string[i] != '\0') {
+
+	printChar(base, x, y, srting[i]);
+	i++;
+	x += 8;
+
+  }
+
+}
+
+void printNumber(UINT8 *base, int x, int y, UINT16 num) {
+
+	char a, b, c, d;
+	
+	d = (num % 10) + '0';
+  	num /= 10;
+
+  	c = (num % 10) + '0';
+  	num /= 10;
+
+  	b = (num % 10) + '0';
+  	num /= 10;
+
+  	a = (num % 10) + '0';
+
+	print_char(base, x, y, a);
+  	print_char(base, x + 8, y, b);
+  	print_char(base, x + 16, y, c);
+  	print_char(base, x + 24, y, d);
+
+}

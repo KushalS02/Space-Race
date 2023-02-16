@@ -31,8 +31,6 @@ void initializeRocketship(Rocketship *rocketship) {
 
     rocketship->x = ROCKETSHIP_STARTING_X;
     rocketship->y =  ROCKETSHIP_STARTING_Y;
-    rocketship->isHit = true;
-
 
 }
 
