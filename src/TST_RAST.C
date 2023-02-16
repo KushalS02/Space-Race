@@ -2,6 +2,7 @@
 #include "raster.h"
 #include "sprites.h"
 #include "const.h"
+#include "background.h"
 
 int main()
 {
@@ -10,6 +11,8 @@ int main()
 	short i;
 
 	clearScreen(base);
+
+	plotScreen(base, background);
 
 	plotPixel(base, 135, 120); 
 
