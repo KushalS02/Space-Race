@@ -266,8 +266,7 @@ void printChar(UINT8 *base, int x, int y, char ch) {
 
 	int i;
 
-	/* UINT8 *charHexCode = GLYPH_START(ch); */
-		UINT8 *charHexCode = GLYPH_START(ch);
+		/* UINT8 *charHexCode = GLYPH_START(ch); */
 
 	for (i = 0; i < 8; i++, charHexCode++) {
 
@@ -306,9 +305,11 @@ void printNumber(UINT8 *base, int x, int y, UINT16 num) {
 
   	a = (num % 10) + '0';
 
+	/* 
 	printChar(base, x, y, a);
   	printChar(base, x + 8, y, b);
   	printChar(base, x + 16, y, c);
   	printChar(base, x + 24, y, d);
+	*/
 
 }
