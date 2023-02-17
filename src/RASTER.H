@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "const.h"
+#include <osbind.h>
 
 /* plotting funcions */
 
