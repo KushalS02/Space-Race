@@ -95,7 +95,9 @@ void plotScreen(UINT32* base, UINT32* bitmap) {
 	int i;
 
 	for (i = 0; i < SCREEN_BYTE_SIZE; i++) {
-		*(base + 1) = bitmap[i];
+
+		*(base + i) = bitmap[i];
+
 	}
 
 }
