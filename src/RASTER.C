@@ -282,7 +282,7 @@ void printString(UINT8 *base, int x, int y, char *string) {
 
   while (string[i] != '\0') {
 
-	printChar(base, x, y, srting[i]);
+	printChar(base, x, y, string[i]);
 	i++;
 	x += 8;
 
@@ -305,9 +305,9 @@ void printNumber(UINT8 *base, int x, int y, UINT16 num) {
 
   	a = (num % 10) + '0';
 
-	print_char(base, x, y, a);
-  	print_char(base, x + 8, y, b);
-  	print_char(base, x + 16, y, c);
-  	print_char(base, x + 24, y, d);
+	printChar(base, x, y, a);
+  	printChar(base, x + 8, y, b);
+  	printChar(base, x + 16, y, c);
+  	printChar(base, x + 24, y, d);
 
 }
