@@ -266,7 +266,7 @@ void printChar(UINT8 *base, int x, int y, char ch) {
 
 	int i;
 
-	UINT8 *charHexCode = GLYPH_START(ch);
+	/* UINT8 *charHexCode = GLYPH_START(ch); */
 
 	for (i = 0; i < 8; i++, charHexCode++) {
 
