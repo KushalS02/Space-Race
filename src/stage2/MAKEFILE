@@ -4,17 +4,14 @@ tst_rast: tst_rast.o raster.o rast_asm.o sprites.o
 tst_rast.o: tst_rast.c raster.h const.h 
 	cc68x -g -c tst_rast.c
 
-raster.o: raster.c raster.h const.h
+raster.o: raster.c raster.h const.h font.h
 	cc68x -g -c raster.c
+
+font.o: font.c font.h
+	cc68x -g -c font.c
 
 sprites.o: sprites.c sprites.h const.h
 	cc68x -g -c sprites.c
-
-model.o: model.c model.h const.h
-	cc68x -g -c model.c
-
-events.o: events.c events.h const.h
-	cc68x -g -c events.c
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s
