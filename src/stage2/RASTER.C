@@ -1,5 +1,6 @@
 #include "raster.h"
 #include "const.h"
+#include "font.h"
 
 void plotPixel(UINT8* base, int x, int y) {
 
@@ -262,7 +263,6 @@ void clearScreen(UINT8 *base) {
 	}
 }
 
-/*
 void printChar(UINT8 *base, int x, int y, char ch) {
 
 	int i;
@@ -313,4 +313,3 @@ void printNumber(UINT8 *base, int x, int y, UINT16 num) {
 	
 
 }
-*/
