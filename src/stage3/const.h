@@ -29,6 +29,7 @@ Asteroids Constants
 */
 #define ASTEROID_SPEED 1
 #define ASTEROID_ROWS 20
+#define ASTEROID_COL 20
 
 /*
 Scorebox Position
@@ -41,6 +42,11 @@ Highscore box Position
 */
 #define HIGHSCOREBOX_X 384
 #define HIGHSCOREBOX_Y 10
+
+/*
+Score Stuff
+*/
+const UINT16 MAX_SCORE 999
 
 /*
 Keyboard key codes

@@ -1,103 +1,100 @@
 #include "model.h"
 
-void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
+/*
+Rocketship Functions
+*/
+void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
-    switch (direction) {
+    switch (direction)
+    {
+    case up:
         
-        case up:
+        if (positionInBound(rocketship->y - ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
 
-        if (positionInBound(rocketShip->Y - ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
-            rocketShip->y -= ROCKETSHIP_SPEED;
+            rocketship->y -= ROCKETSHIP_SPEED;
+
         }
-
-            break;
-
-        case down:
-
-        if (positionInBound(rocketShip->Y + ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
-            rocketShip->y += ROCKETSHIP_SPEED;
-        }
-
-            break;
-
-        default;
-        break;
-    }
-
-
-}
-
-void initializeRocketship(Rocketship *rocketship) {
-
-    rocketship->x = ROCKETSHIP_STARTING_X;
-    rocketship->y =  ROCKETSHIP_STARTING_Y;
-
-}
-
-void moveAsteroid(Model *model) {
-
-    Asteroid *asteroid = &model->asteroid;
-    Hitbox *hitbox = &asteroid->hitbox;
-
-    switch (asteroid->direction) {
-
-        case right:
-
-
-        break; 
-
-        case left:
-
 
         break;
 
-        default:
-        break:
+    case down:
 
+    if (positionInBound(rocketship->y + ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
 
+            rocketship->y += ROCKETSHIP_SPEED;
+
+        }
+
+    default:
+        break;
     }
 
 }
 
-void initializeAsteroid(Asteroid *asteroid) {
+void initalizeRocketship(Rocketship* rocketship) {
 
 
 
 }
 
-void collides(Hitbox hitbox) {
+/*
+Asteroid Functions
+*/
+void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction) {
+
+
+
+}
+void initalizeAsteroid(Asteroid* asteroid) {
+
 
 
 }
 
-void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col) {
+/*
+Score Functions
+*/
+void setScore(Scorebox* scorebox, UINT16 score) {
 
-    asteroid->x = x;
-    asteroid->y = y;
-    asteroid->row = row;
-    asteroid->col = col;
 
-}
-
-void initializeScoreBox(Model *model) {
-
-    model->scorebox.score = 0;
-    model->scorebox.x = SCOREBOX_X;
-    model->scorebox.y = SCOREBOX_Y;
 
 }
 
-void initializeHighscoreBox(Model *model) {
+UINT16 getScore(Scorebox* scorebox) {
 
-    model->highscorebox.highscore = 0;
-    model->highscorebox.x = HIGHSCOREBOX_X;
-    model->highscorebox.y = HIGHSCOREBOX_Y;
+
 
 }
 
-void gameOver(Model *model) {
+void updateScore(Scorebox* scorebox) {
 
-    model->playing = false;
-    model->gameOver = true;
+
+
+}
+
+/*
+Model Functions
+*/
+void initializeModel(Model* model) {
+
+
+
+}
+
+void pauseGame(Model* model) {
+
+
+
+}
+
+void resumeGame(Model* model) {
+
+
+
+}
+
+void gameOver(Model* model) {
+
+
 
 }

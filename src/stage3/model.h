@@ -29,6 +29,7 @@ typedef struct
     int deltaY;
     rocketShipDirection direction;
     Hitbox hitbox;
+    bool isHit;
 
 } Rocketship;
 
@@ -41,6 +42,7 @@ typedef struct
     int col;
     Hitbox hitbox;
     asteroidDirecton direction;
+    Asteroid asteroids[ASTEROID_ROWS][ASTEROID_COL];
 
 } Asteroid;
 
@@ -70,33 +72,30 @@ typedef struct {
 } Model;
 
 /*
-The other functions
+Rocketship Functions
 */
-void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction);
-
-void initializeRocketship(Rocketship *rocketship);
-
-void moveAsteroid(Model *model);
-
-void initializeAsteroid(Asteroid *asteroid);
-
-void collides(Hitbox hitbox);
+void moveRocketship(Rocketship* rocketship, rocketShipDirection direction);
+void initalizeRocketship(Rocketship* rocketship);
 
 /*
-Helpers
+Asteroid Functions
 */
-void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col);
+void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction);
+void initalizeAsteroid(Asteroid* asteroid);
 
 /*
-Score
+Score Functions
 */
-void initializeScoreBox(Model *model);
-void initializeHighscoreBox(Model *model);
-void updateScorebox(Scorebox* scorebox, int point);
+void setScore(Scorebox* scorebox, UINT16 score);
+UINT16 getScore(Scorebox* scorebox);
+void updateScore(Scorebox* scorebox);
 
 /*
-Game over
+Model Functions
 */
-void gameOver(Model *model);
+void initializeModel(Model* model);
+void pauseGame(Model* model);
+void resumeGame(Model* model);
+void gameOver(Model* model);
 
 #endif
