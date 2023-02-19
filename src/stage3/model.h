@@ -29,7 +29,7 @@ typedef struct
     int deltaY;
     rocketShipDirection direction;
     Hitbox hitbox;
-    bool isHit;
+    bool alive;
 
 } Rocketship;
 

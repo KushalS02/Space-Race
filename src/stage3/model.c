@@ -33,7 +33,9 @@ void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
 void initalizeRocketship(Rocketship* rocketship) {
 
-
+    rocketship->x = ROCKETSHIP_STARTING_X;
+    rocketship->y = ROCKETSHIP_STARTING_Y;
+    rocketship->alive = true;
 
 }
 
@@ -47,7 +49,7 @@ void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction) {
 }
 void initalizeAsteroid(Asteroid* asteroid) {
 
-
+    int row, col;
 
 }
 
