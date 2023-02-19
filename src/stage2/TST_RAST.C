@@ -19,5 +19,7 @@ int main()
 		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
 	}
 
+	printString(base, 10, 10, "Score: ");
+
 	return 0;
 }
