@@ -13,16 +13,6 @@ int main()
 
 	plotRectangle(base, 0, 0, 640, 400);
 
-	plotPixel(base, 135, 120); 
-
-	plotVerticalLine(base, 80, 80, 50);
-
-	plotHorizontalLine(base, 120, 120, 80);
-
-	plotRectangle(base, 200, 100, 100, 50);
-
-	plotBitmap8(base, astrv2, 100, 100, ASTRV2_HEIGHT);
-
 	plotBitmap32(base, shipv2, ROCKETSHIP_STARTING_X, ROCKETSHIP_STARTING_Y, SHIPV2_HEIGHT);
 
 	for(i = 0; i < 20; i++) {
@@ -30,4 +20,5 @@ int main()
 	}
 
 	return 0;
+	
 }
