@@ -86,9 +86,11 @@ void initalizeAsteroid(Asteroid* asteroid);
 /*
 Score Functions
 */
-void setScore(Scorebox* scorebox, UINT16 score);
-UINT16 getScore(Scorebox* scorebox);
-void updateScore(Scorebox* scorebox);
+void initalizeScore(Scorebox* scorebox);
+void updateScore(Scorebox* scorebox, int playerScore);
+
+void initalizeHighscore(HighscoreBox* highscoreBox);
+void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore);
 
 /*
 Model Functions

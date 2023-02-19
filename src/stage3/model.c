@@ -56,21 +56,39 @@ void initalizeAsteroid(Asteroid* asteroid) {
 /*
 Score Functions
 */
-void setScore(Scorebox* scorebox, UINT16 score) {
+void initalizeScore(Scorebox* scorebox) {
 
-
-
-}
-
-UINT16 getScore(Scorebox* scorebox) {
-
-
+    scorebox->score = 0;
+    scorebox->x = SCOREBOX_X;
+    scorebox->y = SCOREBOX_Y;
 
 }
 
-void updateScore(Scorebox* scorebox) {
+void updateScore(Scorebox* scorebox, int playerScore) {
 
+    if (scorebox->score < MAX_SCORE) {
 
+        scorebox->score += playerScore;    
+
+    } else {
+
+        scorebox->score = MAX_SCORE;
+
+    }
+
+}
+
+void initalizeHighscore(HighscoreBox* highscoreBox) {
+
+    highscoreBox->highscore = 0;
+    highscoreBox->x = HIGHSCOREBOX_X;
+    highscoreBox->y = HIGHSCOREBOX_Y;
+
+}
+
+void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore) {
+
+    
 
 }
 
@@ -79,24 +97,30 @@ Model Functions
 */
 void initializeModel(Model* model) {
 
-
+    model->playing = true;
+    model->gameOver = false;
+    initalizeRocketship(&model->player);
+    initalizeAsteroid(&model->asteroid);
+    initalizeScore(model);
+    initalizeHighscore(model);
 
 }
 
 void pauseGame(Model* model) {
 
-
+    model->playing = false;
 
 }
 
 void resumeGame(Model* model) {
 
-
+    model->playing = true;
 
 }
 
 void gameOver(Model* model) {
 
-
+    model->gameOver = true;
+    model->playing = false;
 
 }
