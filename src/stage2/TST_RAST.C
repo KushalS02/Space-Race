@@ -11,7 +11,7 @@ int main()
 
 	clearScreen(base);
 
-	plotScreen(base, background);
+	plotRectangle(base, 0, 0, 640, 400);
 
 	plotPixel(base, 135, 120); 
 
