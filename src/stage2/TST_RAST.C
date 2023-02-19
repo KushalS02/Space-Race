@@ -11,6 +11,8 @@ int main()
 
 	clearScreen(base);
 
+	plotScreen(base, background);
+
 	plotPixel(base, 135, 120); 
 
 	plotVerticalLine(base, 80, 80, 50);
