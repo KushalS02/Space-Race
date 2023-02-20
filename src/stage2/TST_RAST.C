@@ -13,6 +13,8 @@ int main()
 
 	plotRectangle(base, 0, 0, 640, 400);
 
+	plotBitmap8(base, astrv2, 10, 20, ASTRV2_HEIGHT);
+
 	plotBitmap32(base, shipv2, ROCKETSHIP_STARTING_X, ROCKETSHIP_STARTING_Y, SHIPV2_HEIGHT);
 
 	for(i = 0; i < 20; i++) {
