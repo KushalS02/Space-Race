@@ -54,4 +54,10 @@ Keyboard key codes
 #define UP_KEY 0x00480000
 #define DOWN_KEY 0x00500000
 
+/*
+Other stuff
+*/
+#define SPRITE_SIZE 16
+#define SPRITE_HEIGHT 16
+
 #endif

@@ -100,4 +100,9 @@ void pauseGame(Model* model);
 void resumeGame(Model* model);
 void gameOver(Model* model);
 
+/*
+Helper functions
+*/
+
+
 #endif
