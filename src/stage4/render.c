@@ -1,4 +1,4 @@
-#include render.h
+#include "render.h"
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
@@ -26,6 +26,9 @@ void renderHighscoreBox(const HighscoreBox *highscore, UINT16 *base) {
 
 void render(Model *model, UINT16 *base) {
 
-
+    renderRocketship(&model->player, base);
+    renderAsteroid(&model->asteroid, base);
+    renderScoreBox(&model->scorebox, base);
+    renderHighscoreBox(&model->highscorebox, base);
 
 }

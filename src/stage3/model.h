@@ -30,6 +30,7 @@ typedef struct
     rocketShipDirection direction;
     Hitbox hitbox;
     bool alive;
+    bool hitBoundary;
 
 } Rocketship;
 
@@ -40,9 +41,13 @@ typedef struct
     int deltaX;
     int row;
     int col;
-    Hitbox hitbox;
+    int topLeftX;
+    int topLeftY;
+    int bottomRightX;
+    int bottomRightY;
     asteroidDirecton direction;
-    Asteroid asteroids[ASTEROID_ROWS][ASTEROID_COL];
+    Asteroid asteroids[ASTEROID_MAX];
+    bool hitBoundary;
 
 } Asteroid;
 

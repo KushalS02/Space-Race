@@ -30,6 +30,9 @@ Asteroids Constants
 #define ASTEROID_SPEED 1
 #define ASTEROID_ROWS 20
 #define ASTEROID_COL 20
+#define ASTEROID_MAX 20
+#define ASTEROID_STARTING_Y 32
+#define ASTEROID_BOX_SIZE 16 /* ACTUAL SIZE OF THE ASTEROID NOT HITBOX*/
 
 /*
 Scorebox Position

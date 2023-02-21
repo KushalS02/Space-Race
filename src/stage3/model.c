@@ -44,12 +44,48 @@ Asteroid Functions
 */
 void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction) {
 
+    switch (direction)
+    {
+    case left:
 
+
+
+        break;
+    
+    case right:
+
+
+
+        break;
+
+    default:
+        break;
+    }
 
 }
 void initalizeAsteroid(Asteroid* asteroid) {
 
-    int row, col;
+    int i = 0;
+
+    UINT16 asteroidStartY = ASTEROID_STARTING_Y;
+
+    for (i = 0; i < ASTEROID_MAX; i + 2) {
+       
+       for(i = 1; i < ASTEROID_MAX; i + 2) {
+
+            asteroid->direction = left;
+            asteroid->y = i;      
+            asteroidStartY += ASTEROID_BOX_SIZE;
+            asteroid->asteroids[i] = asteroid;
+
+        }
+
+        asteroid->asteroids[i] = asteroid;
+        asteroid->direction = right;
+        asteroid->y = i;
+        asteroidStartY += ASTEROID_BOX_SIZE;
+
+    } 
 
 }
 

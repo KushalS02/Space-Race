@@ -11,9 +11,13 @@ void rocketshipMove(Rocketship* rocketship, unsigned long key);
 
 void rocketshipHitBoundary(Rocketship* rocketship);
 void asteroidHitBoundary(Asteroid* asteroid);
+void rocketshipAsteroidCollision(Model *model);
 
 void onGameStart(Model* model);
 void onGamePause(Model* model);
 void onGameOver(Model* model);
+
+bool hasUserInput();
+unsigned long getUserInput();
 
 #endif
