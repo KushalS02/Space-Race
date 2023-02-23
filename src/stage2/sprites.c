@@ -24,7 +24,9 @@ UINT32 chkLine[] = {
   0x33333333,
   0x33333333,
   0xcccccccc,
-  0xcccccccc
+  0xcccccccc,
+  0x33333333,
+  0x33333333
 };
 
 UINT32 shipv2[]  = {
