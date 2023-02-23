@@ -12,15 +12,29 @@ void renderAsteroid(const Asteroid *asteroid, UINT8 *base) {
 
 }
 
-void renderScoreBox(const Scorebox *scorebox, UINT16 *base) {
+void renderScoreBox(const Model* model, UINT16 *base) {
 
-
+    printString(base, model->scorebox.x, model->scorebox.y, "Score: ");
+    printNumber(base, model->scorebox.x, model->scorebox.y, model->scorebox.score);
 
 }
 
-void renderHighscoreBox(const HighscoreBox *highscore, UINT16 *base) {
+void renderHighscoreBox(const Model* model, UINT16 *base) {
 
+    printString(base, model->highscorebox.x, model->highscorebox.y, "Highscore: ");
+    printNumber(base, model->highscorebox.x, model->highscorebox.y, model->highscorebox.highscore);
 
+}
+
+void renderCheckeredLine(UINT32 *base) {
+
+    short i; 
+
+    for(i = 0; i < 20; i++) {
+
+		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
+
+	}
 
 }
 

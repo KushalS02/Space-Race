@@ -1,103 +1,162 @@
 #include "model.h"
 
-void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction) {
+/*
+Rocketship Functions
+*/
+void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
-    switch (direction) {
+    switch (direction)
+    {
+    case up:
         
-        case up:
+        if (positionInBound(rocketship->y - ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
 
-        if (positionInBound(rocketShip->Y - ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
-            rocketShip->y -= ROCKETSHIP_SPEED;
+            rocketship->y -= ROCKETSHIP_SPEED;
+
         }
 
-            break;
+        break;
 
-        case down:
+    case down:
 
-        if (positionInBound(rocketShip->Y + ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
-            rocketShip->y += ROCKETSHIP_SPEED;
+    if (positionInBound(rocketship->y + ROCKETSHIP_SPEED, ROCKETSHIP_STARTING_Y)) {
+
+            rocketship->y += ROCKETSHIP_SPEED;
+
         }
 
-            break;
-
-        default;
+    default:
         break;
     }
 
-
 }
 
-void initializeRocketship(Rocketship *rocketship) {
+void initalizeRocketship(Rocketship* rocketship) {
 
     rocketship->x = ROCKETSHIP_STARTING_X;
-    rocketship->y =  ROCKETSHIP_STARTING_Y;
+    rocketship->y = ROCKETSHIP_STARTING_Y;
+    rocketship->alive = true;
 
 }
 
-void moveAsteroid(Model *model) {
+/*
+Asteroid Functions
+*/
+void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction) {
 
-    Asteroid *asteroid = &model->asteroid;
-    Hitbox *hitbox = &asteroid->hitbox;
-
-    switch (asteroid->direction) {
-
-        case right:
+    switch (direction)
+    {
+    case left:
 
 
-        break; 
 
-        case left:
+        break;
+    
+    case right:
+
 
 
         break;
 
-        default:
-        break:
+    default:
+        break;
+    }
 
+}
+void initalizeAsteroid(Asteroid* asteroid) {
+
+    int i = 0;
+
+    UINT16 asteroidStartY = ASTEROID_STARTING_Y;
+
+    for (i = 0; i < ASTEROID_MAX; i + 2) {
+       
+       for(i = 1; i < ASTEROID_MAX; i + 2) {
+
+            asteroid->direction = left;
+            asteroid->y = i;      
+            asteroidStartY += ASTEROID_BOX_SIZE;
+            asteroid->asteroids[i] = asteroid;
+
+        }
+
+        asteroid->asteroids[i] = asteroid;
+        asteroid->direction = right;
+        asteroid->y = i;
+        asteroidStartY += ASTEROID_BOX_SIZE;
+
+    } 
+
+}
+
+/*
+Score Functions
+*/
+void initalizeScore(Scorebox* scorebox) {
+
+    scorebox->score = 0;
+    scorebox->x = SCOREBOX_X;
+    scorebox->y = SCOREBOX_Y;
+
+}
+
+void updateScore(Scorebox* scorebox, int playerScore) {
+
+    if (scorebox->score < MAX_SCORE) {
+
+        scorebox->score += playerScore;    
+
+    } else {
+
+        scorebox->score = MAX_SCORE;
 
     }
 
 }
 
-void initializeAsteroid(Asteroid *asteroid) {
+void initalizeHighscore(HighscoreBox* highscoreBox) {
 
-
-
-}
-
-void collides(Hitbox hitbox) {
-
+    highscoreBox->highscore = 0;
+    highscoreBox->x = HIGHSCOREBOX_X;
+    highscoreBox->y = HIGHSCOREBOX_Y;
 
 }
 
-void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col) {
+void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore) {
 
-    asteroid->x = x;
-    asteroid->y = y;
-    asteroid->row = row;
-    asteroid->col = col;
+    
 
 }
 
-void initializeScoreBox(Model *model) {
+/*
+Model Functions
+*/
+void initializeModel(Model* model) {
 
-    model->scorebox.score = 0;
-    model->scorebox.x = SCOREBOX_X;
-    model->scorebox.y = SCOREBOX_Y;
-
-}
-
-void initializeHighscoreBox(Model *model) {
-
-    model->highscorebox.highscore = 0;
-    model->highscorebox.x = HIGHSCOREBOX_X;
-    model->highscorebox.y = HIGHSCOREBOX_Y;
+    model->playing = true;
+    model->gameOver = false;
+    initalizeRocketship(&model->player);
+    initalizeAsteroid(&model->asteroid);
+    initalizeScore(model);
+    initalizeHighscore(model);
 
 }
 
-void gameOver(Model *model) {
+void pauseGame(Model* model) {
 
     model->playing = false;
+
+}
+
+void resumeGame(Model* model) {
+
+    model->playing = true;
+
+}
+
+void gameOver(Model* model) {
+
     model->gameOver = true;
+    model->playing = false;
 
 }
