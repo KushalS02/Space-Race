@@ -2,7 +2,6 @@
 #define RASTER_H
 
 #include "types.h"
-#include "const.h"
 
 /* plotting funcions */
 
