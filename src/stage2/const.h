@@ -20,7 +20,7 @@ Sprites Constants
 /*
 Rocketship Constants 
 */
-#define ROCKETSHIP_STARTING_X 320
+#define ROCKETSHIP_STARTING_X 316
 #define ROCKETSHIP_STARTING_Y 353
 #define ROCKETSHIP_SPEED 1 
 
@@ -34,13 +34,13 @@ Asteroids Constants
 Scorebox Position
 */
 #define SCOREBOX_X 10
-#define SCOREBOX_Y 10
+#define SCOREBOX_Y 0
 
 /*
 Highscore box Position
 */
-#define HIGHSCOREBOX_X 384
-#define HIGHSCOREBOX_Y 10
+#define HIGHSCOREBOX_X 518
+#define HIGHSCOREBOX_Y 0
 
 /*
 Keyboard key codes

@@ -21,9 +21,9 @@ int main()
 		plotBitmap32(base, chkLine, i*32, 0, CHKLINE_HEIGHT);
 	}
 
-	printString(base, 10, 0, "Score: 000");
+	printString(base, SCOREBOX_X, SCOREBOX_Y, "Score: 000");
 
-	printString(base, 518, 0, "Highscore: 999");
+	printString(base, HIGHSCOREBOX_X, HIGHSCOREBOX_Y, "Highscore: 999");
 
 	return 0;
 }
