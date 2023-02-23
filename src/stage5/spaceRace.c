@@ -2,7 +2,7 @@
 
 int main() {
 
-    gameLoop()
+    gameLoop();
 
     return 0;
     
@@ -44,7 +44,7 @@ void processAsyncEvents(Model* model, void* base) {
 
 void processSyncEvents(Model* model, void* base) {
 
-    unsigned long timeThen, timeNow, timeElapsed;
+    UINT32 timeThen, timeNow, timeElapsed;
 
     int prevScore = model->scorebox.score;
 
@@ -57,6 +57,7 @@ void processSyncEvents(Model* model, void* base) {
 void gameSetup(Model* model, void* base) {
 
     onGameStart(model);
+
     render(model, base);
 
 }
@@ -64,9 +65,13 @@ void gameSetup(Model* model, void* base) {
 long getTime() {
 
     long* timer = (long*) SYSTEM_CLOCK;
+
     long oldSSP = Super(0);
+
     long timeNow = *timer;
+
     Super(oldSSP);
+
     return timeNow;
 
 }
