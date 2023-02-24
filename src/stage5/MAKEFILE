@@ -1,11 +1,18 @@
-tst_rast: tst_rast.o raster.o rast_asm.o sprites.o 
-	cc68x -g tst_rast.o raster.o sprites.o rast_asm.o -o tst_rast
+OBJ_FILES = spaceRace.o raster.o render.o sprites.o model.o events.o font.o rast_asm.o
 
-tst_rast.o: tst_rast.c raster.h const.h 
-	cc68x -g -c tst_rast.c
+EXE_NAME = spaceRace
+
+$(EXE_NAME).tos: $(OBJ_FILES)
+	cc68x -g $(OBJ_FILES) -o $(EXE_NAME).tos
+
+spaceRace.o: spaceRace.c spaceRace.h
+	cc68x -g -c spaceRace.c
 
 raster.o: raster.c raster.h const.h
 	cc68x -g -c raster.c
+
+render.o: render.c render.h const.h
+	cc68x -g -c render.c
 
 sprites.o: sprites.c sprites.h const.h
 	cc68x -g -c sprites.c
@@ -15,6 +22,9 @@ model.o: model.c model.h const.h
 
 events.o: events.c events.h const.h
 	cc68x -g -c events.c
+
+font.o: font.c font.h
+	cc68x -g -c font.c
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s
