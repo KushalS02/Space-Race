@@ -190,8 +190,8 @@ void initializeModel(Model* model) {
     model->gameOver = false;
     initializeRocketship(&model->player);
     initializeAsteroids(&model->asteroids[ASTEROID_MAX]);
-    initializeScore(model);
-    initializeHighscore(model);
+    initializeScore(&model->scorebox);
+    initializeHighscore(&model->highscorebox);
 
 }
 
