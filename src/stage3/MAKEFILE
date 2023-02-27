@@ -1,8 +1,8 @@
-tst_rast: tst_rast.o raster.o rast_asm.o sprites.o 
-	cc68x -g tst_rast.o raster.o sprites.o rast_asm.o -o tst_rast
+test: spcRace.o raster.o sprites.o model.o events.o font.o rast_asm.o
+	cc68x -g spcRace.o raster.o sprites.o model.o events.o font.o rast_asm.o -o spcRace
 
-tst_rast.o: tst_rast.c raster.h const.h 
-	cc68x -g -c tst_rast.c
+spcRace.o: spcRace.c
+	cc68x -g -c spcRace.c
 
 raster.o: raster.c raster.h const.h
 	cc68x -g -c raster.c
@@ -11,10 +11,13 @@ sprites.o: sprites.c sprites.h const.h
 	cc68x -g -c sprites.c
 
 model.o: model.c model.h const.h
-	cc68x -g -c model.c
+	cc68x -g -c -v model.c
 
 events.o: events.c events.h const.h
 	cc68x -g -c events.c
+	
+font.o: font.c font.h
+	cc68x -g -c font.c
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s

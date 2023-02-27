@@ -1,4 +1,6 @@
 #include "model.h"
+#include "TYPES.H"
+#include <stdlib.h>
 
 /*
 Rocketship Functions
@@ -31,7 +33,7 @@ void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
 }
 
-void initalizeRocketship(Rocketship* rocketship) {
+void initializeRocketship(Rocketship* rocketship) {
 
     rocketship->x = ROCKETSHIP_STARTING_X;
     rocketship->y = ROCKETSHIP_STARTING_Y;
@@ -42,29 +44,55 @@ void initalizeRocketship(Rocketship* rocketship) {
 /*
 Asteroid Functions
 */
-void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction) {
+void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
+{
 
-    switch (direction)
+    UINT8 currAsteroid;
+    asteroidDirecton direction;
+    int deltaX;
+    int currXPos;
+
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
     {
-    case left:
+        direction = asteroids[currAsteroid]->direction;
+        deltaX = asteroids[currAsteroid]->deltaX;
+        currXPos = asteroids[currAsteroid]->x;
 
+        switch (direction)
+        {
+        case left:
 
+            currXPos -= deltaX;
 
-        break;
-    
-    case right:
+            /* If Asteroid is left of border, reset to right border*/
+            if (currXPos < 0) {
+                currXPos = SCREEN_WIDTH - abs(currXPos);
+            }
 
+            break;
 
+        case right:
 
-        break;
+            currXPos += deltaX;
 
-    default:
-        break;
+            /* If Asteroid is right of border, reset to left border*/
+            if (currXPos > SCREEN_HEIGHT) {
+                currXPos -= SCREEN_HEIGHT;
+            }
+
+            break;
+
+        default:
+
+            /* Error */    
+            break;
+        }
     }
-
 }
-void initalizeAsteroid(Asteroid* asteroid) {
 
+void initalizeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
+
+/* OLD CODE
     int i = 0;
 
     UINT16 asteroidStartY = ASTEROID_STARTING_Y;
@@ -85,14 +113,39 @@ void initalizeAsteroid(Asteroid* asteroid) {
         asteroid->y = i;
         asteroidStartY += ASTEROID_BOX_SIZE;
 
-    } 
+    }
+*/
+
+    UINT8 currAsteroid; /*array index*/
+    UINT16 currXPos;
+    UINT16 currYPos;
+
+    /* Every other asteroid moves left */
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
+        asteroids[currAsteroid]->direction = left;
+    }
+
+    /* Every other asteroid moves right */
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
+        asteroids[currAsteroid]->direction = right;
+    }
+
+    /* Initializes starting positions */
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
+        currYPos = currAsteroid * ASTRV2_HEIGHT + CHKLINE_HEIGHT;
+        currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
+        asteroids[currAsteroid]->y = currYPos;
+        asteroids[currAsteroid]->x = currXPos;
+        asteroids[currAsteroid]->hitBoundary = false;
+        asteroids[currAsteroid]->deltaX = ASTEROID_SPEED;
+    }
 
 }
 
 /*
 Score Functions
 */
-void initalizeScore(Scorebox* scorebox) {
+void initializeScore(Scorebox* scorebox) {
 
     scorebox->score = 0;
     scorebox->x = SCOREBOX_X;
@@ -104,7 +157,7 @@ void updateScore(Scorebox* scorebox, int playerScore) {
 
     if (scorebox->score < MAX_SCORE) {
 
-        scorebox->score += playerScore;    
+        scorebox->score += playerScore;
 
     } else {
 
@@ -135,10 +188,10 @@ void initializeModel(Model* model) {
 
     model->playing = true;
     model->gameOver = false;
-    initalizeRocketship(&model->player);
-    initalizeAsteroid(&model->asteroid);
-    initalizeScore(model);
-    initalizeHighscore(model);
+    initializeRocketship(&model->player);
+    initializeAsteroids(&model->asteroids[ASTEROID_MAX]);
+    initializeScore(model);
+    initializeHighscore(model);
 
 }
 

@@ -1,14 +1,17 @@
 #include "events.h"
+#include "model.h"
+#include "const.h"
+#include "TYPES.H"
 
 void rocketshipMove(Rocketship* rocketship, unsigned long key) {
 
     if (key == UP_KEY){
 
-        moveRocketShip(rocketship, up);
+        moveRocketship(rocketship, up);
 
     } else if (key == DOWN_KEY) {
 
-        moveRocketShip(rocketship, down)
+        moveRocketship(rocketship, down);
 
     }
 
