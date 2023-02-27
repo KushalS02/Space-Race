@@ -156,13 +156,9 @@ void initializeScore(Scorebox* scorebox) {
 void updateScore(Scorebox* scorebox, int playerScore) {
 
     if (scorebox->score < MAX_SCORE) {
-
-        scorebox->score += playerScore;
-
+        scorebox-> += playerScore;
     } else {
-
-        scorebox->score = MAX_SCORE;
-
+        scorebox->score - MAX_SCORE;
     }
 
 }
