@@ -50,7 +50,7 @@ Highscore box Position
 /*
 Score Stuff
 */
-#define MAX_SCORE 999;
+#define MAX_SCORE 999
 
 /*
 Keyboard key codes

@@ -92,29 +92,6 @@ void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
 
 void initializeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
 
-/* OLD CODE
-    int i = 0;
-
-    UINT16 asteroidStartY = ASTEROID_STARTING_Y;
-
-    for (i = 0; i < ASTEROID_MAX; i + 2) {
-       
-       for(i = 1; i < ASTEROID_MAX; i + 2) {
-
-            asteroid->direction = left;
-            asteroid->y = i;      
-            asteroidStartY += ASTEROID_BOX_SIZE;
-            asteroid->asteroids[i] = asteroid;
-
-        }
-
-        asteroid->asteroids[i] = asteroid;
-        asteroid->direction = right;
-        asteroid->y = i;
-        asteroidStartY += ASTEROID_BOX_SIZE;
-
-    }
-*/
 
     UINT8 currAsteroid; /*array index*/
     UINT16 currXPos;
@@ -154,13 +131,12 @@ void initializeScore(Scorebox* scorebox) {
 }
 
 void updateScore(Scorebox* scorebox, int playerScore) {
+    
+    scorebox->score += playerScore;
 
-    if (scorebox->score < MAX_SCORE) {
-        scorebox->score += playerScore;
-    } else {
-        scorebox->score = MAX_SCORE;
+    if(scorebox->score > MAX_SCORE) {
+        scorebox->score == MAX_SCORE;
     }
-
 }
 
 void initializeHighscore(HighscoreBox* highscoreBox) {
@@ -173,7 +149,6 @@ void initializeHighscore(HighscoreBox* highscoreBox) {
 
 void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore) {
 
-    
 
 }
 
