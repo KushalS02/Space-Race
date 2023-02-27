@@ -90,7 +90,7 @@ void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
     }
 }
 
-void initalizeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
+void initializeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
 
 /* OLD CODE
     int i = 0;
@@ -156,14 +156,14 @@ void initializeScore(Scorebox* scorebox) {
 void updateScore(Scorebox* scorebox, int playerScore) {
 
     if (scorebox->score < MAX_SCORE) {
-        scorebox-> += playerScore;
+        scorebox->score += playerScore;
     } else {
-        scorebox->score - MAX_SCORE;
+        scorebox->score = MAX_SCORE;
     }
 
 }
 
-void initalizeHighscore(HighscoreBox* highscoreBox) {
+void initializeHighscore(HighscoreBox* highscoreBox) {
 
     highscoreBox->highscore = 0;
     highscoreBox->x = HIGHSCOREBOX_X;
