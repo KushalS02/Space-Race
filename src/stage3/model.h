@@ -80,8 +80,8 @@ void initializeRocketship(Rocketship* rocketship);
 /*
 Asteroid Functions
 */
-void moveAsteroids(Asteroid* asteroid[ASTEROID_MAX]);
-void initializeAsteroids(Asteroid* asteroids[ASTEROID_MAX]);
+void moveAsteroids(Asteroid* asteroids);
+void initializeAsteroids(Asteroid* asteroids);
 
 /*
 Score Functions

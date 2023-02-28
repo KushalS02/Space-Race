@@ -44,7 +44,7 @@ void initializeRocketship(Rocketship* rocketship) {
 /*
 Asteroid Functions
 */
-void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
+void moveAsteroids(Asteroid* asteroids)
 {
 
     UINT8 currAsteroid;
@@ -54,9 +54,9 @@ void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
 
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
     {
-        direction = asteroids[currAsteroid]->direction;
-        deltaX = asteroids[currAsteroid]->deltaX;
-        currXPos = asteroids[currAsteroid]->x;
+        direction = asteroids[currAsteroid].direction;
+        deltaX = asteroids[currAsteroid].deltaX;
+        currXPos = asteroids[currAsteroid].x;
 
         switch (direction)
         {
@@ -90,7 +90,7 @@ void moveAsteroids(Asteroid *asteroids[ASTEROID_MAX])
     }
 }
 
-void initializeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
+void initializeAsteroids(Asteroid* asteroids) {
 
 
     UINT8 currAsteroid; /*array index*/
@@ -99,22 +99,22 @@ void initializeAsteroids(Asteroid* asteroids[ASTEROID_MAX]) {
 
     /* Every other asteroid moves left */
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
-        asteroids[currAsteroid]->direction = left;
+        asteroids[currAsteroid].direction = left;
     }
 
     /* Every other asteroid moves right */
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
-        asteroids[currAsteroid]->direction = right;
+        asteroids[currAsteroid].direction = right;
     }
 
     /* Initializes starting positions */
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
         currYPos = currAsteroid * ASTRV2_HEIGHT + CHKLINE_HEIGHT;
         currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
-        asteroids[currAsteroid]->y = currYPos;
-        asteroids[currAsteroid]->x = currXPos;
-        asteroids[currAsteroid]->hitBoundary = false;
-        asteroids[currAsteroid]->deltaX = ASTEROID_SPEED;
+        asteroids[currAsteroid].y = currYPos;
+        asteroids[currAsteroid].x = currXPos;
+        asteroids[currAsteroid].hitBoundary = false;
+        asteroids[currAsteroid].deltaX = ASTEROID_SPEED;
     }
 
 }
@@ -160,7 +160,7 @@ void initializeModel(Model* model) {
     model->playing = true;
     model->gameOver = false;
     initializeRocketship(&model->player);
-    initializeAsteroids(&model->asteroids[ASTEROID_MAX]);
+    initializeAsteroids(model->asteroids);
     initializeScore(&model->scorebox);
     initializeHighscore(&model->highscorebox);
 
