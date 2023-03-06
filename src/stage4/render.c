@@ -41,7 +41,7 @@ void renderCheckeredLine(UINT32 *base) {
 void render(Model *model, UINT16 *base) {
 
     renderRocketship(&model->player, base);
-   /* renderAsteroid(&model->asteroid, base); */
+    /*renderAsteroid(&model->asteroid, base);*/
     renderScoreBox(&model->scorebox, base);
     renderHighscoreBox(&model->highscorebox, base);
 

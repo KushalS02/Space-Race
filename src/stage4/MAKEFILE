@@ -1,5 +1,8 @@
-render: render.o raster.o sprites.o model.o events.o font.o rast_asm.o
-	cc68x -g render.o raster.o sprites.o model.o events.o font.o rast_asm.o -o render
+tstRend: tstRend.o tstRend.o render.o raster.o sprites.o model.o events.o font.o 
+	cc68x -g tstRend.o render.o raster.o sprites.o model.o events.o font.o -o tstRend
+
+tstRend.o: tstRend.c
+	cc68x -g -c tstRend.c
 
 render.o: render.c render.h 
 	cc68x -g -c render.c
