@@ -7,7 +7,10 @@
 Screen stuff
 */
 #define SCREEN_WIDTH 640
+#define MIN_XPOS 0
+#define WIDTH_BYTES 40
 #define SCREEN_HEIGHT 400
+#define HEIGHT_BYTES 25
 #define SCREEN_BYTE_SIZE 8000
 
 /*
@@ -28,8 +31,6 @@ Rocketship Constants
 Asteroids Constants
 */
 #define ASTEROID_SPEED 1
-#define ASTEROID_ROWS 20
-#define ASTEROID_COL 20
 #define ASTEROID_MAX 20
 #define ASTEROID_STARTING_Y 32
 #define ASTEROID_BOX_SIZE 16 /* ACTUAL SIZE OF THE ASTEROID NOT HITBOX*/
@@ -49,7 +50,7 @@ Highscore box Position
 /*
 Score Stuff
 */
-const UINT16 MAX_SCORE 999
+#define MAX_SCORE 999
 
 /*
 Keyboard key codes
