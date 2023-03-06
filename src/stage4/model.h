@@ -36,19 +36,14 @@ typedef struct
 
 typedef struct 
 {
-
     unsigned int x, y;
     int deltaX;
-    int row;
-    int col;
     int topLeftX;
     int topLeftY;
     int bottomRightX;
     int bottomRightY;
     asteroidDirecton direction;
-    Asteroid asteroids[ASTEROID_MAX];
     bool hitBoundary;
-
 } Asteroid;
 
 typedef struct 
@@ -68,7 +63,7 @@ typedef struct
 typedef struct {
 
     Rocketship player;
-    Asteroid asteroid;
+    Asteroid asteroids[ASTEROID_MAX];
     Scorebox scorebox;
     HighscoreBox highscorebox;
     bool gameOver;
@@ -80,21 +75,21 @@ typedef struct {
 Rocketship Functions
 */
 void moveRocketship(Rocketship* rocketship, rocketShipDirection direction);
-void initalizeRocketship(Rocketship* rocketship);
+void initializeRocketship(Rocketship* rocketship);
 
 /*
 Asteroid Functions
 */
-void moveAsteroid(Asteroid* asteroid, asteroidDirecton direction);
-void initalizeAsteroid(Asteroid* asteroid);
+void moveAsteroids(Asteroid* asteroids);
+void initializeAsteroids(Asteroid* asteroids);
 
 /*
 Score Functions
 */
-void initalizeScore(Scorebox* scorebox);
+void initializeScore(Scorebox* scorebox);
 void updateScore(Scorebox* scorebox, int playerScore);
 
-void initalizeHighscore(HighscoreBox* highscoreBox);
+void initializeHighscore(HighscoreBox* highscoreBox);
 void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore);
 
 /*
