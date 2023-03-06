@@ -25,10 +25,8 @@ void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
             rocketship->y += ROCKETSHIP_SPEED;
 
-        }
-
-    default:
         break;
+        
     }
 
 }
