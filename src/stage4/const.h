@@ -12,6 +12,8 @@ Screen stuff
 #define SCREEN_HEIGHT 400
 #define HEIGHT_BYTES 25
 #define SCREEN_BYTE_SIZE 8000
+#define RECT_PLOT_X 0
+#define RECT_PLOT_Y 0
 
 /*
 Sprites Constants
@@ -39,13 +41,13 @@ Asteroids Constants
 Scorebox Position
 */
 #define SCOREBOX_X 10
-#define SCOREBOX_Y 10
+#define SCOREBOX_Y 0
 
 /*
 Highscore box Position
 */
-#define HIGHSCOREBOX_X 384
-#define HIGHSCOREBOX_Y 10
+#define HIGHSCOREBOX_X 525
+#define HIGHSCOREBOX_Y 0
 
 /*
 Score Stuff

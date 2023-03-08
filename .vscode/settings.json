@@ -5,7 +5,8 @@
         "RASTER.C": "cpp",
         "events.h": "c",
         "const.h": "c",
-        "CONST.H": "cpp"
+        "CONST.H": "cpp",
+        "render.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

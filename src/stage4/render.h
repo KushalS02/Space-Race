@@ -21,6 +21,8 @@ void renderHighscoreBox(const Model* model, UINT16 *base);
 
 void renderCheckeredLine(UINT32 *base);
 
-void render(Model *model, UINT16 *base);
+void renderBackground(UINT8 *base);
+
+void render(Model *model, void *base);
 
 #endif 
