@@ -29,19 +29,21 @@ typedef struct
     int deltaY;
     rocketShipDirection direction;
     Hitbox hitbox;
+    bool alive;
+    bool hitBoundary;
 
 } Rocketship;
 
 typedef struct 
 {
-
     unsigned int x, y;
     int deltaX;
-    int row;
-    int col;
-    Hitbox hitbox;
+    int topLeftX;
+    int topLeftY;
+    int bottomRightX;
+    int bottomRightY;
     asteroidDirecton direction;
-
+    bool hitBoundary;
 } Asteroid;
 
 typedef struct 
@@ -61,7 +63,7 @@ typedef struct
 typedef struct {
 
     Rocketship player;
-    Asteroid asteroid;
+    Asteroid asteroids[ASTEROID_MAX];
     Scorebox scorebox;
     HighscoreBox highscorebox;
     bool gameOver;
@@ -70,33 +72,37 @@ typedef struct {
 } Model;
 
 /*
-The other functions
+Rocketship Functions
 */
-void moveRocketShip(Rocketship *rocketShip, rocketShipDirection direction);
-
-void initializeRocketship(Rocketship *rocketship);
-
-void moveAsteroid(Model *model);
-
-void initializeAsteroid(Asteroid *asteroid);
-
-void collides(Hitbox hitbox);
+void moveRocketship(Rocketship* rocketship, rocketShipDirection direction);
+void initializeRocketship(Rocketship* rocketship);
 
 /*
-Helpers
+Asteroid Functions
 */
-void initAsteroid(Asteroid* asteroid, int x, int y, int row, int col);
+void moveAsteroids(Asteroid* asteroids);
+void initializeAsteroids(Asteroid* asteroids);
 
 /*
-Score
+Score Functions
 */
-void initializeScoreBox(Model *model);
-void initializeHighscoreBox(Model *model);
-void updateScorebox(Scorebox* scorebox, int point);
+void initializeScore(Scorebox* scorebox);
+void updateScore(Scorebox* scorebox, int playerScore);
+
+void initializeHighscore(HighscoreBox* highscoreBox);
+void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore);
 
 /*
-Game over
+Model Functions
 */
-void gameOver(Model *model);
+void initializeModel(Model* model);
+void pauseGame(Model* model);
+void resumeGame(Model* model);
+void gameOver(Model* model);
+
+/*
+Helper functions
+*/
+
 
 #endif

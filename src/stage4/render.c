@@ -14,14 +14,14 @@ void renderAsteroid(const Asteroid *asteroid, UINT8 *base) {
 
 void renderScoreBox(const Model* model, UINT16 *base) {
 
-    printString(base, model->scorebox.x, model->scorebox.y, " Score:");
+    printString(base, model->scorebox.x, model->scorebox.y, "Score:");
     printNumber(base, model->scorebox.x + 50, model->scorebox.y, model->scorebox.score);
 
 }
 
 void renderHighscoreBox(const Model* model, UINT16 *base) {
 
-    printString(base, model->highscorebox.x, model->highscorebox.y, " Highscore:");
+    printString(base, model->highscorebox.x, model->highscorebox.y, "Highscore:");
     printNumber(base, model->highscorebox.x + 80, model->highscorebox.y, model->highscorebox.highscore);
 
 }
