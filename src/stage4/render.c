@@ -2,7 +2,7 @@
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
-    plotBitmap32(base, shipv2, rocketship->x, rocketship->y, SHIPV2_HEIGHT);
+    plotBitmap32(base, shipv2, rocketship->hitbox.topLeftX, rocketship->hitbox.topLeftY, SHIPV2_HEIGHT);
 
 }
 
