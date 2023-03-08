@@ -17,7 +17,9 @@ Screen stuff
 Sprites Constants
 */
 #define SHIPV2_HEIGHT 47
+#define SHIPV2_WIDTH 32
 #define ASTRV2_HEIGHT 8
+#define ASTRV2_WIDTH 8
 #define CHKLINE_HEIGHT 6
 
 /*
