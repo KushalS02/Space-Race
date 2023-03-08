@@ -1,14 +1,6 @@
 #include "spceRace.h"
 #include <osbind.h>
 
-int main() {
-
-    gameLoop();
-
-    return 0;
-    
-}
-
 void gameLoop() {
 
     Model model;
@@ -55,12 +47,11 @@ void processSyncEvents(Model* model, void* base) {
 
 }
 
-void gameSetup(Model* model, void* base) {
+void setupGame(Model* model, void* base) {
 
     onGameStart(&model);
 
     render(&model, base);
-
 }
 
 long getTime() {
@@ -75,4 +66,12 @@ long getTime() {
 
     return timeNow;
 
+}
+
+int main() {
+
+    gameLoop();
+
+    return 0;
+    
 }

@@ -12,7 +12,7 @@ void processAsyncEvents(Model* model, void* base);
 
 void processSyncEvents(Model* model, void* base);
 
-void gameSetup(Model* model, void* base);
+void setupGame(Model* model, void* base);
 
 long getTime();
 
