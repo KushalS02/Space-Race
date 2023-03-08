@@ -1,4 +1,7 @@
 #include "events.h"
+#include "model.h"
+#include "const.h"
+#include "TYPES.H"
 
 void rocketshipMove(Rocketship* rocketship, unsigned long key) {
 

@@ -1,4 +1,5 @@
-#include "spcRace.h"
+#include "spceRace.h"
+#include <osbind.h>
 
 int main() {
 
@@ -48,7 +49,7 @@ void processSyncEvents(Model* model, void* base) {
 
     int prevScore = model->scorebox.score;
 
-    timeNow = getTime();
+    /* timeNow = getTime(); */
 
     timeElapsed = timeNow - timeThen;
 
@@ -56,9 +57,9 @@ void processSyncEvents(Model* model, void* base) {
 
 void gameSetup(Model* model, void* base) {
 
-    onGameStart(model);
+    onGameStart(&model);
 
-    render(model, base);
+    render(&model, base);
 
 }
 
@@ -67,7 +68,7 @@ long getTime() {
     long* timer = (long*) SYSTEM_CLOCK;
 
     long oldSSP = Super(0);
-
+    
     long timeNow = *timer;
 
     Super(oldSSP);

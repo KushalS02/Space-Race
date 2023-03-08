@@ -66,4 +66,10 @@ Other stuff
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
 
+/*
+System stuff
+*/
+#define SYSTEM_CLOCK 0x462
+#define SCREEN_BUFFER_SIZE 32256
+
 #endif

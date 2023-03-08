@@ -2,7 +2,6 @@
 #define SPACE_RACE
 
 #include <osbind.h>
-#include <stdio.h>
 #include "model.h"
 #include "events.h"
 #include "render.h"

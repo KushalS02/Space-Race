@@ -27,7 +27,6 @@ void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
         break;
         
-        }
     }
 
 }

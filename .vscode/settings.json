@@ -6,7 +6,8 @@
         "events.h": "c",
         "const.h": "c",
         "CONST.H": "cpp",
-        "render.h": "c"
+        "render.h": "c",
+        "spcerace.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
