@@ -9,12 +9,13 @@
 
 void gameLoop();
 
-void processAsyncEvents(Model* model, void* base);
+void asyncEvents(Model* model, void* base);
 
-void processSyncEvents(Model* model, void* base);
+void syncEvents(Model* model, void* base);
 
 void setupGame(Model* model, void* base);
 
 long getTime();
+
 
 #endif
