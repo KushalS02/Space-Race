@@ -23,6 +23,6 @@ void renderCheckeredLine(UINT32 *base);
 
 void renderBackground(UINT8 *base);
 
-void render(Model *model, void *base);
+void render(Model* model, void* base);
 
 #endif 

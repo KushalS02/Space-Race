@@ -44,7 +44,7 @@ void renderBackground(UINT8 *base) {
 
 }
 
-void render(Model *model, void *base) {
+void render(Model* model, void* base) {
 
     renderBackground((UINT32*) base);
     renderRocketship(&model->player, (UINT32*) base);

@@ -52,6 +52,7 @@ void setupGame(Model* model, void* base) {
     onGameStart(&model);
 
     render(&model, base);
+
 }
 
 long getTime() {

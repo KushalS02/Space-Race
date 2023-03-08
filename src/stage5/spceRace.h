@@ -5,6 +5,7 @@
 #include "model.h"
 #include "events.h"
 #include "render.h"
+#include "const.h"
 
 void gameLoop();
 
