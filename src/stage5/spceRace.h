@@ -6,6 +6,9 @@
 #include "events.h"
 #include "render.h"
 #include "const.h"
+#include "RASTER.H"
+#include "sprites.h"
+#include "TYPES.H"
 
 void gameLoop();
 

@@ -1,7 +1,7 @@
 spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o 
-	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o -o specRace
+	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o -o spceRace
 
-spceRace.o: spceRace.c spceRace.h const.h
+spceRace.o: spceRace.c spceRace.h
 	cc68x -g -c spceRace.c
 
 render.o: render.c render.h 

@@ -19,9 +19,12 @@ void syncEvents(Model* model, void* base) {
 
 void setupGame(Model* model, void* base) {
 
+    Model model;
+    *base = Physbase();
+
     onGameStart(model);
 
-    render(model, base);
+    render(&model, base);
 
 }
 
