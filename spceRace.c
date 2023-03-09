@@ -1,6 +1,8 @@
 #include "spceRace.h"
 #include <osbind.h>
 
+const UINT8 secondBuffer[SCREEN_BUFFER_SIZE];
+
 int main() {
 
     gameLoop();
@@ -9,11 +11,35 @@ int main() {
 
 }
 
+UINT8 *getBase(UINT8 *secondBuffer) {
+
+    UINT8 *base;
+
+    UINT16 difference;
+
+    base = secondBuffer;
+
+    difference = (int) base;
+
+    difference %= 0x100;
+
+    difference = 0x100 - difference;
+
+    return base + difference;
+
+}
+
 void gameLoop() {
+
+    bool swapScreens = true;
 
     Model model;
 
-    void* base = Physbase();
+    UINT8 *base = Physbase();
+
+    void *screen2;
+    screen2 = getBase(secondBuffer);
+    clearScreen(screen2);
 
     gameSetup(&model, base);
 
@@ -23,17 +49,45 @@ void gameLoop() {
 
         processSyncEvents(&model, base);
 
+        if(!model.gameOver) {
+
+            if(swapScreens) {
+
+                render(&model, base);
+                Setscreen(-1, base, -1);
+
+            }
+            else {
+
+                render(&model, screen2);
+                Setscreen(-1, screen2, -1);
+
+            }
+
+            Vsync();
+            swapScreens !=swapScreens;
+
+        } else {
+
+            break;
+        }
+
+        render(&model, base);
+        Setscreen(-1, base, -1);
         Vsync();
 
+        
+
     }
+
+    Setscreen(-1, base, -1);
+    Vsync();
 
 }
 
 void processAsyncEvents(Model *model, void *base) {
 
     unsigned long input;
-
-    rocketshipHitBoundary(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
 
     if(hasUserInput()) {
 
@@ -59,7 +113,7 @@ void processSyncEvents(Model *model, void *base) {
 
         moveAsteroids(&model->asteroids);
 
-        renderAsteroids(&model->asteroids, base);
+        renderAsteroid(&model->asteroids, base);
 
         timeThen = timeNow;
 
