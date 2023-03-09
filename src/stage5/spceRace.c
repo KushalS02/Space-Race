@@ -33,6 +33,8 @@ void processAsyncEvents(Model *model, void *base) {
 
     unsigned long input;
 
+    rocketshipHitBoundary(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+
     if(hasUserInput()) {
 
         input = getUserInput();
