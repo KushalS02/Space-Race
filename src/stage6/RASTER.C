@@ -1,6 +1,4 @@
 #include "raster.h"
-#include "const.h"
-#include "font.h"
 
 void plotPixel(UINT8* base, int x, int y) {
 
