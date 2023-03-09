@@ -11,14 +11,6 @@
 #include "sprites.h"
 #include "TYPES.H"
 
-void gameLoop();
-
-void processAsyncEvents(Model *model, void *base);
-
-void processSyncEvents(Model *model, void *base);
-
-void gameSetup(Model*model, void *base);
-
 long getTime();
 
 
