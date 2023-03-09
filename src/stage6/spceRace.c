@@ -1,7 +1,7 @@
 #include "spceRace.h"
 #include <osbind.h>
 
-const UINT8 secondBuffer[32256];
+const UINT8 secondBuffer[SCREEN_BUFFER_SIZE];
 
 int main() {
 
@@ -81,6 +81,7 @@ void gameLoop() {
     }
 
     Setscreen(-1, base, -1);
+    Vsync();
 
 }
 
@@ -110,9 +111,9 @@ void processSyncEvents(Model *model, void *base) {
 
     if (timeElapsed > 0) {
 
-        moveAsteroids(model);
+        moveAsteroids(&model->asteroids);
 
-        renderAsteroid(&model->asteroids[ASTEROID_MAX], base);
+        renderAsteroid(&model->asteroids, base);
 
         timeThen = timeNow;
 
