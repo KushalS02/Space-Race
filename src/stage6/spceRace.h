@@ -21,5 +21,6 @@ void gameSetup(Model*model, void *base);
 
 long getTime();
 
+UINT8 *getBase(UINT8 *secondBuffer);
 
 #endif

@@ -1,6 +1,8 @@
 #include "spceRace.h"
 #include <osbind.h>
 
+const UINT8 secondBuffer[32256];
+
 int main() {
 
     gameLoop();
@@ -9,11 +11,35 @@ int main() {
 
 }
 
+UINT8 *getBase(UINT8 *secondBuffer) {
+
+    UINT8 *base;
+
+    UINT16 difference;
+
+    base = secondBuffer;
+
+    difference = (int) base;
+
+    difference %= 0x100;
+
+    difference = 0x100 - difference;
+
+    return base + difference;
+
+}
+
 void gameLoop() {
+
+    bool swapScreens = true;
 
     Model model;
 
-    void* base = Physbase();
+    UINT8 *base = Physbase();
+
+    void *screen2;
+    screen2 = getBase(secondBuffer);
+    clearScreen(screen2);
 
     gameSetup(&model, base);
 
@@ -23,9 +49,34 @@ void gameLoop() {
 
         processSyncEvents(&model, base);
 
-        Setscreen(-1, base, -1);
+        if(!model.gameOver) {
 
+            if(swapScreens) {
+
+                render(&model, base);
+                Setscreen(-1, base, -1);
+
+            }
+            else {
+
+                render(&model, screen2);
+                Setscreen(-1, screen2, -1);
+
+            }
+
+            Vsync();
+            swapScreens !=swapScreens;
+
+        } else {
+
+            break;
+        }
+
+        render(&model, base);
+        Setscreen(-1, base, -1);
         Vsync();
+
+        
 
     }
 
