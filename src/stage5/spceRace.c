@@ -66,6 +66,8 @@ void processSyncEvents(Model *model, void *base) {
 
         renderAsteroids(&model->asteroids, base);
 
+        rocketshipAsteroidCollision(model);
+
         timeThen = timeNow;
 
     }
