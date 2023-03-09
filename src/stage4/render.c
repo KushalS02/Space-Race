@@ -8,7 +8,7 @@ void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
 void renderAsteroid(const Asteroid *asteroid, UINT8 *base) {
 
-    
+   
 
 }
 
@@ -49,7 +49,7 @@ void render(Model *model, void *base) {
     renderBackground((UINT32*) base);
     renderRocketship(&model->player, (UINT32*) base);
     renderCheckeredLine((UINT32*) base);
-    /*renderAsteroid(&model->asteroid, base);*/
+    renderAsteroid(&model->asteroids[ASTEROID_MAX], (UINT8*) base);
     renderScoreBox(model, (UINT16*) base);
     renderHighscoreBox(model, (UINT16*) base);
 

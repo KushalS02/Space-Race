@@ -11,22 +11,12 @@ typedef struct
 {
     UINT16 topLeftX;
     UINT16 topLeftY;
-    UINT16 topRightX;
-    UINT16 topRightY;
-    UINT16 bottomLeftX;
-    UINT16 bottomLeftY;
     UINT16 bottomRightX;
     UINT16 bottomRightY;
-    UINT16 width;
-    UINT16 height;
-
 } Hitbox;
 
 typedef struct 
 {
-
-    unsigned int x, y;
-    int deltaY;
     rocketShipDirection direction;
     Hitbox hitbox;
     bool alive;
@@ -36,12 +26,8 @@ typedef struct
 
 typedef struct 
 {
-    unsigned int x, y;
     int deltaX;
-    int topLeftX;
-    int topLeftY;
-    int bottomRightX;
-    int bottomRightY;
+    Hitbox hitbox;
     asteroidDirecton direction;
     bool hitBoundary;
 } Asteroid;
@@ -90,12 +76,13 @@ void initializeScore(Scorebox* scorebox);
 void updateScore(Scorebox* scorebox, int playerScore);
 
 void initializeHighscore(HighscoreBox* highscoreBox);
-void updateHighscore(HighscoreBox* highscoreBox, int playerHighScore);
+void updateHighscore(HighscoreBox* highscoreBoxs, int score);
 
 /*
 Model Functions
 */
 void initializeModel(Model* model);
+void initializeNextRound(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox);
 void pauseGame(Model* model);
 void resumeGame(Model* model);
 void gameOver(Model* model);
@@ -104,5 +91,6 @@ void gameOver(Model* model);
 Helper functions
 */
 
+bool hitboxCollision(Hitbox hb1, Hitbox hb2);
 
 #endif

@@ -12,6 +12,8 @@ Screen stuff
 #define SCREEN_HEIGHT 400
 #define HEIGHT_BYTES 25
 #define SCREEN_BYTE_SIZE 8000
+#define RECT_PLOT_X 0
+#define RECT_PLOT_Y 0
 
 /*
 Sprites Constants

@@ -19,7 +19,9 @@ Screen stuff
 Sprites Constants
 */
 #define SHIPV2_HEIGHT 47
+#define SHIPV2_WIDTH 32
 #define ASTRV2_HEIGHT 8
+#define ASTRV2_WIDTH 8
 #define CHKLINE_HEIGHT 6
 
 /*
@@ -65,5 +67,11 @@ Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
+
+/*
+System stuff
+*/
+#define SYSTEM_CLOCK 0x462
+#define SCREEN_BUFFER_SIZE 32256
 
 #endif
