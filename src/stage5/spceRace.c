@@ -39,16 +39,17 @@ void processAsyncEvents(Model *model, void *base) {
 
         input = getUserInput();
 
+        clearRocketship(&model->player, base);
         rocketshipMove(&model->player, input);
+        renderRocketship(&model->player, base);
 
         if (rocketshipHitFinish(model)) {
             renderHighscoreBox(model, base);
             renderScoreBox(model, base);
+            clearAsteroids(model->asteroids, base);
         }
 
     }
-
-    renderRocketship(&model->player, base);
 
 }
 
@@ -61,6 +62,7 @@ void processSyncEvents(Model *model, void *base) {
     timeElapsed = timeNow - timeThen;
 
     if (timeElapsed > 0) {
+        clearAsteroids(&model->asteroids, base);
 
         moveAsteroids(&model->asteroids);
 

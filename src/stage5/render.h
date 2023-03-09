@@ -11,7 +11,11 @@
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base);
 
+void clearRocketship(const Rocketship *rocketship, UINT8 *base);
+
 void renderAsteroids(const Asteroid *asteroids, UINT8 *base);
+
+void clearAsteroids(const Asteroid *asteroids, UINT8 *base);
 
 void renderScoreBox(const Model *model, UINT16 *base);
 
