@@ -46,7 +46,21 @@ void processAsyncEvents(Model *model, void *base) {
 
 void processSyncEvents(Model *model, void *base) {
 
+    unsigned long timeThen, timeNow, timeElapsed;
 
+    timeNow = getTime();
+
+    timeElapsed = timeNow - timeThen;
+
+    if (timeElapsed > 0) {
+
+        moveAsteroids(model);
+        renderAsteroid(&model->asteroids[ASTEROID_MAX], base);
+
+
+        timeThen = timeNow;
+
+    }
 
 }
 
