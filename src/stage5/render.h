@@ -2,7 +2,7 @@
 #define RENDER_H
 
 #include <osbind.h>
-#include <stdio.h>
+
 #include "model.h"
 #include "events.h"
 #include "RASTER.H"

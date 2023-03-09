@@ -19,9 +19,7 @@ Screen stuff
 Sprites Constants
 */
 #define SHIPV2_HEIGHT 47
-#define SHIPV2_WIDTH 32
 #define ASTRV2_HEIGHT 8
-#define ASTRV2_WIDTH 8
 #define CHKLINE_HEIGHT 6
 
 /*
@@ -29,7 +27,7 @@ Rocketship Constants
 */
 #define ROCKETSHIP_STARTING_X 304
 #define ROCKETSHIP_STARTING_Y 353
-#define ROCKETSHIP_SPEED 10
+#define ROCKETSHIP_SPEED 1 
 
 /*
 Asteroids Constants
@@ -59,8 +57,8 @@ Score Stuff
 /*
 Keyboard key codes
 */
-#define UP_KEY 0x48
-#define DOWN_KEY 0x50
+#define UP_KEY 0x00480000
+#define DOWN_KEY 0x00500000
 
 /*
 Other stuff
