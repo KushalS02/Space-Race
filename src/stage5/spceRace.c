@@ -3,7 +3,59 @@
 
 int main() {
 
+    gameLoop();
+
     return 0;
+
+}
+
+void gameLoop() {
+
+    Model model;
+    void* base = Physbase();
+
+    gameSetup(&model, base);
+
+    while(!model.gameOver) {
+        
+        processAsyncEvents(&model, base);
+
+        processSyncEvents(&model, base);
+
+        Vsync();
+
+    }
+
+}
+
+void processAsyncEvents(Model *model, void *base) {
+
+    unsigned long input;
+
+    if(hasUserInput()) {
+
+        input = getUserInput();
+
+        rocketshipMove(&model->player, input);
+
+    }
+
+    renderRocketship(&model->player, base);
+
+}
+
+void processSyncEvents(Model *model, void *base) {
+
+
+
+}
+
+void gameSetup(Model*model, void *base) {
+
+    disableCursor();
+    onGameStart(model);
+    clearScreen(base);
+    render(model, base);
 
 }
 
