@@ -149,8 +149,8 @@ void moveAsteroids(Asteroid *asteroids)
     {
         initializeRocketship(rocketship);
         initializeAsteroids(asteroids);
+        updateScore(scorebox, SCORE_INCREMENT);
         updateHighscore(highscoreBox, scorebox->score);
-        initializeScore(scorebox);
     }
 
     /*

@@ -6,7 +6,8 @@
 
 void rocketshipMove(Rocketship* rocketship, unsigned long key);
 
-void rocketshipHitBoundary(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox);
+void rocketshipHitBoundary(Rocketship* rocketship);
+bool rocketshipHitFinish(Model* model);
 void asteroidsHitBoundary(Asteroid* asteroid);
 void rocketshipAsteroidCollision(Model *model);
 
