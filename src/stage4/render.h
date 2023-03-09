@@ -13,7 +13,7 @@
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base);
 
-void renderAsteroid(const Asteroid *asteroid, UINT8 *base);
+void renderAsteroids(const Asteroid *asteroids, UINT8 *base);
 
 void renderScoreBox(const Model* model, UINT16 *base);
 
