@@ -8,7 +8,8 @@
         "CONST.H": "cpp",
         "render.h": "c",
         "spcerace.h": "c",
-        "model.h": "c"
+        "model.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

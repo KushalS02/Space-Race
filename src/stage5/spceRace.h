@@ -1,7 +1,8 @@
-#ifndef SPACE_RACE
-#define SPACE_RACE
+#ifndef SPACE_RACE_H
+#define SPACE_RACE_H
 
 #include <osbind.h>
+#include <stdio.h>
 #include "model.h"
 #include "events.h"
 #include "render.h"
@@ -9,14 +10,6 @@
 #include "RASTER.H"
 #include "sprites.h"
 #include "TYPES.H"
-
-void gameLoop();
-
-void asyncEvents(Model* model, void* base);
-
-void syncEvents(Model* model, void* base);
-
-void setupGame(Model* model, void* base);
 
 long getTime();
 

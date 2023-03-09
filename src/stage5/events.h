@@ -2,15 +2,12 @@
 #define EVENTS_H
 
 #include <osbind.h>
-#include <stdio.h>
 #include "model.h"
-#include "types.h"
-#include "const.h"
 
 void rocketshipMove(Rocketship* rocketship, unsigned long key);
 
-void rocketshipHitBoundary(Rocketship* rocketship);
-void asteroidHitBoundary(Asteroid* asteroid);
+void rocketshipHitBoundary(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox);
+void asteroidsHitBoundary(Asteroid* asteroid);
 void rocketshipAsteroidCollision(Model *model);
 
 void onGameStart(Model* model);
