@@ -1,5 +1,9 @@
-spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o 
-	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o -o spceRace
+OBJ_FILES=spceRace.o render.o raster.o sprites.o model.o events.o font.o
+
+EXE_NAME=spceRace
+
+$(EXE_NAME).tos: $(OBJ_FILES)
+	cc68x -g $(OBJ_FILES) -o (EXE_NAME).tos
 
 spceRace.o: spceRace.c spceRace.h
 	cc68x -g -c spceRace.c
