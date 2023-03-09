@@ -1,13 +1,36 @@
 #include <osbind.h>
+#include <stdlib.h>
 #include "const.h"
 #include "model.h"
 #include "RASTER.H"
 #include "sprites.h"
 #include "events.h"
+#include "TYPES.H"
 
 int main() {
 
 
-    return 0;
+    Model model;
+    int currAstr;
+    initializeModel(&model);
 
+    printf("rocket top left X: %d \n", model.player.hitbox.topLeftX);
+    printf("rocket top left Y: %d \n", model.player.hitbox.topLeftY);
+    printf("rocket bottom right X: %d \n", model.player.hitbox.bottomRightX);
+    printf("rocket bottom right Y: %d \n", model.player.hitbox.bottomRightY);
+
+    printf("Asteroid coordinates: \n");
+    for (currAstr = 0; currAstr < ASTEROID_MAX; currAstr++)
+    {
+        printf("%d: Top Left: (%d,%d) Top Right: (%d,%d)\n",
+               currAstr,
+               model.asteroids[currAstr].hitbox.topLeftX,
+               model.asteroids[currAstr].hitbox.topLeftY,
+               model.asteroids[currAstr].hitbox.bottomRightX,
+               model.asteroids[currAstr].hitbox.bottomRightY);
+    }
+
+    
+
+   return 0;
 }

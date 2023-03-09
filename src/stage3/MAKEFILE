@@ -1,8 +1,8 @@
 test: tstModel.o raster.o sprites.o model.o events.o font.o rast_asm.o
 	cc68x -g tstModel.o raster.o sprites.o model.o events.o font.o rast_asm.o -o spcRace
 
-tstModel.o: tstModel.c
-	cc68x -g -c tstModel.c
+tstModel.o: tstModel.c const.h
+	cc68x -g -c -v tstModel.c
 
 raster.o: raster.c raster.h const.h
 	cc68x -g -c raster.c

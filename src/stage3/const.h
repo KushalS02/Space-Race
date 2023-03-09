@@ -27,8 +27,8 @@ Sprites Constants
 /*
 Rocketship Constants 
 */
-#define ROCKETSHIP_STARTING_X 304
-#define ROCKETSHIP_STARTING_Y 353
+#define ROCKETSHIP_STARTING_X 303
+#define ROCKETSHIP_STARTING_Y 352
 #define ROCKETSHIP_SPEED 1 
 
 /*
