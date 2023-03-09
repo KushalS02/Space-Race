@@ -57,9 +57,9 @@ void processSyncEvents(Model *model, void *base) {
 
     if (timeElapsed > 0) {
 
-        moveAsteroids(model);
+        moveAsteroids(&model->asteroids);
 
-        renderAsteroids(&model->asteroids[ASTEROID_MAX], base);
+        renderAsteroids(&model->asteroids, base);
 
         timeThen = timeNow;
 
