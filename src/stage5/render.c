@@ -6,9 +6,14 @@ void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
 }
 
-void renderAsteroid(const Asteroid *asteroid, UINT8 *base) {
+void renderAsteroids(const Asteroid *asteroids, UINT8 *base) {
 
-   
+   short currAstr;
+
+   for (currAstr = 0; currAstr < ASTEROID_MAX; currAstr++)
+   {
+    plotBitmap8(base, astrv2, asteroids[currAstr].hitbox.topLeftX, asteroids[currAstr].hitbox.topLeftY, ASTRV2_HEIGHT);
+   }
 
 }
 
@@ -49,7 +54,7 @@ void render(Model *model, void *base) {
     renderBackground((UINT32*) base);
     renderRocketship(&model->player, (UINT32*) base);
     renderCheckeredLine((UINT32*) base);
-    renderAsteroid(&model->asteroids[ASTEROID_MAX], (UINT8*) base);
+    renderAsteroids(&model->asteroids[ASTEROID_MAX], (UINT8*) base);
     renderScoreBox(model, (UINT16*) base);
     renderHighscoreBox(model, (UINT16*) base);
 
