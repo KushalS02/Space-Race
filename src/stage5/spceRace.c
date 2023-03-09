@@ -19,6 +19,8 @@ void gameLoop() {
 
     while(!model.gameOver) {
 
+        processAsyncEvents(&model, base);
+
         processSyncEvents(&model, base);
 
         Vsync();
