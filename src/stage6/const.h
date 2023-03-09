@@ -55,12 +55,14 @@ Highscore box Position
 Score Stuff
 */
 #define MAX_SCORE 999
+#define SCORE_INCREMENT 1
 
 /*
 Keyboard key codes
 */
 #define UP_KEY 0x48
 #define DOWN_KEY 0x50
+#define ESC_KEY 0x01
 
 /*
 Other stuff

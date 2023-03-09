@@ -18,20 +18,29 @@ void rocketshipMove(Rocketship *rocketship, unsigned long key)
     }
 }
 
-void rocketshipHitBoundary(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox) {
+void rocketshipHitBoundary(Rocketship* rocketship) {
 
-    /* Start next round when rocket hits top boundry*/
-    if (rocketship->hitbox.topLeftY <= CHKLINE_HEIGHT) {
-        initializeNextRound(rocketship, asteroids, scorebox, highscoreBox);
-    }
-    else if (rocketship->hitbox.topLeftY >= SCREEN_HEIGHT-SHIPV2_HEIGHT) {
+    if (rocketship->hitbox.topLeftY >= SCREEN_HEIGHT-SHIPV2_HEIGHT) {
         rocketship->hitBoundary = true;
     } else {
         rocketship->hitBoundary = false;
     }
 
-} 
- 
+}
+
+bool rocketshipHitFinish(Model *model)
+{
+    if (model->player.hitbox.topLeftY <= CHKLINE_HEIGHT)
+    {
+        initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void asteroidsHitBoundary(Asteroid* asteroids) {
     UINT8 currAsteroid;
     

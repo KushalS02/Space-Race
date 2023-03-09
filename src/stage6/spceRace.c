@@ -37,9 +37,18 @@ void processAsyncEvents(Model *model, void *base) {
 
     if(hasUserInput()) {
 
+       rocketshipHitBoundary(&model->player);
+
         input = getUserInput();
 
         rocketshipMove(&model->player, input);
+
+        if (rocketshipHitFinish(model)) {
+
+            renderHighscoreBox(model, base);
+            renderScoreBox(model, base);
+            
+        }
 
     }
 
@@ -60,6 +69,8 @@ void processSyncEvents(Model *model, void *base) {
         moveAsteroids(&model->asteroids);
 
         renderAsteroids(&model->asteroids, base);
+
+        rocketshipAsteroidCollision(model);
 
         timeThen = timeNow;
 

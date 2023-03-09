@@ -95,7 +95,7 @@ void moveAsteroids(Asteroid *asteroids)
         /* Initializes starting positions */
         for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++)
         {
-            currYPos = currAsteroid * ASTRV2_HEIGHT + CHKLINE_HEIGHT;
+            currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
             currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
             asteroids[currAsteroid].hitbox.topLeftY = currYPos;
             asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
@@ -149,8 +149,8 @@ void moveAsteroids(Asteroid *asteroids)
     {
         initializeRocketship(rocketship);
         initializeAsteroids(asteroids);
+        updateScore(scorebox, SCORE_INCREMENT);
         updateHighscore(highscoreBox, scorebox->score);
-        initializeScore(scorebox);
     }
 
     /*
