@@ -1,30 +1,9 @@
 #include "spceRace.h"
+#include <osbind.h>
 
 int main() {
 
     return 0;
-
-}
-
-void gameLoop() {
-
-}
-
-void asyncEvents(Model* model, void* base) {
-
-}
-
-void syncEvents(Model* model, void* base) {
-}
-
-void setupGame(Model* model, void* base) {
-
-    Model model;
-    *base = Physbase();
-
-    onGameStart(model);
-
-    render(&model, base);
 
 }
 
