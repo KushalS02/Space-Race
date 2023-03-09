@@ -12,13 +12,13 @@ int main() {
 void gameLoop() {
 
     Model model;
+
     void* base = Physbase();
 
     gameSetup(&model, base);
 
     while(!model.gameOver) {
         
-        processAsyncEvents(&model, base);
 
         processSyncEvents(&model, base);
 
