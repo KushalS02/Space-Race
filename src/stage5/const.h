@@ -19,7 +19,9 @@ Screen stuff
 Sprites Constants
 */
 #define SHIPV2_HEIGHT 47
+#define SHIPV2_WIDTH 32
 #define ASTRV2_HEIGHT 8
+#define ASTRV2_WIDTH 8
 #define CHKLINE_HEIGHT 6
 
 /*
@@ -57,8 +59,8 @@ Score Stuff
 /*
 Keyboard key codes
 */
-#define UP_KEY 0x00480000
-#define DOWN_KEY 0x00500000
+#define UP_KEY 0x48
+#define DOWN_KEY 0x50
 
 /*
 Other stuff

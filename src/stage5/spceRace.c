@@ -18,7 +18,6 @@ void gameLoop() {
     gameSetup(&model, base);
 
     while(!model.gameOver) {
-        
 
         processSyncEvents(&model, base);
 
