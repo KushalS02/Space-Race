@@ -44,9 +44,10 @@ void processAsyncEvents(Model *model, void *base) {
         renderRocketship(&model->player, base);
 
         if (rocketshipHitFinish(model)) {
-            renderHighscoreBox(model, base);
-            renderScoreBox(model, base);
             clearAsteroids(model->asteroids, base);
+            clearRocketship(&model->player, base);
+            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+            renderNextRound(model, base);
         }
 
     }

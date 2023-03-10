@@ -6,8 +6,8 @@ void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
 }
 
-void clearRocketship(const Rocketship *rocketship, UINT8* base) {
-    plotRectangle(base, rocketship->hitbox.topLeftX, rocketship->hitbox.topLeftY, SHIPV2_WIDTH, SHIPV2_HEIGHT);
+void clearRocketship(const Rocketship *rocketship, UINT32* base) {
+    clearRegion32(base, rocketship->hitbox.topLeftX, rocketship->hitbox.topLeftY, SHIPV2_WIDTH, SHIPV2_HEIGHT);
 }
 
 void renderAsteroids(const Asteroid *asteroids, UINT8 *base) {
@@ -73,6 +73,15 @@ void render(Model *model, void *base) {
     renderScoreBox(model, (UINT16*) base);
     renderHighscoreBox(model, (UINT16*) base);
 
+}
+
+void renderNextRound(Model *model, void *base) {
+
+    renderRocketship(&model->player, (UINT32*) base);
+    renderCheckeredLine((UINT32*) base);
+    renderAsteroids(&model->asteroids[ASTEROID_MAX], (UINT8*) base);
+    renderScoreBox(model, (UINT16*) base);
+    renderHighscoreBox(model, (UINT16*) base);
 }
 
 void disableCursor() {

@@ -2,3 +2,5 @@
 *.O
 *.O
 *.O
+*.O
+src/stage5/SPRITES.O

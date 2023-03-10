@@ -157,7 +157,7 @@ void clearHorizontalLine32(UINT32* base, int x, int y, int length) {
 
 	for(i = 0; i < counter; i++) {
 
-		*(clearLine) = 0xffffffff;
+		*(clearLine) |= 0xffffffff;
 		
 	}
 }
