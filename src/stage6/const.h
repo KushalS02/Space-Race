@@ -22,7 +22,7 @@ Sprites Constants
 #define SHIPV2_WIDTH 32
 #define ASTRV2_HEIGHT 8
 #define ASTRV2_WIDTH 8
-#define CHKLINE_HEIGHT 6
+#define CHKLINE_HEIGHT 8
 
 /*
 Rocketship Constants 
@@ -38,7 +38,8 @@ Asteroids Constants
 #define ASTEROID_MAX 20
 #define ASTEROID_STARTING_Y 32
 #define ASTEROID_BOX_SIZE 16 /* ACTUAL SIZE OF THE ASTEROID NOT HITBOX*/
-
+#define ASTEROID_SPACING 8
+#define ASTEROID_MAX_Y CHKLINE_HEIGHT + 4
 /*
 Scorebox Position
 */

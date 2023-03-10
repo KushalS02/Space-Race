@@ -33,9 +33,10 @@ void processAsyncEvents(Model *model, void *base) {
 
     unsigned long input;
 
-    rocketshipHitBoundary(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+    rocketshipHitBoundary(&model->player);
+
     rocketshipAsteroidCollision(model);
-    
+
     if(hasUserInput()) {
 
        rocketshipHitBoundary(&model->player);
