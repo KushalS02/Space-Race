@@ -32,7 +32,6 @@ bool rocketshipHitFinish(Model *model)
 {
     if (model->player.hitbox.topLeftY <= CHKLINE_HEIGHT)
     {
-        initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
         return true;
     }
     else

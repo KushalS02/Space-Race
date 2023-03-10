@@ -6,15 +6,30 @@ void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
 }
 
+void clearRocketship(const Rocketship *rocketship, UINT32* base) {
+    clearRegion32(base, rocketship->hitbox.topLeftX, rocketship->hitbox.topLeftY, SHIPV2_WIDTH, SHIPV2_HEIGHT);
+}
+
 void renderAsteroids(const Asteroid *asteroids, UINT8 *base) {
 
    short currAstr;
+
+
 
    for (currAstr = 0; currAstr < ASTEROID_MAX; currAstr++)
    {
     plotBitmap8(base, astrv2, asteroids[currAstr].hitbox.topLeftX, asteroids[currAstr].hitbox.topLeftY, ASTRV2_HEIGHT);
    }
 
+}
+
+void clearAsteroids(const Asteroid *asteroids, UINT8* base) {
+
+    short currAstr;
+    for (currAstr = 0; currAstr < ASTEROID_MAX; currAstr++)
+   {
+    plotRectangle(base, asteroids[currAstr].hitbox.topLeftX, asteroids[currAstr].hitbox.topLeftY, ASTRV2_WIDTH, ASTRV2_HEIGHT);
+   }
 }
 
 void renderScoreBox(const Model* model, UINT16 *base) {
@@ -58,6 +73,15 @@ void render(Model *model, void *base) {
     renderScoreBox(model, (UINT16*) base);
     renderHighscoreBox(model, (UINT16*) base);
 
+}
+
+void renderNextRound(Model *model, void *base) {
+
+    renderRocketship(&model->player, (UINT32*) base);
+    renderCheckeredLine((UINT32*) base);
+    renderAsteroids(&model->asteroids[ASTEROID_MAX], (UINT8*) base);
+    renderScoreBox(model, (UINT16*) base);
+    renderHighscoreBox(model, (UINT16*) base);
 }
 
 void disableCursor() {

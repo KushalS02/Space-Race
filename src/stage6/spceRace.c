@@ -33,28 +33,24 @@ void processAsyncEvents(Model *model, void *base) {
 
     unsigned long input;
 
-    rocketshipHitBoundary(&model->player);
-
-    rocketshipAsteroidCollision(model);
-
     if(hasUserInput()) {
 
-       rocketshipHitBoundary(&model->player);
+        rocketshipHitBoundary(&model->player);
 
         input = getUserInput();
 
+        clearRocketship(&model->player, base);
         rocketshipMove(&model->player, input);
+        renderRocketship(&model->player, base);
 
         if (rocketshipHitFinish(model)) {
-
-            renderHighscoreBox(model, base);
-            renderScoreBox(model, base);
-            
+            clearAsteroids(model->asteroids, base);
+            clearRocketship(&model->player, base);
+            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+            renderNextRound(model, base);
         }
 
     }
-
-    renderRocketship(&model->player, base);
 
 }
 
@@ -67,6 +63,7 @@ void processSyncEvents(Model *model, void *base) {
     timeElapsed = timeNow - timeThen;
 
     if (timeElapsed > 0) {
+        clearAsteroids(&model->asteroids, base);
 
         moveAsteroids(&model->asteroids);
 
