@@ -50,6 +50,12 @@ void processAsyncEvents(Model *model, void *base) {
             renderNextRound(model, base);
         }
 
+        if (input == ESC_KEY) {
+
+            onGameOver(model);
+
+        }
+
     }
 
 }

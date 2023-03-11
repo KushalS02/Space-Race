@@ -10,6 +10,7 @@
 #include "RASTER.H"
 #include "sprites.h"
 #include "TYPES.H"
+#include "clearG.h"
 
 void gameLoop();
 
@@ -21,5 +22,6 @@ void gameSetup(Model*model, void *base);
 
 long getTime();
 
+UINT8 *getBase(UINT8 *secondBuffer);
 
 #endif

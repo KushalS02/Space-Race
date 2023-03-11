@@ -1,6 +1,8 @@
 #include "spceRace.h"
 #include <osbind.h>
 
+const UINT8 secondBuff[SCREEN_BUFFER_SIZE];
+
 int main() {
 
     gameLoop();
@@ -9,13 +11,38 @@ int main() {
 
 }
 
+UINT8 *getBase(UINT8 *secondBuffer) {
+
+    UINT8 *base;
+
+    UINT16 difference;
+
+    base = secondBuffer;
+
+    difference = (int) base;
+
+    difference %= 0x100;
+
+    difference = 0x100 - difference;
+
+    return base + difference;
+
+}
+
 void gameLoop() {
 
     Model model;
 
-    void* base = Physbase();
+    bool swapScreens = true; /* stage 6 */
+
+    UINT8 *base = Physbase();
+
+    void *screen2; /* stage 6 */
 
     gameSetup(&model, base);
+
+    screen2 = getBase(secondBuff); /* stage 6 */
+    clearScreen(screen2);
 
     while(!model.gameOver) {
 
@@ -23,9 +50,43 @@ void gameLoop() {
 
         processSyncEvents(&model, base);
 
-        Vsync();
+        if (!model.gameOver) {
+
+            if (swapScreens) {
+
+                clearGame(base);
+
+                render(&model, base);
+                
+                Setscreen(-1, base, -1);
+
+            } else {
+
+                clearGame(screen2);
+
+                render(&model, screen2);
+
+                Setscreen(-1, screen2, -1);
+
+            }
+
+            Vsync();
+
+            swapScreens = !swapScreens;
+
+        } else {
+
+            break;
+
+        }
 
     }
+
+    render(&model, base);
+
+    Setscreen(-1, base, -1);
+        
+    Vsync();
 
 }
 
@@ -40,14 +101,26 @@ void processAsyncEvents(Model *model, void *base) {
         input = getUserInput();
 
         clearRocketship(&model->player, base);
+
         rocketshipMove(&model->player, input);
+
         renderRocketship(&model->player, base);
 
         if (rocketshipHitFinish(model)) {
+
             clearAsteroids(model->asteroids, base);
+
             clearRocketship(&model->player, base);
+
             initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+
             renderNextRound(model, base);
+        }
+
+        if (input == ESC_KEY) {
+
+            onGameOver(model);
+
         }
 
     }
@@ -63,6 +136,7 @@ void processSyncEvents(Model *model, void *base) {
     timeElapsed = timeNow - timeThen;
 
     if (timeElapsed > 0) {
+
         clearAsteroids(&model->asteroids, base);
 
         moveAsteroids(&model->asteroids);
@@ -80,8 +154,11 @@ void processSyncEvents(Model *model, void *base) {
 void gameSetup(Model*model, void *base) {
 
     disableCursor();
+
     onGameStart(model);
+
     clearScreen(base);
+
     render(model, base);
 
 }
