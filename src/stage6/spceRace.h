@@ -11,6 +11,7 @@
 #include "sprites.h"
 #include "TYPES.H"
 #include "clearG.h"
+#include "clearQK.h"
 
 void gameLoop();
 

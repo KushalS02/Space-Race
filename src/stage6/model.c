@@ -11,15 +11,15 @@ void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
     {
     case up:
         
-            rocketship->hitbox.topLeftY -= ROCKETSHIP_SPEED;
-            rocketship->hitbox.bottomRightY -= ROCKETSHIP_SPEED;
+        rocketship->hitbox.topLeftY -= ROCKETSHIP_SPEED;
+        rocketship->hitbox.bottomRightY -= ROCKETSHIP_SPEED;
 
         break;
 
     case down:
 
-            rocketship->hitbox.topLeftY += ROCKETSHIP_SPEED;
-            rocketship->hitbox.bottomRightY += ROCKETSHIP_SPEED;
+        rocketship->hitbox.topLeftY += ROCKETSHIP_SPEED;
+        rocketship->hitbox.bottomRightY += ROCKETSHIP_SPEED;
 
         break;
         
@@ -73,38 +73,39 @@ void moveAsteroids(Asteroid *asteroids)
     }
 }
 
-    void initializeAsteroids(Asteroid * asteroids)
-    {
+void initializeAsteroids(Asteroid * asteroids) {
 
-        UINT8 currAsteroid; /*array index*/
-        UINT16 currXPos;
-        UINT16 currYPos;
+    UINT8 currAsteroid; /*array index*/
+    UINT16 currXPos;
+    UINT16 currYPos;
 
         /* Every other asteroid moves left */
-        for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
-        {
-            asteroids[currAsteroid].direction = left;
-        }
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
+
+        asteroids[currAsteroid].direction = left;
+
+    }
 
         /* Every other asteroid moves right */
-        for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
-        {
-            asteroids[currAsteroid].direction = right;
-        }
+    for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
+
+        asteroids[currAsteroid].direction = right;
+
+    }
 
         /* Initializes starting positions */
-        for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++)
-        {
-            currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
-            currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
-            asteroids[currAsteroid].hitbox.topLeftY = currYPos;
-            asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
-            asteroids[currAsteroid].hitbox.topLeftX = currXPos;
-            asteroids[currAsteroid].hitbox.bottomRightX = currXPos + ASTRV2_WIDTH;
-            asteroids[currAsteroid].hitBoundary = false;
-            asteroids[currAsteroid].deltaX = ASTEROID_SPEED;
-        }
-    }
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++){
+
+        currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
+        currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
+        asteroids[currAsteroid].hitbox.topLeftY = currYPos;
+        asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
+        asteroids[currAsteroid].hitbox.topLeftX = currXPos;
+        asteroids[currAsteroid].hitbox.bottomRightX = currXPos + ASTRV2_WIDTH;
+        asteroids[currAsteroid].hitBoundary = false;
+        asteroids[currAsteroid].deltaX = ASTEROID_SPEED;
+     }
+}
 
     /*
     Score Functions

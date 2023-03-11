@@ -42,7 +42,7 @@ void gameLoop() {
     gameSetup(&model, base);
 
     screen2 = getBase(secondBuff); /* stage 6 */
-    clearScreen(screen2);
+    clearQuick(screen2);
 
     while(!model.gameOver) {
 
@@ -56,7 +56,9 @@ void gameLoop() {
 
                 clearGame(base);
 
-                render(&model, base);
+                processAsyncEvents(&model, base);
+
+                processSyncEvents(&model, base);
                 
                 Setscreen(-1, base, -1);
 
@@ -64,7 +66,9 @@ void gameLoop() {
 
                 clearGame(screen2);
 
-                render(&model, screen2);
+                processAsyncEvents(&model, screen2);
+
+                processSyncEvents(&model, screen2);
 
                 Setscreen(-1, screen2, -1);
 
@@ -82,7 +86,9 @@ void gameLoop() {
 
     }
 
-    render(&model, base);
+    processAsyncEvents(&model, base);
+
+    processSyncEvents(&model, base);
 
     Setscreen(-1, base, -1);
         
@@ -157,7 +163,7 @@ void gameSetup(Model*model, void *base) {
 
     onGameStart(model);
 
-    clearScreen(base);
+    clearQuick(base);
 
     render(model, base);
 
