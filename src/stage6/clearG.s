@@ -1,4 +1,4 @@
-                xdef        _clearGame
+				xdef        _clearGame
 
 base:           equ         64
 

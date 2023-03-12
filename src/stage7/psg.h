@@ -4,6 +4,11 @@
 #include <osbind.h>
 #include "TYPES.H"
 
+#define regIsValid(reg) (reg >= 0 && reg <= 15)
+
+volatile char* psgRegSelect = 0xFF8800;
+volatile char* psgRegWrite  = 0xFF8802;
+
 void writePSG(int reg, UINT8 val);
 
 UINT8 readPSG(int reg);
