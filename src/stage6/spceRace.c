@@ -76,13 +76,9 @@ void gameLoop() {
 
             Vsync();
 
-            swapScreens = !swapScreens;
+            swapScreens = swapScreens;
 
-        } else {
-
-            break;
-
-        }
+        } 
 
     }
 
