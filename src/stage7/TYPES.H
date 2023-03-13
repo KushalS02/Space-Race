@@ -28,7 +28,7 @@ typedef enum {
 
 typedef enum {
 
-    channelA, channelB, channelC;
+    channelA, channelB, channelC
 
 } channelType;
 

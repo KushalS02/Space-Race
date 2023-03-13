@@ -1,0 +1,33 @@
+#ifndef MENU_H
+#define MENU_H
+
+#include <osbind.h>
+#include <stdio.h>
+#include "TYPES.H"
+#include "const.h"
+#include "events.h"
+#include "splash.h"
+#include "spceRace.h"
+#include "RASTER.H"
+#include "sprites.h"
+
+/*
+Menu options 
+*/
+#define MENU_CHOICE_1_PLAYER 1
+#define MENU_CHOICE_2_PLAYER 2
+#define MENU_CHOICE_EXIT 3
+#define MENI_CHOICE_HELP 4
+
+#define INVALID_CHOICE -1
+
+/*
+Menu functions 
+*/
+void menu();
+
+void processMenuChoice();
+
+void selectOption(int choice);
+
+#endif

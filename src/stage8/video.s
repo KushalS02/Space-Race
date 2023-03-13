@@ -1,0 +1,2 @@
+        xdef getVideoBase
+        xdef setVideoBase
