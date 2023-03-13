@@ -32,4 +32,11 @@ typedef enum {
 
 } channelType;
 
+typedef enum {
+
+    saw, sawInverted, sawPeriod, sawInvertedPeriod,
+    triangle, triangleInverted, trianglePeriod, triangleInvertedPeriod
+
+} envelopeShapeType;
+
 #endif

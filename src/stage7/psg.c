@@ -127,3 +127,15 @@ void stopSound() {
     setVolume(channelC, 0);
 
 }
+
+void setEnvelope(envelopeShapeType shape, UINT16 sustain) {
+
+
+
+}
+
+void setNoise(int tuning) {
+
+
+    
+}
