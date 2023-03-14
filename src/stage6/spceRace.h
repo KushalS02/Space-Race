@@ -10,7 +10,8 @@
 #include "RASTER.H"
 #include "sprites.h"
 #include "TYPES.H"
-#include "clear.h"
+#include "clearG.h"
+#include "clearQK.h"
 
 void gameLoop();
 

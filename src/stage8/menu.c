@@ -56,7 +56,7 @@ void processMenuChoice() {
 
             if (input == ENTER_KEY) {
 
-                selectOption(choice);
+                selectOption(userChoice);
 
             }
 
@@ -74,18 +74,111 @@ void processMenuChoice() {
 
 void selectOption(int choice) {
 
+    switch (option) {
 
+    case MENU_CHOICE_1_PLAYER:
+
+        gameLoop();
+
+        break;
+
+    case MENU_CHOICE_2_PLAYER:
+
+        /* Two player mode goes here */
+
+        break;  
+
+    case MENU_CHOICE_HELP:
+
+        /* Help choice goes here */  
+
+        break;
+    
+    default:
+        /* Default option, QUIT */
+        break;
+    }
 
 }
 
 void drawChoiceSelector(int choice) {
 
+    long oldSSP = Super(0);
 
+    UINT16 *base = getVideoBase();
+
+    Super(oldSSP);
+
+    switch (choice) {
+
+        default:
+
+        case 1:
+
+            /* plot the selector bitmap */
+
+            break;
+
+        case 2:
+
+            /* plot the selector bitmap */
+
+            break;
+
+
+        case 3:
+
+            /* plot the selector bitmap */
+
+            break;
+
+
+        case 4:
+
+            /* plot the selector bitmap */
+
+            break;
+
+    }
 
 }
 
 void clearChoiceSelector(int choice) {
 
+    long oldSSP = Super(0);
 
+    UINT16 *base = getVideoBase();
+
+    Super(oldSSP);
+
+    switch (choice) {
+
+        default:
+
+        case 1:
+
+            /* clear the selector */
+
+            break;
+
+        case 2:
+
+            /* clear the selector */
+
+            break;
+
+        case 3:
+
+            /* clear the selector */
+
+            break;
+
+        case 4:
+
+            /* clear the selector */
+
+            break;
+
+    }
 
 }

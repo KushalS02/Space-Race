@@ -22,10 +22,10 @@ events.o: events.c events.h const.h
 font.o: font.c font.h
 	cc68x -g -c font.c
 
-clearG.o: clearG.s clear.h
+clearG.o: clearG.s clearG.h
 	gen -D -L2 clearG.s
 
-clearQK.o: clearQK.s clear.h
+clearQK.o: clearQK.s clearQK.h
 	gen -D -L2 clearQK.s
 
 rast_asm.o: rast_asm.s

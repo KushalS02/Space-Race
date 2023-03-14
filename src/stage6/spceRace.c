@@ -42,7 +42,6 @@ void gameLoop() {
     gameSetup(&model, base);
 
     screen2 = getBase(secondBuff); /* stage 6 */
-    clearQuick(screen2);
 
     while(!model.gameOver) {
 
@@ -115,6 +114,8 @@ void processAsyncEvents(Model *model, void *base) {
             clearRocketship(&model->player, base);
 
             initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+
+            renderRocketship(&model->player, base);
 
             renderNextRound(model, base);
         }

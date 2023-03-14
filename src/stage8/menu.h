@@ -16,7 +16,7 @@ Menu options
 */
 #define MENU_CHOICE_1_PLAYER 1
 #define MENU_CHOICE_2_PLAYER 2
-#define MENI_CHOICE_HELP 3
+#define MENU_CHOICE_HELP 3
 #define MENU_CHOICE_EXIT 4
 
 #define INVALID_CHOICE -1
