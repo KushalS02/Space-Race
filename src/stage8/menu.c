@@ -16,9 +16,57 @@ void processMenuChoice() {
 
     while (input != ESC_KEY && input != ENTER_KEY) {
 
-        
+        if (hasUserInput()) {
 
+            input = getUserInput();
 
+            prevChoice = userChoice;
+            
+            switch (input) {
+
+                case UP_KEY:
+
+                    if (userChoice > MENU_CHOICE_1_PLAYER) {
+
+                        userChoice--;
+
+                    }
+
+                    break;
+
+                case DOWN_KEY:
+
+                    if (userChoice < MENU_CHOICE_EXIT) {
+
+                        userChoice++;
+
+                    }
+
+                    break;
+
+                default:
+
+                    break;
+
+            }
+
+            clearChoiceSelector(prevChoice);
+
+            drawChoiceSelector(userChoice);
+
+            if (input == ENTER_KEY) {
+
+                selectOption(choice);
+
+            }
+
+            if (input == ESC_KEY) {
+
+                selectOption(MENU_CHOICE_EXIT);
+
+            }
+
+        }
 
     }
 
