@@ -16,11 +16,6 @@ volatile char* psgRegSelect = 0xFF8800;
 volatile char* psgRegWrite  = 0xFF8802;
 
 /*
-Noise frequency register 
-*/
-#define NOISE_FREQUENCY_REG 0x6
-
-/*
 Channel A, B, C tones
 */
 #define CHANNEL_A_TONE 0x0
@@ -33,6 +28,38 @@ Channel A, B, C volume
 #define CHANNEL_A_VOL 0x8
 #define CHANNEL_B_VOL 0x9
 #define CHANNEL_C_VOL 0xa
+
+/*
+Channels 
+*/
+#define MIXER_ALL_OFF 0xff
+#define MIXER_TONE_CHANNEL_A 0x3e
+#define MIXER_TONE_CHANNEL_B 0x3d
+#define MIXER_TONE_CHANNEL_C 0x3b
+#define MIXER_NOISE_CHANNEL_A 0x37
+#define MIXER_NOISE_CHANNEL_B 0x2f
+#define MIXER_NOISE_CHANNEL_C 0x1f
+
+/*
+Envelope 
+*/
+#define ENVELOPE_FINE_REG 0xb
+#define ENVELOPE_ROUGH_REG 0xc
+#define ENVELOPE_SHAPE_CONTROL_REG 0xd
+
+#define ENVELOPE_SAW_SHAPE 0xc
+#define ENVELOPE_SAW_SHAPE_INV 0x8
+#define ENVELOPE_SAW_PERIOD_SHAPE  0xf
+#define ENVELOPE_TRIANGLE_SHAPE 0xe
+#define ENVELOPE_TRIANGLE_INV_SHAPE 0xa
+#define ENVELOPE_TRIANGLE_PERIOD_SHAPE  0xd
+#define ENVELOPE_TRIANGLE_INV_PERIOD_SHAPE 0x00
+
+/* 
+Regs
+*/
+#define NOISE_FREQUENCY_REG 0x6
+#define MIXER_REG 0x7
 
 /*
 Functions for PSG 

@@ -30,4 +30,8 @@ void processMenuChoice();
 
 void selectOption(int choice);
 
+void drawChoiceSelector(int choice);
+
+void clearChoiceSelector(int choice);
+
 #endif
