@@ -43,17 +43,17 @@ void gameLoop() {
 
     screen2 = getBase(secondBuff); /* stage 6 */
 
-    while(!model.gameOver) {
-
-        processAsyncEvents(&model, base);
+    processAsyncEvents(&model, base);
 
         processSyncEvents(&model, base);
+
+    while(!model.gameOver) {
 
         if (!model.gameOver) {
 
             if (swapScreens) {
 
-                clearGame(base);
+                clearG(base);
 
                 processAsyncEvents(&model, base);
 
@@ -63,7 +63,7 @@ void gameLoop() {
 
             } else {
 
-                clearGame(screen2);
+                clearG(screen2);
 
                 processAsyncEvents(&model, screen2);
 
