@@ -46,25 +46,32 @@ void moveAsteroids(Asteroid *asteroids)
     UINT8 currAsteroid;
     asteroidDirecton direction;
     int deltaX;
+    int topLeftX;
 
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++)
     {
         direction = asteroids[currAsteroid].direction;
         deltaX = asteroids[currAsteroid].deltaX;
+        topLeftX = asteroids[currAsteroid].hitbox.topLeftX;
 
         switch (direction)
         {
         case left:
 
-            asteroids[currAsteroid].hitbox.topLeftX -= deltaX;
-            asteroids[currAsteroid].hitbox.bottomRightX -= deltaX;
+            if (topLeftX - deltaX < 0) {
+                asteroids[currAsteroid].hitbox.topLeftX = 0;
+            } else {
+                asteroids[currAsteroid].hitbox.topLeftX -= deltaX;
+            }
+            
+            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
             break;
 
         case right:
 
             asteroids[currAsteroid].hitbox.topLeftX += deltaX;
-            asteroids[currAsteroid].hitbox.bottomRightX += deltaX;
+            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
             break;
         }
@@ -97,7 +104,7 @@ void initializeAsteroids(Asteroid * asteroids) {
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++){
 
         currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
-        currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
+        currXPos = (rand() % WIDTH_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
         asteroids[currAsteroid].hitbox.topLeftY = currYPos;
         asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
         asteroids[currAsteroid].hitbox.topLeftX = currXPos;
