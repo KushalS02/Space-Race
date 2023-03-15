@@ -43,17 +43,13 @@ void gameLoop() {
 
     screen2 = getBase(secondBuff); /* stage 6 */
 
-    processAsyncEvents(&model, base);
-
-        processSyncEvents(&model, base);
-
     while(!model.gameOver) {
 
         if (!model.gameOver) {
 
             if (swapScreens) {
 
-                clearG(base);
+                /*clearG(base);*/
 
                 processAsyncEvents(&model, base);
 
@@ -63,7 +59,7 @@ void gameLoop() {
 
             } else {
 
-                clearG(screen2);
+                /*clearG(screen2);*/
 
                 processAsyncEvents(&model, screen2);
 
@@ -102,21 +98,15 @@ void processAsyncEvents(Model *model, void *base) {
         input = getUserInput();
 
         clearRocketship(&model->player, base);
-
         rocketshipMove(&model->player, input);
-
         renderRocketship(&model->player, base);
 
         if (rocketshipHitFinish(model)) {
 
             clearAsteroids(model->asteroids, base);
-
             clearRocketship(&model->player, base);
-
             initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
-
             renderRocketship(&model->player, base);
-
             renderNextRound(model, base);
         }
 
@@ -142,6 +132,7 @@ void processSyncEvents(Model *model, void *base) {
 
         clearAsteroids(&model->asteroids, base);
 
+        asteroidsHitBoundary(&model->asteroids);
         moveAsteroids(&model->asteroids);
 
         renderAsteroids(&model->asteroids, base);
