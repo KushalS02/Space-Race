@@ -55,7 +55,7 @@ void asteroidsHitBoundary(Asteroid* asteroids) {
             asteroids[currAsteroid].hitbox.topLeftX=0;
         }
     }
-    
+
 }
 
 void rocketshipAsteroidCollision(Model *model) {
