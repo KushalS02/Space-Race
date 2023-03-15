@@ -1,8 +1,8 @@
-tstPSG: tstPSG.o psg.o effects.o music.o
-	cc68x -g tstPSG.o psg.o effects.o music.o -o tstPSG
+spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o effects.o music.o psg.o
+	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o effects.o music.o psg.o -o spceRace
 
-tstPSG.o: tstPSG.c 
-	cc68x -g -c tstPSG.c
+spceRace.o: spceRace.c spceRace.h
+	cc68x -g -c spceRace.c
 
 psg.o: psg.c psg.h
 	cc68x -g -c psg.c
@@ -31,12 +31,5 @@ events.o: events.c events.h const.h
 font.o: font.c font.h
 	cc68x -g -c font.c
 
-clearG.o: clearG.s clearG.h
-	gen -D -L2 clearG.s
-
-clearQK.o: clearQK.s clearQK.h
-	gen -D -L2 clearQK.s
-
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s
-	

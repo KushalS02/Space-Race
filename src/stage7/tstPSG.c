@@ -2,6 +2,7 @@
 
 int main() {
 
+    startMusic();
 
     return 0;
 
