@@ -18,6 +18,7 @@ void writePSG(int reg, UINT8 val) {
 
 }
 
+
 UINT8 readPSG(int reg) {
 
     long oldSSP;

@@ -12,8 +12,8 @@ Check if the register of PSG is valid and in range
 /*
 Addresses of PSG select and write 
 */
-volatile char* psgRegSelect = 0xFF8800;
-volatile char* psgRegWrite  = 0xFF8802;
+extern volatile char* psgRegSelect = 0xFF8800;
+extern volatile char* psgRegWrite = 0xFF8802;
 
 /*
 Channel A, B, C tones
