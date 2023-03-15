@@ -53,4 +53,15 @@ void clearHorizontalLine32(UINT32* base, int x, int y, int length);
 
 void clearHorizontalLine(void *base, int x, int y, int length);
 
+/*
+Physbase()
+*/
+UINT16 *getVideoBase();
+
+/*
+Setscreen()
+*/
+void setVideoBase(UINT16 *);
+
+
 #endif
