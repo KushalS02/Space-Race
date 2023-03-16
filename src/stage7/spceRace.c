@@ -63,17 +63,13 @@ void gameLoop() {
 
             if (swapScreens) {
 
-                processAsyncEvents(&model, base);
-
-                processSyncEvents(&model, base);
+                render(&model, base);
                 
                 Setscreen(-1, base, -1);
 
             } else {
 
-                processAsyncEvents(&model, screen2);
-
-                processSyncEvents(&model, screen2);
+                render(&model, base);
 
                 Setscreen(-1, screen2, -1);
 
@@ -87,9 +83,7 @@ void gameLoop() {
 
     }
 
-    processAsyncEvents(&model, base);
-
-    processSyncEvents(&model, base);
+    render(&model, base);
 
     Setscreen(-1, base, -1);
         
