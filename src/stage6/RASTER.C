@@ -1,5 +1,28 @@
-#include "raster.h"
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 
+#include "raster.h"
+/*
+
+Name: plotPixel
+
+Purpose: to plot a pixel anywhere on the screen
+
+Parameters: 
+	
+	base - start of the frame buffer
+
+	int x - the x location where the pixel is to be ploted
+
+	int y - the y location where the pixel is to be ploted 
+
+	1 << 7 - (x & 7) - the selected bit to plot the pixel 
+
+	*(base + y * 80 + (x >> 3)) - get the address of the byte to modify 
+
+
+*/
 void plotPixel(UINT8* base, int x, int y) {
 
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
@@ -10,6 +33,25 @@ void plotPixel(UINT8* base, int x, int y) {
 
 }
 
+/*
+
+Name: clearPixel 
+
+Purpose: to turn off (clear) the pixel that is on
+
+Parameters:
+
+	base - start of the frame buffer
+
+	int x - the x location where the pixel is to be ploted
+
+	int y - the y location where the pixel is to be ploted 
+
+	1 << 7 - (x & 7) - the selected bit to plot the pixel 
+
+	*(base + y * 80 + (x >> 3)) - get the address of the byte to modify 
+
+*/
 void clearPixel(UINT8* base, int x, int y) {
 
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
