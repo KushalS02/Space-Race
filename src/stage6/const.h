@@ -8,7 +8,7 @@ Screen stuff
 */
 #define SCREEN_WIDTH 640
 #define MIN_XPOS 0
-#define WIDTH_BYTES 40
+#define WIDTH_BYTES 80
 #define SCREEN_HEIGHT 400
 #define HEIGHT_BYTES 25
 #define SCREEN_BYTE_SIZE 8000
@@ -70,6 +70,7 @@ Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
+#define SEED 1
 
 /*
 System stuff
