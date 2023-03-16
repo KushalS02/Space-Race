@@ -104,7 +104,7 @@ void initializeAsteroids(Asteroid * asteroids) {
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++){
 
         currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
-        currXPos = (rand() % WIDTH_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
+        currXPos = (rand() % WIDTH_BYTES) * 8; /* possible starting postions (Byte 0 to 79)*/
         asteroids[currAsteroid].hitbox.topLeftY = currYPos;
         asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
         asteroids[currAsteroid].hitbox.topLeftX = currXPos;
@@ -173,6 +173,8 @@ void initializeAsteroids(Asteroid * asteroids) {
         initializeAsteroids(model->asteroids);
         initializeScore(&model->scorebox);
         initializeHighscore(&model->highscorebox);
+        /*replace SEED with call to getTime function for random(ish) value*/
+        srand(SEED);
     }
 
     void pauseGame(Model * model)
