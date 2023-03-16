@@ -18,7 +18,6 @@ void writePSG(int reg, UINT8 val) {
 
 }
 
-
 int readPSG(int reg) {
 
     long oldSSP;
@@ -197,6 +196,7 @@ void setEnvelope(envelopeShapeType shape, UINT16 sustain) {
     int shapeVal;
 
     writePSG(ENVELOPE_FINE_REG, sustain);
+    
     writePSG(ENVELOPE_ROUGH_REG, sustain);
 
     switch (shape) {

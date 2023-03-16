@@ -15,11 +15,11 @@ void rocketshipMovingEffect() {
     int noiseTone = 30;
     int sustain = 10;
 
-    setTone(channelA, 248);
+    setTone(channelB, 248);
 
-    enableChannel(channelA, true, false);
+    enableChannel(channelB, true, false);
 
-    setVolume(channelA, volume);
+    setVolume(channelB, volume);
 
     setEnvelope(triangleInvPeriod, sustain);
 
