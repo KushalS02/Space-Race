@@ -22,6 +22,10 @@ Channel A, B, C tones
 #define CHANNEL_B_TONE 0x2
 #define CHANNEL_C_TONE 0x4
 
+#define CHANNEL_A_ROUGH_TONE 0x1
+#define CHANNEL_B_ROUGH_TONE 0x3
+#define CHANNEL_C_ROUGH_TONE 0x5
+
 /*
 Channel A, B, C volume
 */
@@ -66,7 +70,7 @@ Functions for PSG
 */
 void writePSG(int reg, UINT8 val);
 
-UINT8 readPSG(int reg);
+int readPSG(int reg);
 
 void setTone(int channel, int tuning);
 

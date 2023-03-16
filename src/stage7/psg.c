@@ -19,7 +19,7 @@ void writePSG(int reg, UINT8 val) {
 }
 
 
-UINT8 readPSG(int reg) {
+int readPSG(int reg) {
 
     long oldSSP;
 
@@ -168,9 +168,21 @@ void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
 
     }
 
+    writePSG(MIXER_REG, channelVal);
+
 }
 
 void stopSound() {
+
+    writePSG(MIXER_REG, 0x00);
+
+    writePSG(NOISE_FREQUENCY_REG, 0x00);
+
+    writePSG(ENVELOPE_FINE_REG, 0x00);
+
+    writePSG(ENVELOPE_ROUGH_REG, 0x00);
+
+    writePSG(ENVELOPE_SHAPE_CONTROL_REG, 0x00);
 
     setVolume(channelA, 0);
 

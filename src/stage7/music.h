@@ -17,7 +17,7 @@
 #define NOTE_A 268
 #define NOTE_B_FLAT 253
 
-#define NOTES_SIZE 8
+#define NOTES_SIZE 168
 
 typedef struct {
 

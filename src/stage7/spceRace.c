@@ -39,13 +39,25 @@ void gameLoop() {
 
     void *screen2; /* stage 6 */
 
+    unsigned time = getTime();
+
     gameSetup(&model, base);
 
     screen2 = getBase(secondBuff); /* stage 6 */
 
     startMusic();
 
-    while(!model.gameOver) {
+    while(!model.gameOver || model.scorebox.score >= MAX_SCORE) {
+
+        processAsyncEvents(&model, base);
+
+        processSyncEvents(&model, base);
+
+        if (updateMusic(getTime() - time)) {
+
+            time = getTime();
+
+        }
 
         if (!model.gameOver) {
 
