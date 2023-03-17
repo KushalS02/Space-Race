@@ -105,7 +105,7 @@ void processAsyncEvents(Model *model, void *base) {
 
             clearAsteroids(model->asteroids, base);
             clearRocketship(&model->player, base);
-            initializeNextRound(model->player, model->asteroids, model->scorebox, model->highscorebox);
+            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
             renderRocketship(&model->player, base);
             renderNextRound(model, base);
         }
@@ -130,12 +130,13 @@ void processSyncEvents(Model *model, void *base) {
 
     if (timeElapsed > 0) {
 
-        clearAsteroids(&model->asteroids, base);
+        clearAsteroids(model->asteroids, base);
 
-        asteroidsHitBoundary(&model->asteroids);
-        moveAsteroids(&model->asteroids);
+        asteroidsHitBoundary(model->asteroids);
+        
+        moveAsteroids(model->asteroids);
 
-        renderAsteroids(&model->asteroids, base);
+        renderAsteroids(model->asteroids, base);
 
         rocketshipAsteroidCollision(model);
 

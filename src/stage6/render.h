@@ -90,7 +90,7 @@ Parameters:
     UINT16 *base - start of the screen frame buffer
 
 */
-void renderScoreBox(const Model *model, UINT16 *base);
+void renderScoreBox(const Model* model, UINT8 *base);
 
 /*
 
@@ -108,7 +108,7 @@ Parameters:
     UINT16 *base - start of the screen frame buffer
 
 */
-void renderHighscoreBox(const Model *model, UINT16 *base);
+void renderHighscoreBox(const Model *model, UINT8 *base);
 
 /*
 
