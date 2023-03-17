@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "render.h"
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base) {

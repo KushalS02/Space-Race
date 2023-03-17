@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef SPACE_RACE_H
 #define SPACE_RACE_H
 
