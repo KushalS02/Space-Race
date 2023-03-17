@@ -260,24 +260,179 @@ Parameters:
 	*(base + y * 80 + (x >> 3)) - get the address of the byte to modify 
 
 */
-void clearPixel(UINT8* base, int x, int y)
+void clearPixel(UINT8* base, int x, int y);
 
+/*
+
+Name: clearRegion
+
+Purpose: clears a specific region on the screen based on what is needed, 8, 16 or 32 bits
+
+Parameters:
+
+    void* base - start of the frame buffer
+
+    int x - starting x (top left corner) 
+
+    int y - starting y (top left corner)
+
+    int width - width of the region to be cleared
+
+    int height - height of the region to be cleared
+
+*/
 void clearRegion(void* base, int x, int y, int width, int height);
 
+/*
+
+Name: clearRegion8
+
+Purpose: clears an 8 bit region on the screen
+
+Parameters:
+
+    UINT8 *base - start of the frame buffer
+
+    int x - starting x (top left corner) 
+
+    int y - starting y (top left corner)
+
+    int width - width of the region to be cleared
+
+    int height - height of the region to be cleared
+
+*/
 void clearRegion8(UINT8 *base, int x, int y, int width, int height);
 
+/*
+
+Name: clearRegion16
+
+Purpose: clears an 16 bit region on the screen
+
+Parameters:
+
+    UINT16 *base - start of the frame buffer
+
+    int x - starting x (top left corner) 
+
+    int y - starting y (top left corner)
+
+    int width - width of the region to be cleared
+
+    int height - height of the region to be cleared
+
+*/
 void clearRegion16(UINT16 *base, int x, int y, int width, int height);
 
+/*
+
+Name: clearRegion32
+
+Purpose: clears an 32 bit region on the screen
+
+Parameters:
+
+    UINT32 *base - start of the frame buffer
+
+    int x - starting x (top left corner) 
+
+    int y - starting y (top left corner)
+
+    int width - width of the region to be cleared
+
+    int height - height of the region to be cleared
+
+*/
 void clearRegion32(UINT32 *base, int x, int y, int width, int height);
 
+/*
+
+Name: clearScreen
+
+Purpose: clears the entire screen 
+
+Parameters:
+
+    UINT8 *base - start of the frame buffer
+
+*/
 void clearScreen(UINT8 *base);
 
+/*
+
+Name: clearHorizontalLine8
+
+Purpose: clear a horizontal line on the screen if it is 8 bits
+
+Parameter:
+
+    UINT8* base - start of the frame buffer
+
+    int x - starting x of the line to be cleared
+
+    int y - starting y of the line to be cleared
+
+    int length - the length of the line to be cleared
+
+*/
 void clearHorizontalLine8(UINT8* base, int x, int y, int length);
 
+/*
+
+Name: clearHorizontalLine16
+
+Purpose: clear a horizontal line on the screen if it is 16 bits
+
+Parameter:
+
+    UINT16* base - start of the frame buffer
+
+    int x - starting x of the line to be cleared
+
+    int y - starting y of the line to be cleared
+
+    int length - the length of the line to be cleared
+
+*/
 void clearHorizontalLine16(UINT16* base, int x, int y, int length);
 
+/*
+
+Name: clearHorizontalLine32
+
+Purpose: clear a horizontal line on the screen if it is 32 bits
+
+Parameter:
+
+    UINT32* base - start of the frame buffer
+
+    int x - starting x of the line to be cleared
+
+    int y - starting y of the line to be cleared
+
+    int length - the length of the line to be cleared
+
+*/
 void clearHorizontalLine32(UINT32* base, int x, int y, int length);
 
+/*
+
+Name: clearHorizontalLine
+
+Purpose: clear a horizontal line on the screen based on if its 8, 16 or 32 bits
+
+Parameter:
+
+    void *base - start of the frame buffer
+
+    int x - starting x of the line to be cleared
+
+    int y - starting y of the line to be cleared
+
+    int length - the length of the line to be cleared
+
+*/
 void clearHorizontalLine(void *base, int x, int y, int length);
 
 #endif
