@@ -73,7 +73,7 @@ void rocketshipAsteroidCollision(Model *model) {
 
 void onAsteroidsMove(Model *model) {
 
-    moveAsteroids(model);
+    moveAsteroids(&model->asteroids);
 
 }
 

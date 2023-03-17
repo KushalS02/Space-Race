@@ -50,14 +50,14 @@ void gameLoop() {
 
         if (!model.gameOver) {
 
-            if (swapScreens) {
+            if (1) {
 
                 /*clearG(base);*/
 
                 processAsyncEvents(&model, base);
 
                 processSyncEvents(&model, base);
-                
+                Vsync();
                 Setscreen(-1, base, -1);
 
             } else {
@@ -67,14 +67,10 @@ void gameLoop() {
                 processAsyncEvents(&model, screen2);
 
                 processSyncEvents(&model, screen2);
-
+                Vsync();
                 Setscreen(-1, screen2, -1);
 
             }
-
-            Vsync();
-
-            swapScreens = swapScreens;
 
         } 
 
