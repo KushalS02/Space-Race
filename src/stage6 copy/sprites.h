@@ -1,3 +1,9 @@
+/*
+* Authours: Alexander Pham and Kushal Saini
+*
+* sprites.h contains all the bitmaps that are used in the game
+*/
+
 #ifndef SPRITES_H
 #define SPRITES_H
 
