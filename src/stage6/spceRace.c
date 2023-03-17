@@ -105,7 +105,7 @@ void processAsyncEvents(Model *model, void *base) {
 
             clearAsteroids(model->asteroids, base);
             clearRocketship(&model->player, base);
-            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
+            initializeNextRound(&(model->player), model->asteroids, &(model->scorebox), &(model->highscorebox));
             renderRocketship(&model->player, base);
             renderNextRound(model, base);
         }
