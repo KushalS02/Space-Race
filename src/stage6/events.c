@@ -28,9 +28,9 @@ void rocketshipHitBoundary(Rocketship* rocketship) {
 
 }
 
-bool rocketshipHitFinish(Model *model)
+bool rocketshipHitFinish(Rocketship* rocketship)
 {
-    if (model->player.hitbox.topLeftY <= CHKLINE_HEIGHT)
+    if (rocketship->hitbox.topLeftY <= CHKLINE_HEIGHT)
     {
         return true;
     }
@@ -63,7 +63,7 @@ void rocketshipAsteroidCollision(Model *model) {
     /* Check collision for each asteroid*/
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
         
-        if (hitboxCollision(model->player.hitbox, model->asteroids[currAsteroid].hitbox)) {
+        if (hitboxCollision(&model->player.hitbox, &model->asteroids[currAsteroid].hitbox)) {
             onGameOver(model);
         }
 

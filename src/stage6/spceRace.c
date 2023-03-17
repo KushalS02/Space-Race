@@ -104,7 +104,7 @@ void processAsyncEvents(Model *model, void *base) {
         rocketshipMove(&model->player, input);
         renderRocketship(&model->player, base);
 
-        if (rocketshipHitFinish(model)) {
+        if (rocketshipHitFinish(&model->player)) {
 
             clearAsteroids(model->asteroids, base);
             clearRocketship(&model->player, base);
