@@ -52,11 +52,9 @@ Purpose: process the synchronous events
 Parameters:
 
     Model *model - process the sync events based from the model
-    
-    void *base - start of the frame buffer
 
 */
-void processSyncEvents(Model *model, void *base);
+void processSyncEvents(Model *model);
 
 /*
 

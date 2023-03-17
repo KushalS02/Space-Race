@@ -48,25 +48,20 @@ void gameLoop() {
 
     while(!model.gameOver) {
 
+        processAsyncEvents(&model, base);
+        processSyncEvents(&model);
+
         if (!model.gameOver) {
 
             if (swapScreens) {
 
-                /*clearG(base);*/
-
-                processAsyncEvents(&model, base);
-
-                processSyncEvents(&model, base);
+                render(&model, base);
                 
                 Setscreen(-1, base, -1);
 
             } else {
 
-                /*clearG(screen2);*/
-
-                processAsyncEvents(&model, screen2);
-
-                processSyncEvents(&model, screen2);
+                render(&model, base);
 
                 Setscreen(-1, screen2, -1);
 
@@ -74,15 +69,13 @@ void gameLoop() {
 
             Vsync();
 
-            swapScreens = swapScreens;
+            swapScreens = !swapScreens;
 
         } 
 
     }
 
-    processAsyncEvents(&model, base);
-
-    processSyncEvents(&model, base);
+    render(&model, base);
 
     Setscreen(-1, base, -1);
         
@@ -123,7 +116,7 @@ void processAsyncEvents(Model *model, void *base) {
 
 }
 
-void processSyncEvents(Model *model, void *base) {
+void processSyncEvents(Model *model) {
 
     unsigned long timeThen, timeNow, timeElapsed;
 
@@ -133,15 +126,7 @@ void processSyncEvents(Model *model, void *base) {
 
     if (timeElapsed > 0) {
 
-        clearAsteroids(model->asteroids, base);
-
-        asteroidsHitBoundary(model->asteroids);
-        
-        moveAsteroids(model->asteroids);
-
-        renderAsteroids(model->asteroids, base);
-
-        rocketshipAsteroidCollision(model);
+        onAsteroidsMove(model);
 
         timeThen = timeNow;
 
@@ -155,7 +140,7 @@ void gameSetup(Model* model, void *base) {
 
     onGameStart(model);
 
-    clearQuick(base);
+    clearScreen(base);
 
     render(model, base);
 

@@ -50,8 +50,29 @@ void asteroidsHitBoundary(Asteroid* asteroid);
 */
 void rocketshipAsteroidCollision(Model *model);
 
+/*
+ Function: onAsteroidsMove
+*/
+void onAsteroidsMove(Model *model);
+
+/*
+ Function: onGameStart
+
+ Purpose: event that is called when game starts
+
+ Input: 
+    - Model*: the game model
+*/
 void onGameStart(Model* model);
-void onGamePause(Model* model);
+
+/*
+ Function: onGameOver
+
+ Purpose: event that is called when game ends
+
+ Input: 
+    - Model*: the game model
+*/
 void onGameOver(Model* model);
 
 /*

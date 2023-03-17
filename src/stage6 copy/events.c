@@ -71,15 +71,15 @@ void rocketshipAsteroidCollision(Model *model) {
 
 }
 
-void onGameStart(Model* model){ 
+void onAsteroidsMove(Model *model) {
 
-    initializeModel(model);
+    moveAsteroids(model);
 
 }
 
-void onGamePause(Model* model) {
+void onGameStart(Model* model){ 
 
-    pauseGame(model);
+    initializeModel(model);
 
 }
 

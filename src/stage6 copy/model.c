@@ -178,12 +178,6 @@ void initializeAsteroids(Asteroid * asteroids) {
         srand(SEED);
     }
 
-    void pauseGame(Model * model)
-    {
-
-        model->playing = false;
-    }
-
     void resumeGame(Model * model)
     {
 
