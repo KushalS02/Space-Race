@@ -52,6 +52,7 @@ void gameLoop()
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);
+            renderNextRound(&model, screen2);
             currScore = model.scorebox.score;
         }
 
@@ -74,7 +75,7 @@ void gameLoop()
             processSyncEvents(&model);
 
             renderAsteroids(model.asteroids, currScreen);
-            renderRocketship(&model.player, currScreen);
+            renderRocketship(&model.player, (UINT32*)currScreen);
 
             Setscreen(-1, currScreen, -1);
 
@@ -118,7 +119,6 @@ void processSyncEvents(Model *model) {
 
         onAsteroidsMove(model);
         rocketshipAsteroidCollision(model);
-
 }
 
 void gameSetup(Model* model, void *base) {
