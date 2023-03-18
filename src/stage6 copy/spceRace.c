@@ -40,40 +40,43 @@ void gameLoop()
     UINT8 *base = Physbase();
     UINT8 *screen2 = getBase(secondBuff);
     UINT8 *currScreen = base;
+    UINT8 currScore = 0;
 
     gameSetup(&model, base);
     render(&model, screen2);
 
     while (!model.gameOver)
     {
+
         processAsyncEvents(&model);
+
+        if(currScore < model.scorebox.score) {
+            renderNextRound(&model, base);
+            currScore = model.scorebox.score;
+        }
 
         timeNow = getTime();
         timeElapsed = timeNow - timeThen;
         if (timeElapsed > 0)
         {
+            if (swapScreens)
+            {
+                currScreen = base;
+                clearG(currScreen);
+            }
+            else
+            {
+                currScreen = screen2;
+                clearG(currScreen);
+            }
+
             timeThen = timeNow;
-
-            /*clearRocketship(&model.player, currScreen);
-            clearAsteroids(model.asteroids, currScreen);*/
-
             processSyncEvents(&model);
 
             renderAsteroids(model.asteroids, currScreen);
             renderRocketship(&model.player, currScreen);
 
             Setscreen(-1, currScreen, -1);
-
-            if (swapScreens)
-            {
-                currScreen = base;
-                clearQuick(currScreen);
-            }
-            else
-            {
-                currScreen = screen2;
-                clearQuick(currScreen);
-            }
 
             Vsync();
             swapScreens = !swapScreens;
