@@ -34,46 +34,50 @@ UINT8 *getBase(UINT8 *secondBuffer) {
 
 void gameLoop()
 {
-
+    unsigned long timeThen, timeNow, timeElapsed;
     Model model;
-
     bool swapScreens = false;
-
     UINT8 *base = Physbase();
     UINT8 *screen2 = getBase(secondBuff);
-    UINT8 *currScreen;
-    currScreen = base;
-    
+    UINT8 *currScreen = base;
 
     gameSetup(&model, base);
     render(&model, screen2);
 
     while (!model.gameOver)
     {
-        clearRocketship(&model.player, currScreen);
-        clearAsteroids(model.asteroids, currScreen);
-
         processAsyncEvents(&model);
-        processSyncEvents(&model);
 
-        renderAsteroids(model.asteroids, currScreen);
-        renderRocketship(&model.player, currScreen);
-
-        Setscreen(-1, currScreen, -1);
-
-
-
-        if (swapScreens)
+        timeNow = getTime();
+        timeElapsed = timeNow - timeThen;
+        if (timeElapsed > 0)
         {
-            currScreen = base;
-        }
-        else
-        {
-            currScreen = screen2;
-        }
+            timeThen = timeNow;
 
-        Vsync();
-        swapScreens = !swapScreens;
+            /*clearRocketship(&model.player, currScreen);
+            clearAsteroids(model.asteroids, currScreen);*/
+
+            processSyncEvents(&model);
+
+            renderAsteroids(model.asteroids, currScreen);
+            renderRocketship(&model.player, currScreen);
+
+            Setscreen(-1, currScreen, -1);
+
+            if (swapScreens)
+            {
+                currScreen = base;
+                clearQuick(currScreen);
+            }
+            else
+            {
+                currScreen = screen2;
+                clearQuick(currScreen);
+            }
+
+            Vsync();
+            swapScreens = !swapScreens;
+        }
     }
 
     Setscreen(-1, base, -1);
@@ -109,20 +113,8 @@ void processAsyncEvents(Model *model) {
 
 void processSyncEvents(Model *model) {
 
-    unsigned long timeThen, timeNow, timeElapsed;
-
-    timeNow = getTime();
-
-    timeElapsed = timeNow - timeThen;
-
-    if (timeElapsed > 0) {
-
         onAsteroidsMove(model);
         rocketshipAsteroidCollision(model);
-
-        timeThen = timeNow;
-
-    }
 
 }
 
