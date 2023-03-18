@@ -37,8 +37,6 @@ Purpose: process the asynchronous events
 Parameters:
 
     Model *model - process the async events based from the model
-    
-    void *base - start of the frame buffer
 
 */
 void processAsyncEvents(Model *model);

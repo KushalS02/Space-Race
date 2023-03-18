@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "model.h"
 #include "TYPES.H"
 #include <stdlib.h>
@@ -176,12 +179,6 @@ void initializeAsteroids(Asteroid * asteroids) {
         initializeHighscore(&model->highscorebox);
         /*replace SEED with call to getTime function for random(ish) value*/
         srand(SEED);
-    }
-
-    void resumeGame(Model * model)
-    {
-
-        model->playing = true;
     }
 
     void gameOver(Model * model)

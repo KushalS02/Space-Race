@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef EVENTS_H
 #define EVENTS_H
 
@@ -52,6 +55,11 @@ void rocketshipAsteroidCollision(Model *model);
 
 /*
  Function: onAsteroidsMove
+
+ Purpose: event to move asteroids on the screen
+
+ Input: Model *model - the game model
+
 */
 void onAsteroidsMove(Model *model);
 

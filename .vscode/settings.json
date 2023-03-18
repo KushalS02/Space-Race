@@ -12,7 +12,8 @@
         "stdio.h": "c",
         "psg.h": "c",
         "effects.h": "c",
-        "sprites.h": "c"
+        "sprites.h": "c",
+        "stdlib.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "events.h"
 #include "model.h"
 #include "const.h"
