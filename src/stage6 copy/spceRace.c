@@ -32,58 +32,53 @@ UINT8 *getBase(UINT8 *secondBuffer) {
 
 }
 
-void gameLoop() {
+void gameLoop()
+{
 
     Model model;
 
-    bool swapScreens = true; /* stage 6 */
+    bool swapScreens = false;
 
     UINT8 *base = Physbase();
-
-    void *screen2; /* stage 6 */
+    UINT8 *screen2 = getBase(secondBuff);
+    UINT8 *currScreen = base;
+    
 
     gameSetup(&model, base);
+    render(&model, screen2);
 
-    screen2 = getBase(secondBuff); /* stage 6 */
+    while (!model.gameOver)
+    {
+        clearRocketship(&model.player, currScreen);
+        clearAsteroids(&model.asteroids, currScreen);
 
-    while(!model.gameOver) {
-
-        processAsyncEvents(&model, base);
+        processAsyncEvents(&model);
         processSyncEvents(&model);
 
-        if (!model.gameOver) {
+        renderAsteroids(&model.asteroids, currScreen);
+        renderRocketship(&model.player, currScreen);
 
-            if (swapScreens) {
+        Setscreen(-1, currScreen, -1);
 
-                render(&model, base);
-                
-                Setscreen(-1, base, -1);
+        if (swapScreens)
+        {
+            currScreen = base;
+        }
+        else
+        {
+            currScreen = screen2;
+        }
 
-            } else {
-
-                render(&model, base);
-
-                Setscreen(-1, screen2, -1);
-
-            }
-
-            Vsync();
-
-            swapScreens = !swapScreens;
-
-        } 
-
+        Vsync();
+        swapScreens = !swapScreens;
     }
 
-    render(&model, base);
+    Setscreen(-1, currScreen, -1);
 
-    Setscreen(-1, base, -1);
-        
     Vsync();
-
 }
 
-void processAsyncEvents(Model *model, void *base) {
+void processAsyncEvents(Model *model) {
 
     unsigned long input;
 
@@ -93,17 +88,17 @@ void processAsyncEvents(Model *model, void *base) {
 
         input = getUserInput();
 
-        clearRocketship(&model->player, base);
+        /*clearRocketship(&model->player, base);*/
         rocketshipMove(&model->player, input);
-        renderRocketship(&model->player, base);
+        /*renderRocketship(&model->player, base);*/
 
         if (rocketshipHitFinish(&model->player)) {
 
-            clearAsteroids(model->asteroids, base);
-            clearRocketship(&model->player, base);
+            /*clearAsteroids(model->asteroids, base);
+            clearRocketship(&model->player, base);*/
             initializeNextRound(&(model->player), model->asteroids, &(model->scorebox), &(model->highscorebox));
-            renderRocketship(&model->player, base);
-            renderNextRound(model, base);
+            /*renderRocketship(&model->player, base);
+            renderNextRound(model, base);*/
         }
 
         if (input == ESC_KEY) {

@@ -74,7 +74,7 @@ void rocketshipAsteroidCollision(Model *model) {
 void onAsteroidsMove(Model *model) {
 
     moveAsteroids(model->asteroids);
-
+    asteroidsHitBoundary(model->asteroids);
 }
 
 void onGameStart(Model* model){ 

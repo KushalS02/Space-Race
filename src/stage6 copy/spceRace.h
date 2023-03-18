@@ -41,7 +41,7 @@ Parameters:
     void *base - start of the frame buffer
 
 */
-void processAsyncEvents(Model *model, void *base);
+void processAsyncEvents(Model *model);
 
 /*
 
