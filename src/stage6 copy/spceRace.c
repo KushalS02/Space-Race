@@ -41,7 +41,8 @@ void gameLoop()
 
     UINT8 *base = Physbase();
     UINT8 *screen2 = getBase(secondBuff);
-    UINT8 *currScreen = base;
+    UINT8 *currScreen;
+    currScreen = base;
     
 
     gameSetup(&model, base);
@@ -50,15 +51,17 @@ void gameLoop()
     while (!model.gameOver)
     {
         clearRocketship(&model.player, currScreen);
-        clearAsteroids(&model.asteroids, currScreen);
+        clearAsteroids(model.asteroids, currScreen);
 
         processAsyncEvents(&model);
         processSyncEvents(&model);
 
-        renderAsteroids(&model.asteroids, currScreen);
+        renderAsteroids(model.asteroids, currScreen);
         renderRocketship(&model.player, currScreen);
 
         Setscreen(-1, currScreen, -1);
+
+
 
         if (swapScreens)
         {
@@ -73,8 +76,7 @@ void gameLoop()
         swapScreens = !swapScreens;
     }
 
-    Setscreen(-1, currScreen, -1);
-
+    Setscreen(-1, base, -1);
     Vsync();
 }
 
@@ -88,17 +90,11 @@ void processAsyncEvents(Model *model) {
 
         input = getUserInput();
 
-        /*clearRocketship(&model->player, base);*/
         rocketshipMove(&model->player, input);
-        /*renderRocketship(&model->player, base);*/
 
         if (rocketshipHitFinish(&model->player)) {
 
-            /*clearAsteroids(model->asteroids, base);
-            clearRocketship(&model->player, base);*/
             initializeNextRound(&(model->player), model->asteroids, &(model->scorebox), &(model->highscorebox));
-            /*renderRocketship(&model->player, base);
-            renderNextRound(model, base);*/
         }
 
         if (input == ESC_KEY) {
@@ -122,6 +118,7 @@ void processSyncEvents(Model *model) {
     if (timeElapsed > 0) {
 
         onAsteroidsMove(model);
+        rocketshipAsteroidCollision(model);
 
         timeThen = timeNow;
 
