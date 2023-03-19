@@ -78,4 +78,9 @@ System stuff
 #define SYSTEM_CLOCK 0x462
 #define SCREEN_BUFFER_SIZE 32256
 
+/*
+Menu stuff
+*/
+#define ARROW_HEIGHT 16
+
 #endif
