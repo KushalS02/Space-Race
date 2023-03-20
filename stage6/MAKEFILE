@@ -26,7 +26,7 @@ clearG.o: clearG.s clearG.h
 	gen -D -L2 clearG.s
 
 clearQK.o: clearQK.s clearQK.h
-	gen -D -L2 clearQK.s	
+	gen -D -L2 clearQK.s
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s

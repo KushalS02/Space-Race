@@ -177,15 +177,8 @@ void initializeModel(Model* model);
 */
 void initializeNextRound(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox);
 
-/*
-
-Name: gameOver
-
-Purpose: set the game state to game over (playing = false)
-
-Input: Model* model - the game model 
-
-*/
+void pauseGame(Model* model);
+void resumeGame(Model* model);
 void gameOver(Model* model);
 
 /*

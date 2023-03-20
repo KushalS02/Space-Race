@@ -1,6 +1,3 @@
-/*
-Authours: Alexander Pham and Kushal Saini
-*/
 #include "events.h"
 #include "model.h"
 #include "const.h"
@@ -74,15 +71,15 @@ void rocketshipAsteroidCollision(Model *model) {
 
 }
 
-void onAsteroidsMove(Model *model) {
-
-    moveAsteroids(model->asteroids);
-    asteroidsHitBoundary(model->asteroids);
-}
-
 void onGameStart(Model* model){ 
 
     initializeModel(model);
+
+}
+
+void onGamePause(Model* model) {
+
+    pauseGame(model);
 
 }
 

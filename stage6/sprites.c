@@ -1,13 +1,5 @@
-/*
-Authours: Alexander Pham and Kushal Saini
-*/
 #include "sprites.h"
 
-/*
-
-All of the bitmaps of the rocket, checkered line and asteroids 
-
-*/
 UINT8 astrv1[] = {
   0x18,
   0x24,

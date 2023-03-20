@@ -1,6 +1,3 @@
-/*
-Authours: Alexander Pham and Kushal Saini
-*/
 #ifndef EVENTS_H
 #define EVENTS_H
 
@@ -53,34 +50,8 @@ void asteroidsHitBoundary(Asteroid* asteroid);
 */
 void rocketshipAsteroidCollision(Model *model);
 
-/*
- Function: onAsteroidsMove
-
- Purpose: event to move asteroids on the screen
-
- Input: Model *model - the game model
-
-*/
-void onAsteroidsMove(Model *model);
-
-/*
- Function: onGameStart
-
- Purpose: event that is called when game starts
-
- Input: 
-    - Model*: the game model
-*/
 void onGameStart(Model* model);
-
-/*
- Function: onGameOver
-
- Purpose: event that is called when game ends
-
- Input: 
-    - Model*: the game model
-*/
+void onGamePause(Model* model);
 void onGameOver(Model* model);
 
 /*
