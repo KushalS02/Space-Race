@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "spceRace.h"
 #include <osbind.h>
 
@@ -29,71 +32,63 @@ UINT8 *getBase(UINT8 *secondBuffer) {
 
 }
 
-void gameLoop() {
-
+void gameLoop()
+{
+    unsigned long timeThen, timeNow, timeElapsed;
     Model model;
-
-    bool swapScreens = true; /* stage 6 */
-
+    bool swapScreens = false;
     UINT8 *base = Physbase();
-
-    void *screen2; /* stage 6 */
-
-    unsigned time = getTime();
+    UINT8 *screen2 = getBase(secondBuff);
+    UINT8 *currScreen = base;
+    UINT8 currScore = 0;
 
     gameSetup(&model, base);
+    render(&model, screen2);
 
-    screen2 = getBase(secondBuff); /* stage 6 */
+    while (!model.gameOver)
+    {
 
-    startMusic();
+        processAsyncEvents(&model);
 
-    while(!model.gameOver || model.scorebox.score >= MAX_SCORE) {
-
-        processAsyncEvents(&model, base);
-
-        processSyncEvents(&model, base);
-
-        if (updateMusic(getTime() - time)) {
-
-            time = getTime();
-
+        if(currScore < model.scorebox.score) {
+            renderNextRound(&model, base);
+            renderNextRound(&model, screen2);
+            currScore = model.scorebox.score;
         }
 
-        if (!model.gameOver) {
-
-            if (swapScreens) {
-
-                render(&model, base);
-                
-                Setscreen(-1, base, -1);
-
-            } else {
-
-                render(&model, base);
-
-                Setscreen(-1, screen2, -1);
-
+        timeNow = getTime();
+        timeElapsed = timeNow - timeThen;
+        if (timeElapsed > 0)
+        {
+            if (swapScreens)
+            {
+                currScreen = base;
+                clearG(currScreen);
+            }
+            else
+            {
+                currScreen = screen2;
+                clearG(currScreen);
             }
 
+            timeThen = timeNow;
+            processSyncEvents(&model);
+
+            renderAsteroids(model.asteroids, currScreen);
+            renderRocketship(&model.player, (UINT32*)currScreen);
+
+            Setscreen(-1, currScreen, -1);
+
             Vsync();
-
-            swapScreens = swapScreens;
-
-        } 
-
+            swapScreens = !swapScreens;
+        }
     }
 
-    render(&model, base);
-
     Setscreen(-1, base, -1);
-        
     Vsync();
-    
-    stopSound();
-
 }
 
-void processAsyncEvents(Model *model, void *base) {
+void processAsyncEvents(Model *model) {
 
     unsigned long input;
 
@@ -103,17 +98,11 @@ void processAsyncEvents(Model *model, void *base) {
 
         input = getUserInput();
 
-        clearRocketship(&model->player, base);
         rocketshipMove(&model->player, input);
-        renderRocketship(&model->player, base);
 
-        if (rocketshipHitFinish(model)) {
+        if (rocketshipHitFinish(&model->player)) {
 
-            clearAsteroids(model->asteroids, base);
-            clearRocketship(&model->player, base);
-            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
-            renderRocketship(&model->player, base);
-            renderNextRound(model, base);
+            initializeNextRound(&(model->player), model->asteroids, &(model->scorebox), &(model->highscorebox));
         }
 
         if (input == ESC_KEY) {
@@ -126,32 +115,13 @@ void processAsyncEvents(Model *model, void *base) {
 
 }
 
-void processSyncEvents(Model *model, void *base) {
+void processSyncEvents(Model *model) {
 
-    unsigned long timeThen, timeNow, timeElapsed;
-
-    timeNow = getTime();
-
-    timeElapsed = timeNow - timeThen;
-
-    if (timeElapsed > 0) {
-
-        clearAsteroids(&model->asteroids, base);
-
-        asteroidsHitBoundary(&model->asteroids);
-        moveAsteroids(&model->asteroids);
-
-        renderAsteroids(&model->asteroids, base);
-
+        onAsteroidsMove(model);
         rocketshipAsteroidCollision(model);
-
-        timeThen = timeNow;
-
-    }
-
 }
 
-void gameSetup(Model*model, void *base) {
+void gameSetup(Model* model, void *base) {
 
     disableCursor();
 

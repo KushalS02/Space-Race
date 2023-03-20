@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "model.h"
 #include "TYPES.H"
 #include <stdlib.h>
@@ -58,6 +61,7 @@ void moveAsteroids(Asteroid *asteroids)
         {
         case left:
 
+            /*prevents negative x values*/
             if (topLeftX - deltaX < 0) {
                 asteroids[currAsteroid].hitbox.topLeftX = 0;
             } else {
@@ -104,7 +108,7 @@ void initializeAsteroids(Asteroid * asteroids) {
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++){
 
         currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
-        currXPos = (rand() % WIDTH_BYTES) * 8; /* possible starting postions (Byte 0 to 79)*/
+        currXPos = (rand() % WIDTH_BYTES) * 8; /*80 possible starting postions (Byte 0 to 79)*/
         asteroids[currAsteroid].hitbox.topLeftY = currYPos;
         asteroids[currAsteroid].hitbox.bottomRightY = currYPos + ASTRV2_HEIGHT;
         asteroids[currAsteroid].hitbox.topLeftX = currXPos;
@@ -177,18 +181,6 @@ void initializeAsteroids(Asteroid * asteroids) {
         srand(SEED);
     }
 
-    void pauseGame(Model * model)
-    {
-
-        model->playing = false;
-    }
-
-    void resumeGame(Model * model)
-    {
-
-        model->playing = true;
-    }
-
     void gameOver(Model * model)
     {
 
@@ -196,10 +188,10 @@ void initializeAsteroids(Asteroid * asteroids) {
         model->playing = false;
     }
 
-    bool hitboxCollision(Hitbox hb1, Hitbox hb2)
+    bool hitboxCollision(Hitbox* hb1, Hitbox* hb2)
     {
-        return hb1.topLeftX < hb2.bottomRightX &&
-               hb1.bottomRightX > hb2.topLeftX &&
-               hb1.topLeftY < hb2.bottomRightY &&
-               hb1.bottomRightY > hb2.topLeftY;
+        return hb1->topLeftX < hb2->bottomRightX &&
+               hb1->bottomRightX > hb2->topLeftX &&
+               hb1->topLeftY < hb2->bottomRightY &&
+               hb1->bottomRightY > hb2->topLeftY;
     }

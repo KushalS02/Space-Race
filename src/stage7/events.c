@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "events.h"
 #include "model.h"
 #include "const.h"
@@ -28,9 +31,9 @@ void rocketshipHitBoundary(Rocketship* rocketship) {
 
 }
 
-bool rocketshipHitFinish(Model *model)
+bool rocketshipHitFinish(Rocketship* rocketship)
 {
-    if (model->player.hitbox.topLeftY <= CHKLINE_HEIGHT)
+    if (rocketship->hitbox.topLeftY <= CHKLINE_HEIGHT)
     {
         return true;
     }
@@ -63,7 +66,7 @@ void rocketshipAsteroidCollision(Model *model) {
     /* Check collision for each asteroid*/
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
         
-        if (hitboxCollision(model->player.hitbox, model->asteroids[currAsteroid].hitbox)) {
+        if (hitboxCollision(&model->player.hitbox, &model->asteroids[currAsteroid].hitbox)) {
             onGameOver(model);
         }
 
@@ -71,15 +74,15 @@ void rocketshipAsteroidCollision(Model *model) {
 
 }
 
+void onAsteroidsMove(Model *model) {
+
+    moveAsteroids(model->asteroids);
+    asteroidsHitBoundary(model->asteroids);
+}
+
 void onGameStart(Model* model){ 
 
     initializeModel(model);
-
-}
-
-void onGamePause(Model* model) {
-
-    pauseGame(model);
 
 }
 

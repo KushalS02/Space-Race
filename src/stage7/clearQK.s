@@ -9,7 +9,6 @@ _clearQuick:    movem.l		d0-7/a0-6,-(sp)
 		        adda.l		#32000,a0
 		        move.w		#614,d0
 
-
 fillLoop:       movem.l		d1-7/a1-6,-(a0)
 	        	dbra		d0,fillLoop
 		        movem.l		d1-5,-(a0)

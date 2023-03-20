@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "render.h"
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
@@ -35,14 +38,14 @@ void clearAsteroids(const Asteroid *asteroids, UINT8* base) {
     }
 }
 
-void renderScoreBox(const Model* model, UINT16 *base) {
+void renderScoreBox(const Model* model, UINT8 *base) {
 
     printString(base, model->scorebox.x, model->scorebox.y, "Score:");
     printNumber(base, model->scorebox.x + 50, model->scorebox.y, model->scorebox.score);
 
 }
 
-void renderHighscoreBox(const Model* model, UINT16 *base) {
+void renderHighscoreBox(const Model* model, UINT8 *base) {
 
     printString(base, model->highscorebox.x, model->highscorebox.y, "Highscore:");
     printNumber(base, model->highscorebox.x + 80, model->highscorebox.y, model->highscorebox.highscore);
@@ -69,12 +72,12 @@ void renderBackground(UINT8 *base) {
 
 void render(Model *model, void *base) {
 
-    renderBackground((UINT32*) base);
+    renderBackground((UINT8*) base);
     renderRocketship(&model->player, (UINT32*) base);
     renderCheckeredLine((UINT32*) base);
-    renderAsteroids(&model->asteroids, (UINT8*) base);
-    renderScoreBox(model, (UINT16*) base);
-    renderHighscoreBox(model, (UINT16*) base);
+    renderAsteroids(model->asteroids, (UINT8*) base);
+    renderScoreBox(model, (UINT8*) base);
+    renderHighscoreBox(model, (UINT8*) base);
 
 }
 
@@ -82,9 +85,9 @@ void renderNextRound(Model *model, void *base) {
 
     renderRocketship(&model->player, (UINT32*) base);
     renderCheckeredLine((UINT32*) base);
-    renderAsteroids(&model->asteroids, (UINT8*) base);
-    renderScoreBox(model, (UINT16*) base);
-    renderHighscoreBox(model, (UINT16*) base);
+    renderAsteroids(model->asteroids, (UINT8*) base);
+    renderScoreBox(model, (UINT8*) base);
+    renderHighscoreBox(model, (UINT8*) base);
 }
 
 void disableCursor() {
