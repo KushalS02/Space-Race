@@ -1,5 +1,14 @@
-spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o clearG.o clearQK.o
-	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o clearG.o clearQK.o -o spceRace
+spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o clearG.o clearQK.o psg.o music.o effects.o
+	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o clearG.o clearQK.o psg.o music.o effects.o -o spceRace
+
+psg.o: psg.c psg.h
+	cc68x -g -c psg.c
+
+music.o: music.c music.h
+	cc68 -g -c music.c 
+
+effects.o: effects.c effects.h
+	cc68x -g -c effects.c
 
 spceRace.o: spceRace.c spceRace.h
 	cc68x -g -c spceRace.c
