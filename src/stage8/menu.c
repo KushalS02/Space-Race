@@ -157,25 +157,25 @@ void clearChoiceSelector(int choice) {
 
         case 1:
 
-            /* clear the selector */
+            clearRegion16(base, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
         case 2:
 
-            /* clear the selector */
+            clearRegion16(base, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
         case 3:
 
-            /* clear the selector */
+            clearRegion16(base, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
 
             break;
 
         case 4:
 
-            /* clear the selector */
+            clearRegion16(base, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
 
             break;
 
