@@ -68,6 +68,7 @@ void rocketshipAsteroidCollision(Model *model) {
         
         if (hitboxCollision(&model->player.hitbox, &model->asteroids[currAsteroid].hitbox)) {
             onGameOver(model);
+            collisionEffect();
         }
 
     }

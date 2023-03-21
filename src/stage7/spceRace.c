@@ -44,6 +44,7 @@ void gameLoop()
 
     gameSetup(&model, base);
     render(&model, screen2);
+    startMusic();
 
     while (!model.gameOver)
     {
@@ -86,6 +87,7 @@ void gameLoop()
 
     Setscreen(-1, base, -1);
     Vsync();
+    stopSound();
 }
 
 void processAsyncEvents(Model *model) {

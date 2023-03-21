@@ -15,6 +15,9 @@ Authours: Alexander Pham and Kushal Saini
 #include "TYPES.H"
 #include "clearG.h"
 #include "clearQK.h"
+#include "psg.h"
+#include "effects.h"
+#include "music.h"
 
 /*
 

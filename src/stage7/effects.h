@@ -9,6 +9,5 @@ Functions for effects
 */
 void collisionEffect();
 
-void rocketshipMovingEffect();
 
 #endif

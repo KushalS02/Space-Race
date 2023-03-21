@@ -6,6 +6,8 @@ Authours: Alexander Pham and Kushal Saini
 
 #include <osbind.h>
 #include "model.h"
+#include "psg.h"
+#include "effects.h"
 
 /*
 * Function: rocketshipMove
