@@ -115,27 +115,27 @@ void drawChoiceSelector(int choice) {
 
         case 1:
 
-            /* plot the selector bitmap */
+            plotBitmap16(base, menuArrow, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
         case 2:
 
-            /* plot the selector bitmap */
+            plotBitmap16(base, menuArrow, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
 
         case 3:
 
-            /* plot the selector bitmap */
+            plotBitmap16(base, menuArrow, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
 
             break;
 
 
         case 4:
 
-            /* plot the selector bitmap */
+            plotBitmap16(base, menuArrow, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
 
             break;
 

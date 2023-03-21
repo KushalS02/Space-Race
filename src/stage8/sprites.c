@@ -81,7 +81,7 @@ UINT32 shipv2[]  = {
 0x00042000
 };
 
-UINT16 menuArrow[ARROW_HEIGHT] {
+UINT16 menuArrow[] {
 
   0xFFFF, 0xFFFF, 0xFFDF, 0x0FCF, 
 	0x87C7, 0x8003, 0xC001, 0xC000, 

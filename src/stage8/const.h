@@ -82,5 +82,10 @@ System stuff
 Menu stuff
 */
 #define ARROW_HEIGHT 16
+#define ARROW_X 253
+#define ARROW_1_PLAYER_Y 192
+#define ARROW_2_PLAYER_Y 235
+#define ARROW_TUTORIAL_Y 277
+#define ARROW_HELP_Y 320
 
 #endif
