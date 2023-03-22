@@ -62,25 +62,32 @@ void moveAsteroids(Asteroid *asteroids)
         case left:
 
             /*prevents negative x values*/
-            if (topLeftX - deltaX < 0) {
+            if (topLeftX - deltaX < 0)
+            {
                 asteroids[currAsteroid].hitbox.topLeftX = 0;
-            } else {
+            }
+            else
+            {
                 asteroids[currAsteroid].hitbox.topLeftX -= deltaX;
             }
-            
-            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
             break;
 
         case right:
+            /* add check for > 640*/
 
-            asteroids[currAsteroid].hitbox.topLeftX += deltaX;
-            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
-
+            if (topLeftX + deltaX > SCREEN_WIDTH - 1 - ASTRV2_WIDTH)
+            {
+                asteroids[currAsteroid].hitbox.topLeftX = SCREEN_WIDTH - ASTRV2_WIDTH;
+            }
+            else
+            {
+                asteroids[currAsteroid].hitbox.topLeftX += deltaX;
+            }
             break;
         }
 
-
+        asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
     }
 }
 
@@ -188,6 +195,10 @@ void initializeAsteroids(Asteroid * asteroids) {
         model->playing = false;
     }
 
+
+/*
+https://silentmatt.com/rectangle-intersection/
+*/
     bool hitboxCollision(Hitbox* hb1, Hitbox* hb2)
     {
         return hb1->topLeftX < hb2->bottomRightX &&
