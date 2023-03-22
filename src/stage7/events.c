@@ -5,6 +5,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "model.h"
 #include "const.h"
 #include "TYPES.H"
+#include <stdio.h>
 
 void rocketshipMove(Rocketship *rocketship, unsigned long key)
 {
@@ -50,12 +51,14 @@ void asteroidsHitBoundary(Asteroid* asteroids) {
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid+=2) {
         if(asteroids[currAsteroid].hitbox.topLeftX <= 0) {
             asteroids[currAsteroid].hitbox.topLeftX = SCREEN_WIDTH-1;
+            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
         }
     }
     /*Check right boundry for right moving asteroids*/
     for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid+=2) {
-        if(asteroids[currAsteroid].hitbox.topLeftX >= SCREEN_WIDTH-1){
+        if(asteroids[currAsteroid].hitbox.bottomRightX >= SCREEN_WIDTH-1){
             asteroids[currAsteroid].hitbox.topLeftX=0;
+            asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
         }
     }
 
@@ -68,7 +71,6 @@ void rocketshipAsteroidCollision(Model *model) {
         
         if (hitboxCollision(&model->player.hitbox, &model->asteroids[currAsteroid].hitbox)) {
             onGameOver(model);
-            collisionEffect();
         }
 
     }
