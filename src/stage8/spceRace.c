@@ -101,6 +101,7 @@ void gameLoop()
             Vsync();
             swapScreens = !swapScreens;
         }
+
     }
 
     Setscreen(-1, base, -1);

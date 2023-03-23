@@ -4,6 +4,7 @@
 SCREEN	equ 	$FFFF8201
 OFFSET 	equ 	8   
 
+;Physbase
 _getVideoBase:
         move.l  a0,-(sp)
         clr.l   d0
@@ -13,7 +14,7 @@ _getVideoBase:
         move.l  (sp)+,a0
         rts
 
-
+;Setscreen
 _setVideoBase:
         link    a6,#0
         movem.l d0/a0,-(sp)
