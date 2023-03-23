@@ -41,6 +41,7 @@ void gameLoop()
     UINT8 *screen2 = getBase(secondBuff);
     UINT8 *currScreen = base;
     UINT8 currScore = 0;
+    unsigned long prevCall = getTime();
 
     gameSetup(&model, base);
     render(&model, screen2);
@@ -50,6 +51,12 @@ void gameLoop()
     {
 
         processAsyncEvents(&model);
+
+        if(updateMusic(getTime() - prevCall)) {
+
+            prevCall = getTime();
+
+        }
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);
@@ -64,12 +71,12 @@ void gameLoop()
             if (swapScreens)
             {
                 currScreen = base;
-                clearG(currScreen);
+                clearGame(currScreen);
             }
             else
             {
                 currScreen = screen2;
-                clearG(currScreen);
+                clearGame(currScreen);
             }
 
             timeThen = timeNow;
@@ -88,6 +95,7 @@ void gameLoop()
     Setscreen(-1, base, -1);
     Vsync();
     stopSound();
+    
 }
 
 void processAsyncEvents(Model *model) {
@@ -121,6 +129,7 @@ void processSyncEvents(Model *model) {
 
         onAsteroidsMove(model);
         rocketshipAsteroidCollision(model);
+
 }
 
 void gameSetup(Model* model, void *base) {
@@ -129,7 +138,7 @@ void gameSetup(Model* model, void *base) {
 
     onGameStart(model);
 
-    clearScreen(base);
+    clearQuick(base);
 
     render(model, base);
 

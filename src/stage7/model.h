@@ -23,16 +23,17 @@
 /*
 All the typedef for structures 
 */
-typedef struct 
-{
+typedef struct {
+
     UINT16 topLeftX;
     UINT16 topLeftY;
     UINT16 bottomRightX;
     UINT16 bottomRightY;
+
 } Hitbox;
 
-typedef struct 
-{
+typedef struct {
+
     rocketShipDirection direction;
     Hitbox hitbox;
     bool alive;
@@ -40,23 +41,22 @@ typedef struct
 
 } Rocketship;
 
-typedef struct 
-{
+typedef struct {
+
     int deltaX;
     Hitbox hitbox;
     asteroidDirecton direction;
     bool hitBoundary;
+
 } Asteroid;
 
-typedef struct 
-{
+typedef struct {
 
     unsigned int x, y, score;
 
 } Scorebox;
 
-typedef struct 
-{
+typedef struct {
 
     unsigned int x, y, highscore;
 

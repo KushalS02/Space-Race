@@ -1,8 +1,8 @@
-                xdef        _clearG
+                xdef        _clearGame
 
 base	        equ         64
 
-_clearG:     	movem.l     d0-7/a0-6,-(sp)
+_clearGame:     movem.l     d0-7/a0-6,-(sp)
                 lea         blackFill,a0
                 movem.l		(a0)+,d1-7/a1-6
 		        movea.l		base(sp),a0

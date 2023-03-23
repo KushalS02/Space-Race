@@ -13,7 +13,9 @@
         "psg.h": "c",
         "effects.h": "c",
         "sprites.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "raster.h": "c",
+        "RASTER.H": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "C_Cpp.dimInactiveRegions": false

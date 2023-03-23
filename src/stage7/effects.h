@@ -9,5 +9,4 @@ Functions for effects
 */
 void collisionEffect();
 
-
 #endif

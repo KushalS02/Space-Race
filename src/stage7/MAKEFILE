@@ -5,7 +5,7 @@ psg.o: psg.c psg.h
 	cc68x -g -c psg.c
 
 music.o: music.c music.h
-	cc68 -g -c music.c 
+	cc68x -g -c music.c 
 
 effects.o: effects.c effects.h
 	cc68x -g -c effects.c
@@ -31,12 +31,11 @@ events.o: events.c events.h const.h
 font.o: font.c font.h
 	cc68x -g -c font.c
 
-clearG.o: clearG.s clearG.h
+clearG.o: clearG.s clear.h
 	gen -D -L2 clearG.s
 
-clearQK.o: clearQK.s clearQK.h
+clearQK.o: clearQK.s clear.h
 	gen -D -L2 clearQK.s	
 
 rast_asm.o: rast_asm.s
 	gen -D -L2 rast_asm.s
-	
