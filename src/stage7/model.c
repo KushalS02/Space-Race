@@ -212,6 +212,6 @@ bool hitboxCollision(Hitbox* hb1, Hitbox* hb2) {
     return hb1->topLeftX < hb2->bottomRightX &&
             hb1->bottomRightX > hb2->topLeftX &&
             hb1->topLeftY < hb2->bottomRightY &&
-            b1->bottomRightY > hb2->topLeftY;
+            hb1->bottomRightY > hb2->topLeftY;
             
 }
