@@ -8,9 +8,20 @@ const UINT8 secondBuff[SCREEN_BUFFER_SIZE];
 
 int main() {
 
-    gameLoop();
+    start();
 
     return 0;
+
+}
+
+void start() {
+
+    void *base = Physbase();
+
+    disableCursor();
+    clearQuick(base);
+    renderSplashscreen(base);
+    menu();
 
 }
 

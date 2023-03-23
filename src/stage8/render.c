@@ -96,3 +96,9 @@ void disableCursor() {
     fflush(stdout);
 
 }
+
+void renderSplashscreen(UINT32* base) {
+
+    plotScreen(base, splashScreen);
+
+}

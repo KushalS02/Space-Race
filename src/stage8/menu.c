@@ -12,7 +12,9 @@ void processMenuChoice() {
 
     int userChoice = MENU_CHOICE_1_PLAYER;
     
-    int prevChoice = choice;
+    int prevChoice = userChoice;
+
+    drawChoiceSelector(userChoice);
 
     while (input != ESC_KEY && input != ENTER_KEY) {
 
@@ -74,12 +76,12 @@ void processMenuChoice() {
 
 void selectOption(int choice) {
 
-    switch (option) {
+    switch (choice) {
 
     case MENU_CHOICE_1_PLAYER:
 
         gameLoop();
-
+        stopSound();
         break;
 
     case MENU_CHOICE_2_PLAYER:
@@ -157,25 +159,25 @@ void clearChoiceSelector(int choice) {
 
         case 1:
 
-            clearRegion16(base, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
+            clearRegion16(base, ARROW_X, ARROW_1_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 2:
 
-            clearRegion16(base, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
+            clearRegion16(base, ARROW_X, ARROW_2_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 3:
 
-            clearRegion16(base, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
+            clearRegion16(base, ARROW_X, ARROW_TUTORIAL_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 4:
 
-            clearRegion16(base, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
+            clearRegion16(base, ARROW_X, ARROW_HELP_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 

@@ -11,6 +11,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "RASTER.H"
 #include "sprites.h"
 #include "font.h"
+#include "menu.h"
 
 /*
 
@@ -186,5 +187,10 @@ Purpose: disable the cursor when running the game using the terminal command
 
 */
 void disableCursor();
+
+/*
+DOCUMENT
+*/
+void renderSplashscreen(UINT32* base);
 
 #endif 

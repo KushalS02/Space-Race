@@ -91,4 +91,6 @@ Parameter: 256 byte alinged screen based used for the second buffer
 */
 UINT8 *getBase(UINT8 *secondBuffer);
 
+void start();
+
 #endif

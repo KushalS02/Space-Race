@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef CONST_H
 #define CONST_H
 
@@ -8,7 +11,7 @@ Screen stuff
 */
 #define SCREEN_WIDTH 640
 #define MIN_XPOS 0
-#define WIDTH_BYTES 40
+#define WIDTH_BYTES 80
 #define SCREEN_HEIGHT 400
 #define HEIGHT_BYTES 25
 #define SCREEN_BYTE_SIZE 8000
@@ -27,14 +30,14 @@ Sprites Constants
 /*
 Rocketship Constants 
 */
-#define ROCKETSHIP_STARTING_X 303
-#define ROCKETSHIP_STARTING_Y 353
-#define ROCKETSHIP_SPEED 10
+#define ROCKETSHIP_STARTING_X 288
+#define ROCKETSHIP_STARTING_Y 352
+#define ROCKETSHIP_SPEED 8
 
 /*
 Asteroids Constants
 */
-#define ASTEROID_SPEED 1
+#define ASTEROID_SPEED 2
 #define ASTEROID_MAX 20
 #define ASTEROID_STARTING_Y 32
 #define ASTEROID_BOX_SIZE 16 /* ACTUAL SIZE OF THE ASTEROID NOT HITBOX*/
@@ -71,6 +74,7 @@ Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
+#define SEED 1
 
 /*
 System stuff
@@ -81,6 +85,7 @@ System stuff
 /*
 Menu stuff
 */
+#define ARROW_WIDTH 16
 #define ARROW_HEIGHT 16
 #define ARROW_X 253
 #define ARROW_1_PLAYER_Y 192
