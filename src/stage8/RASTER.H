@@ -61,7 +61,7 @@ UINT16 *getVideoBase();
 /*
 Setscreen()
 */
-void setVideoBase(UINT16 *);
+void setVideoBase(UINT16 *base);
 
 
 #endif

@@ -18,10 +18,12 @@ _getVideoBase:
 _setVideoBase:
         link    a6,#0
         movem.l d0/a0,-(sp)
+
         move.l  OFFSET(a6),d0
         lsr.l   #8,d0
         lea     SCREEN,a0      
         movep.w d0,0(a0)
+        
         movem.l (sp)+,d0/a0    
         unlk    a6
         rts

@@ -75,8 +75,8 @@ Vector installVector(int num, Vector vector) {
 
 void installVectors() {
 
-    /* TO DO */
-
+    vblVector = installVector(VBL_ISR, vblISR());
+    ikbdVector = installVector(IKBD_ISR, ikbdISR());
 
 }
 
@@ -108,7 +108,27 @@ void writeToIkbdBuffer(UINT8 scancode) {
 
 unsigned long readFromIkbdBuffer() {
 
+    unsigned long character;
 
+    long oldSSP = Super(0);
+
+    if (bufferHead == IKBD_BUFFER_SIZE - 1) {
+
+        bufferHead = 0;
+
+    } 
+
+    *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
+
+    character = ikbdBuffer[bufferHead];
+    character = character << 16;
+    character = character + *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
+
+    *isrbMfpRegister |= MFB_BIT_6_MASK_ON;
+
+    Super(oldSSP);
+
+    return character;
 
 }
 
