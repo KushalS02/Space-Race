@@ -56,12 +56,12 @@ void clearHorizontalLine(void *base, int x, int y, int length);
 /*
 Physbase()
 */
-UINT16 *getVideoBase();
+UINT16* getVideoBase();
 
 /*
 Setscreen()
 */
-void setVideoBase(UINT16 *base);
+void setVideoBase(UINT16* base);
 
 
 #endif

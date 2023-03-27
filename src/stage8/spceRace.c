@@ -19,15 +19,15 @@ void start() {
     /*
     void *base = Physbase();
     */
+    UINT16* base;
     long oldSSP;
     oldSSP = Super(0);
-    UINT16* base;
     base = getVideoBase();
     Super(oldSSP);
 
     disableCursor();
     clearQuick(base);
-    renderSplashscreen(base);
+    renderSplashscreen((UINT32*) base);
     menu();
 
 }
@@ -61,17 +61,18 @@ void gameLoop() {
     */
     void *screen2;
     UINT16* base;
+    UINT16 *currScreen = base;
+    UINT8 currScore = 0;
+    UINT32 prevCall;
+
     oldSSP = Super(0);
     base = getVideoBase();
-    Super(oldSSP);
 
-    UINT16 *currScreen = base;
+    Super(oldSSP);
 
     screen2 = getBase(secondBuff);
 
-    UINT8 currScore = 0;
-
-    unsigned long prevCall = getTime();
+    prevCall = getTime();
 
     gameSetup(&model, base);
     render(&model, screen2);
