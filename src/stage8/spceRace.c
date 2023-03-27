@@ -77,8 +77,7 @@ void gameLoop() {
     render(&model, screen2);
     startMusic();
 
-    while (!model.gameOver)
-    {
+    while (!model.gameOver) {
 
         processAsyncEvents(&model);
 
@@ -96,15 +95,13 @@ void gameLoop() {
 
         timeNow = getTime();
         timeElapsed = timeNow - timeThen;
-        if (timeElapsed > 0)
-        {
-            if (swapScreens)
-            {
+        
+        if (timeElapsed > 0) {
+
+            if (swapScreens){
                 currScreen = base;
                 clearGame(currScreen);
-            }
-            else
-            {
+            } else {
                 currScreen = screen2;
                 clearGame(currScreen);
             }
@@ -124,6 +121,7 @@ void gameLoop() {
 
             Vsync();
             swapScreens = !swapScreens;
+            
         }
 
     }
@@ -169,8 +167,8 @@ void processAsyncEvents(Model *model) {
 
 void processSyncEvents(Model *model) {
 
-        onAsteroidsMove(model);
-        rocketshipAsteroidCollision(model);
+    onAsteroidsMove(model);
+    rocketshipAsteroidCollision(model);
 
 }
 
