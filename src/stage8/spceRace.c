@@ -81,12 +81,12 @@ void gameLoop() {
     while (!model.gameOver) {
 
         processAsyncEvents(&model);
+        startMusic();
 
         if(updateMusic(getTime() - prevCall)) {
 
             prevCall = getTime();
-
-        }
+       }
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);
