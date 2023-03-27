@@ -16,7 +16,14 @@ int main() {
 
 void start() {
 
+    /*
     void *base = Physbase();
+    */
+    long oldSSP;
+    oldSSP = Super(0);
+    UINT16* base;
+    base = getVideoBase();
+    Super(oldSSP);
 
     disableCursor();
     clearQuick(base);
@@ -53,12 +60,12 @@ void gameLoop() {
     UINT8 *base = Physbase();
     */
     void *screen2;
-    UINT8* base;
+    UINT16* base;
     oldSSP = Super(0);
     base = getVideoBase();
     Super(oldSSP);
 
-    UINT8 *currScreen = base;
+    UINT16 *currScreen = base;
 
     screen2 = getBase(secondBuff);
 
