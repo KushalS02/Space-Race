@@ -9,5 +9,6 @@ extern UINT8 astrv2[];
 extern UINT32 chkLine[];
 extern UINT32 background[];
 extern UINT16 menuArrow[];
+extern UINT16 mousePointer[];
 
 #endif

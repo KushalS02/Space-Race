@@ -1,6 +1,3 @@
-/*
-Authours: Alexander Pham and Kushal Saini
-*/
 #ifndef TYPES_H
 #define TYPES_H
 
@@ -28,5 +25,18 @@ typedef enum {
     left, right
 
 } asteroidDirecton;
+
+typedef enum {
+
+    channelA, channelB, channelC
+
+} channelType;
+
+typedef enum {
+
+    saw, sawInv, sawPeriod, sawInvPeriod,
+    triangle, triangleInv, trianglePeriod, triangleInvPeriod
+
+} envelopeShapeType;
 
 #endif

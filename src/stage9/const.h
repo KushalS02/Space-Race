@@ -68,7 +68,7 @@ Keyboard key codes
 #define DOWN_KEY 0x50
 #define ESC_KEY 0x01
 #define ENTER_KEY 0x1C
-#define MOUSE_LEFT_CLICK 2
+#define LEFT_MOUSE_CLICK 2
 
 /*
 Other stuff
@@ -93,5 +93,10 @@ Menu stuff
 #define ARROW_2_PLAYER_Y 235
 #define ARROW_TUTORIAL_Y 277
 #define ARROW_HELP_Y 320
+
+/*
+mouse
+*/
+#define MOUSE_SIZE 16
 
 #endif

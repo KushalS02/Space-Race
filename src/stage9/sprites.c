@@ -97,3 +97,9 @@ UINT16 menuArrow[] = {
 	0x0FCF, 0xFFDF, 0xFFFF, 0xFFFF
 
 };
+
+UINT16 mousePointer[] = {
+
+
+
+};
