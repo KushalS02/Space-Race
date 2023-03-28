@@ -129,7 +129,7 @@ Vector installVector(int num, Vector vector) {
 void installVectors() {
 
     vblVector = installVector(VBL_ISR, vblISR);
-    ikbdVector = installVector(IKBD_ISR, ikbdISR);
+    /*ikbdVector = installVector(IKBD_ISR, ikbdISR);*/
 
 }
 

@@ -85,12 +85,12 @@ void gameLoop() {
     while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
 
         processAsyncEvents(&model);
-        startMusic();
+        /*startMusic();
 
         if(updateMusic(MUSIC_TIMER)) {
 
             MUSIC_TIMER = 0;
-       }
+       }*/
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);
@@ -127,7 +127,7 @@ void gameLoop() {
             
         }
         */
-        if (GAME_TIMER > 0) {
+        if (RENDER_REQUEST = true) {
 
             if (swapScreens){
 
@@ -145,12 +145,13 @@ void gameLoop() {
 
             renderAsteroids(model.asteroids, (UINT8*)currScreen);
             renderRocketship(&model.player, (UINT32*)currScreen);
+            RENDER_REQUEST = false;
 
             oldSSP = Super(0);
             setVideoBase((UINT16*)currScreen);
             Super(oldSSP);
 
-            Vsync();
+            /*Vsync();*/
             swapScreens = !swapScreens;
 
         }
@@ -161,8 +162,8 @@ void gameLoop() {
     setVideoBase((UINT16*)base);
     Super(oldSSP);
 
-    Vsync();
-    stopSound();
+    /*Vsync();
+    stopSound();*/
     
 }
 
