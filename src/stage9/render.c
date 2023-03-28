@@ -112,6 +112,6 @@ void renderGameOver(UINT32* base) {
 
 void renderMouse(UINT16* base, int x, int y) {
 
-    plotBitmap16(base, x, y, mousePointer, SPRITE_HEIGHT);
+    plotBitmap16(base, mousePointer, x, y, SPRITE_HEIGHT);
 
 }
