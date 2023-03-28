@@ -8,6 +8,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "model.h"
 #include "psg.h"
 #include "effects.h"
+#include "isr.h"
 
 /*
 * Function: rocketshipMove

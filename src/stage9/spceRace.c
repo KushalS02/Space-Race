@@ -15,8 +15,9 @@ extern bool KEY_REPEATED;
 
 int main() {
 
+    installVectors();    
     start();
-
+    removeVectors();
     return 0;
 
 }
@@ -60,7 +61,6 @@ UINT8 *getBase(UINT8 *secondBuffer) {
 void gameLoop() {
     
     long oldSSP;
-    unsigned long timeThen, timeNow, timeElapsed;
     Model model;
     bool swapScreens = false;
     void *screen2;
@@ -76,13 +76,13 @@ void gameLoop() {
 
     screen2 = getBase(secondBuff);
 
-    prevCall = getTime();
+    /*prevCall = getTime();*/
 
     gameSetup(&model, base);
     render(&model, screen2);
     startMusic();
 
-    while (!model.gameOver || model.scorebox.score >= MAX_SCORE) {
+    while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
 
         processAsyncEvents(&model);
         startMusic();
@@ -98,10 +98,10 @@ void gameLoop() {
             currScore = model.scorebox.score;
         }
 
-        timeNow = getTime();
+        /*timeNow = getTime();
         timeElapsed = timeNow - timeThen;
         
-        /*
+        
         if (timeElapsed > 0) {
 
             if (swapScreens){
@@ -141,7 +141,6 @@ void gameLoop() {
                 
             }
 
-            timeThen = timeNow;
             processSyncEvents(&model);
 
             renderAsteroids(model.asteroids, (UINT8*)currScreen);
@@ -213,7 +212,7 @@ void gameSetup(Model* model, void *base) {
 
 }
 
-long getTime() {
+/*long getTime() {
 
     long* timer = (long*) SYSTEM_CLOCK;
     
@@ -225,4 +224,4 @@ long getTime() {
 
     return timeNow;
 
-}
+}*/

@@ -17,6 +17,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "psg.h"
 #include "effects.h"
 #include "music.h"
+#include "isr.h"
 
 /*
 
@@ -77,9 +78,9 @@ Name: getTime
 
 Purpose: get the time of the system
 
-*/
-long getTime();
 
+long getTime();
+*/
 /*
 
 Name getBase
