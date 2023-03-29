@@ -57,3 +57,7 @@ ikbd.o: ikbd.s ikbd.h
 
 vbl.o: vbl.s vbl.h
 	gen -D -L2 vbl.s
+
+clean:
+	!Rm *.o
+	!Rm spcerace

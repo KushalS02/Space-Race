@@ -145,11 +145,11 @@ void gameLoop() {
 
             renderAsteroids(model.asteroids, (UINT8*)currScreen);
             renderRocketship(&model.player, (UINT32*)currScreen);
-            RENDER_REQUEST = false;
 
             oldSSP = Super(0);
             setVideoBase((UINT16*)currScreen);
             Super(oldSSP);
+            RENDER_REQUEST = false;
 
             /*Vsync();*/
             swapScreens = !swapScreens;

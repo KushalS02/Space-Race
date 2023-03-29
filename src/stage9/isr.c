@@ -136,7 +136,7 @@ void installVectors() {
 void removeVectors() {
 
     installVector(VBL_ISR, vblVector);
-    installVector(IKBD_ISR, ikbdVector); 
+    /*installVector(IKBD_ISR, ikbdVector); */
 
 }
 
