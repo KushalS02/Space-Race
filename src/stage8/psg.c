@@ -94,82 +94,74 @@ void setVolume(channelType channel, int volume) {
 
 void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
 
-    int existingMixerVal = readPSG(MIXER_REG);
-    int channelVal;
-    bool toneOnly = toneOn && !noiseOn;
-    bool noiseOnly = !toneOn && noiseOn;
-    bool toneAndNoise = toneOn && noiseOn;
+    int mixerVal = readPSG(MIXER_REG);
+    int toneMask, noiseMask;
 
     switch (channel) {
 
         case channelA:
 
-            if (toneOnly) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_TONE_CHANNEL_A : MIXER_TONE_CHANNEL_A;
-
-            } else if (noiseOnly) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_NOISE_CHANNEL_A : MIXER_NOISE_CHANNEL_A;
-
-            } else if (toneAndNoise) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & (MIXER_TONE_CHANNEL_A & MIXER_NOISE_CHANNEL_A) : (MIXER_TONE_CHANNEL_A & MIXER_NOISE_CHANNEL_A);
-
-            }
+            toneMask = MIXER_TONE_CHANNEL_A;
+            noiseMask = MIXER_NOISE_CHANNEL_A;
 
             break;
 
         case channelB:
 
-            if (toneOnly) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_TONE_CHANNEL_B : MIXER_TONE_CHANNEL_B;
-
-            } else if (noiseOnly) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_NOISE_CHANNEL_B : MIXER_NOISE_CHANNEL_B;
-
-            } else if (toneAndNoise) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & (MIXER_TONE_CHANNEL_B & MIXER_NOISE_CHANNEL_B) : (MIXER_TONE_CHANNEL_B & MIXER_NOISE_CHANNEL_B);
-
-            }
+            toneMask = MIXER_TONE_CHANNEL_B;
+            noiseMask = MIXER_NOISE_CHANNEL_B;
 
             break;
 
         case channelC:
 
-            if (toneOnly) {
+            toneMask = MIXER_TONE_CHANNEL_C;
+            noiseMask = MIXER_NOISE_CHANNEL_C;
 
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_TONE_CHANNEL_C : MIXER_TONE_CHANNEL_C;
+            break;
 
-            } else if (noiseOnly) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & MIXER_NOISE_CHANNEL_C : MIXER_NOISE_CHANNEL_C;
-
-            } else if (toneAndNoise) {
-
-                channelVal = existingMixerVal != -1 ? 
-                    existingMixerVal & (MIXER_TONE_CHANNEL_C & MIXER_NOISE_CHANNEL_C) : (MIXER_TONE_CHANNEL_C & MIXER_NOISE_CHANNEL_C);
-
-            }
-
+        default:
+            
             break;
 
     }
 
-    writePSG(MIXER_REG, channelVal);
+    
+    if (!toneOn && !noiseOn) {
+        
+        /*
+        Disable both tone and noise
+        */
+        mixerVal &= ~(toneMask | noiseMask);
 
-}
+    } else if (toneOn && !noiseOn) {
+        
+        /*
+        enable tone only
+        */
+        mixerVal |= toneMask;
+        mixerVal &= ~noiseMask;
+
+    } else if (!toneOn && noiseOn) {
+        
+        /*
+        enable noise only
+        */
+        mixerVal |= noiseMask;
+        mixerVal &= ~toneMask;
+
+    } else {
+        
+        /*
+        enable both tone and noise
+        */
+        mixerVal |= toneMask | noiseMask;
+
+    }
+
+    writePSG(MIXER_REG, mixerVal);
+
+}  
 
 void stopSound() {
 
