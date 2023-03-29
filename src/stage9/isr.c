@@ -76,31 +76,45 @@ void ikbdReq() {
 
         /* Process scancode based on mouse state */
         switch (mouseState) {
+
             case MOUSE_STATE_FIRST_PACKET:
+
                 if (scancode >= MOVE_MOUSE_CODE) {
+
                     /* Scancode represents a mouse movement or button press */
                     MOUSE_BUTTON = scancode;
                     mouseState = MOUSE_STATE_DELTA_X;
                     MOUSE_MOVED = (scancode == MOVE_MOUSE_CODE);
+
                 } else if (!(scancode & 0x80)) {
+
                     /* Scancode represents a key press */
                     writeToIkbdBuffer(scancode);
                     KEY_REPEATED = true;
+
                 } else {
+
                     /* Scancode represents a key release */
                     KEY_REPEATED = false;
+
                 }
+
                 break;
+
             case MOUSE_STATE_DELTA_X:
+
                 /* Store scancode as X delta */
                 MOUSE_DELTA_X = scancode;
                 mouseState = MOUSE_STATE_DELTA_Y;
                 break;
+
             case MOUSE_STATE_DELTA_Y:
+
                 /* Store scancode as Y delta */
                 MOUSE_DELTA_Y = scancode;
                 mouseState = MOUSE_STATE_FIRST_PACKET;
                 break;
+
         }
 
         /* Clear bit 6 of ISRB MFP register */
@@ -160,30 +174,26 @@ void writeToIkbdBuffer(UINT8 scancode) {
 }
 
 unsigned long readFromIkbdBuffer() {
-
+    
     unsigned long character;
-
     long oldSSP = Super(0);
 
-    if (bufferHead == IKBD_BUFFER_SIZE - 1) {
-
+    bufferHead++;
+    if (bufferHead >= IKBD_BUFFER_SIZE) {
         bufferHead = 0;
+    }
 
-    } 
+    *isrbMfpRegister &= ~(1 << 6);
 
-    *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
+    character = (ikbdBuffer[bufferHead] << 16) + ASCII_TABLE[ikbdBuffer[bufferHead]];
 
-    character = ikbdBuffer[bufferHead];
-    character = character << 16;
-    character = character + *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
-
-    *isrbMfpRegister |= MFB_BIT_6_MASK_ON;
+    *isrbMfpRegister |= (1 << 6);
 
     Super(oldSSP);
 
     return character;
-
 }
+
 
 void clearIkbdBuffer() {
 
