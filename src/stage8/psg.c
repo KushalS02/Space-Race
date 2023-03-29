@@ -42,25 +42,15 @@ int readPSG(int reg) {
 
 void setTone(channelType channel, int tuning) {
 
-    switch (channel) {
-        
-        case channelA:
+    const UINT8 channelToneRegisters[] = {
+        CHANNEL_A_TONE,
+        CHANNEL_B_TONE,
+        CHANNEL_C_TONE
+    };
+    
+    if (channel >= channelA && channel <= channelC) {
 
-            writePSG(CHANNEL_A_TONE, tuning);
-
-            break;
-
-        case channelB:
-
-            writePSG(CHANNEL_B_TONE, tuning);
-
-            break;
-
-        case channelC:
-
-            writePSG(CHANNEL_C_TONE, tuning);
-
-            break;
+        writePSG(channelToneRegisters[channel], (UINT8)tuning);
 
     }
 
@@ -68,28 +58,17 @@ void setTone(channelType channel, int tuning) {
 
 void setVolume(channelType channel, int volume) {
 
-    switch (channel) {
+    const UINT8 channelVolRegisters[] = {
+        CHANNEL_A_VOL,
+        CHANNEL_B_VOL,
+        CHANNEL_C_VOL
+    };
+    
+    if (channel >= channelA && channel <= channelC) {
 
-        case channelA:
-
-            writePSG(CHANNEL_A_VOL, volume);
-
-            break;
-        
-        case channelB:
-
-            writePSG(CHANNEL_B_VOL, volume);
-
-            break;
-
-        case channelC:
-
-            writePSG(CHANNEL_C_VOL, volume);
-
-            break;
+        writePSG(channelVolRegisters[channel], (UINT8)volume);
 
     }
-
 }
 
 void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
@@ -165,21 +144,21 @@ void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
 
 void stopSound() {
 
-    writePSG(MIXER_REG, 0x00);
+    channelType channel;
 
-    writePSG(NOISE_FREQUENCY_REG, 0x00);
+    const UINT8 stopValue = 0x00;
+    
+    writePSG(MIXER_REG, stopValue);
+    writePSG(NOISE_FREQUENCY_REG, stopValue);
+    writePSG(ENVELOPE_FINE_REG, stopValue);
+    writePSG(ENVELOPE_ROUGH_REG, stopValue);
+    writePSG(ENVELOPE_SHAPE_CONTROL_REG, stopValue);
+    
+    for (channel = channelA; channel <= channelC; channel++) {
 
-    writePSG(ENVELOPE_FINE_REG, 0x00);
+        setVolume(channel, 0);
 
-    writePSG(ENVELOPE_ROUGH_REG, 0x00);
-
-    writePSG(ENVELOPE_SHAPE_CONTROL_REG, 0x00);
-
-    setVolume(channelA, 0);
-
-    setVolume(channelB, 0);
-
-    setVolume(channelC, 0);
+    }
 
 }
 
