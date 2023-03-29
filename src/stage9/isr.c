@@ -64,52 +64,52 @@ void vblReq() {
 
 void ikbdReq() {
 
-    UINT8 scancode;
+    UINT8 scancode = 0;
+    UINT8 status = *ikbdStatus;
 
+    /* Request data from IKBD controller */
     *ikbdControl = 0x16;
 
-    if (*ikbdStatus & 0x1) {
-
+    if (status & 0x1) {
+        /* Read scancode */
         scancode = *ikbdReader;
 
-        if (mouseState == MOUSE_STATE_FIRST_PACKET) {
-
-            if (scancode >= MOVE_MOUSE_CODE) {
-
-                MOUSE_BUTTON = scancode;
-                mouseState = MOUSE_STATE_DELTA_X;
-                MOUSE_MOVED = scancode == MOVE_MOUSE_CODE;
-
-            } else if ((scancode & 0x80) == 0x00) {
-
-                writeToIkbdBuffer(scancode);
-                KEY_REPEATED = true;
-
-            } else if ((scancode & 0x80) == 0x80) {
-
-                KEY_REPEATED = false;
-
-            } 
-            
-            } else if (mouseState == MOUSE_STATE_DELTA_X) {
-
-                mouseState = MOUSE_STATE_DELTA_Y;
+        /* Process scancode based on mouse state */
+        switch (mouseState) {
+            case MOUSE_STATE_FIRST_PACKET:
+                if (scancode >= MOVE_MOUSE_CODE) {
+                    /* Scancode represents a mouse movement or button press */
+                    MOUSE_BUTTON = scancode;
+                    mouseState = MOUSE_STATE_DELTA_X;
+                    MOUSE_MOVED = (scancode == MOVE_MOUSE_CODE);
+                } else if (!(scancode & 0x80)) {
+                    /* Scancode represents a key press */
+                    writeToIkbdBuffer(scancode);
+                    KEY_REPEATED = true;
+                } else {
+                    /* Scancode represents a key release */
+                    KEY_REPEATED = false;
+                }
+                break;
+            case MOUSE_STATE_DELTA_X:
+                /* Store scancode as X delta */
                 MOUSE_DELTA_X = scancode;
-
-            } else if (mouseState == MOUSE_STATE_DELTA_Y) {
-
-                mouseState = MOUSE_STATE_FIRST_PACKET;
+                mouseState = MOUSE_STATE_DELTA_Y;
+                break;
+            case MOUSE_STATE_DELTA_Y:
+                /* Store scancode as Y delta */
                 MOUSE_DELTA_Y = scancode;
+                mouseState = MOUSE_STATE_FIRST_PACKET;
+                break;
+        }
 
-            }
-
-        *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
-
+        /* Clear bit 6 of ISRB MFP register */
+        *isrbMfpRegister &= ~(1 << 6);
     }
 
     *ikbdControl = 0x96;
-
 }
+
 
 Vector installVector(int num, Vector vector) {
 
