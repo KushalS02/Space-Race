@@ -43,6 +43,7 @@ Asteroids Constants
 #define ASTEROID_BOX_SIZE 16 /* ACTUAL SIZE OF THE ASTEROID NOT HITBOX*/
 #define ASTEROID_SPACING 8
 #define ASTEROID_MAX_Y CHKLINE_HEIGHT + 4
+
 /*
 Scorebox Position
 */

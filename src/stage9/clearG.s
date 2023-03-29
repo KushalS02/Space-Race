@@ -1,4 +1,6 @@
-                xdef        _clearGame
+; Authours: Alexander Pham and Kushal Saini
+				
+				xdef        _clearGame
 
 base	        equ         64
 

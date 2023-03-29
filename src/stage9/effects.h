@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef EFFECTS_H
 #define EFFECTS_H
 
@@ -5,7 +8,13 @@
 #include "TYPES.H"
 
 /*
-Functions for effects 
+    Function: collisionEffect
+
+    Purpose: when an asteroid and the player's rocketship collide, 
+             an "crash" effect will be played 
+        
+    Details: sets the noise tone along with the channel being used, 
+             volume and the envelope
 */
 void collisionEffect();
 

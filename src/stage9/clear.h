@@ -8,7 +8,8 @@ Authours: Alexander Pham and Kushal Saini
 
 Name: clearG
 
-Purpose: clear the entire screen
+Purpose: clears everything on the screen except the 
+         checkered line and score box
 
 Input: void base* - the screen to be cleared
 

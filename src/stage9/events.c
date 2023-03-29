@@ -39,8 +39,7 @@ void rocketshipHitBoundary(Rocketship* rocketship) {
 
 }
 
-bool rocketshipHitFinish(Rocketship* rocketship)
-{
+bool rocketshipHitFinish(Rocketship* rocketship) {
     if (rocketship->hitbox.topLeftY <= CHKLINE_HEIGHT) {
 
         return true;
@@ -50,6 +49,7 @@ bool rocketshipHitFinish(Rocketship* rocketship)
         return false;
 
     }
+
 }
 
 void asteroidsHitBoundary(Asteroid* asteroids) {
