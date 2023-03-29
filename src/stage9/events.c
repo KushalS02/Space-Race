@@ -119,14 +119,12 @@ void onGameOver(Model* model) {
 
 bool hasUserInput() {
 
-    /*return ikbdIsWaiting();*/
-    return Cconis();
-
+    return ikbdIsWaiting();
+    
 }
 
 unsigned long getUserInput() {
 
-    /*return readFromIkbdBuffer()*/;
-    return Cnecin() >> 16;
+    return readFromIkbdBuffer();
 
 }

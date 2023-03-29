@@ -65,10 +65,10 @@ Score Stuff
 /*
 Keyboard key codes
 */
-#define UP_KEY 0x48
-#define DOWN_KEY 0x50
-#define ESC_KEY 0x01
-#define ENTER_KEY 0x1C
+#define ESC_KEY 0x0001001b
+#define UP_KEY 0x00480000
+#define DOWN_KEY 0x00500000
+#define ENTER_KEY 0x001C000D
 #define LEFT_MOUSE_CLICK 2
 
 /*
