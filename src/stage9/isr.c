@@ -65,12 +65,11 @@ void vblReq() {
 void ikbdReq() {
 
     UINT8 scancode = 0;
-    UINT8 status = *ikbdStatus;
 
     /* Request data from IKBD controller */
     *ikbdControl = 0x16;
 
-    if (status & 0x1) {
+    if (*ikbdStatus & 0x1) {
         /* Read scancode */
         scancode = *ikbdReader;
 
@@ -92,7 +91,7 @@ void ikbdReq() {
                     writeToIkbdBuffer(scancode);
                     KEY_REPEATED = true;
 
-                } else {
+                } else if ((scancode & 0x80) == 0x80){
 
                     /* Scancode represents a key release */
                     KEY_REPEATED = false;
@@ -118,7 +117,7 @@ void ikbdReq() {
         }
 
         /* Clear bit 6 of ISRB MFP register */
-        *isrbMfpRegister = MFB_BIT_6_MASK_OFF;
+        *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
     }
 
     *ikbdControl = 0x96;
@@ -185,7 +184,9 @@ unsigned long readFromIkbdBuffer() {
 
     *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
 
-    character = (ikbdBuffer[bufferHead] << 16) + *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
+    character = ikbdBuffer[bufferHead];
+    character <<= 16;
+    character += *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
 
     *isrbMfpRegister |= MFB_BIT_6_MASK_ON;
 
