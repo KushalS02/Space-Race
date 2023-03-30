@@ -49,7 +49,7 @@ IKBD buffer stuff
 extern UINT8 ikbdBuffer[IKBD_BUFFER_SIZE];
 extern unsigned int bufferHead;
 extern unsigned int bufferTail;
-extern UINT8 repeatedKey;
+extern unsigned long repeatedKey;
 
 /*
 vectors

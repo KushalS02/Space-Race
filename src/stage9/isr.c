@@ -31,7 +31,7 @@ buffer
 UINT8 ikbdBuffer[IKBD_BUFFER_SIZE];
 unsigned int bufferHead = 0;
 unsigned int bufferTail = 0;
-UINT8 repeatedKey = 0;
+unsigned long repeatedKey;
 
 /*
 mouse
@@ -51,15 +51,10 @@ int PREV_MOUSE_Y = 0;
 
 
 void vblReq() {
-
     MUSIC_TIMER++;
-    KEY_REPEAT_TICKS++;
-    GAME_TIMER++;
-    ASTEROIDS_TIMER++;
 
     RENDER_REQUEST = true;
     RENDER_MOUSE_REQUEST = true;
-
 }
 
 void ikbdReq() {
@@ -178,7 +173,7 @@ unsigned long readFromIkbdBuffer() {
     long oldSSP = Super(0);
     
 
-    if (bufferHead == IKBD_BUFFER_SIZE-1) {
+    if (bufferHead >= IKBD_BUFFER_SIZE-1) {
         bufferHead = 0;
     }
 
@@ -187,6 +182,7 @@ unsigned long readFromIkbdBuffer() {
     character = ikbdBuffer[bufferHead];
     character <<= 16;
     character += *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
+    repeatedKey = character;
 
     *isrbMfpRegister |= MFB_BIT_6_MASK_ON;
 

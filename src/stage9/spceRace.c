@@ -85,12 +85,11 @@ void gameLoop() {
     while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
 
         processAsyncEvents(&model);
-        /*startMusic();
 
         if(updateMusic(MUSIC_TIMER)) {
 
             MUSIC_TIMER = 0;
-       }*/
+       }
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);
@@ -120,9 +119,27 @@ void gameLoop() {
             oldSSP = Super(0);
             setVideoBase((UINT16*)currScreen);
             Super(oldSSP);
-            RENDER_REQUEST = false;
 
-            /*Vsync();*/
+           /*
+           processSyncEvents(&model);
+           if (swapScreens) {
+            clearGame(base);
+            renderAsteroids(model.asteroids, (UINT8*)base);
+            renderRocketship(&model.player, (UINT32*)base);
+            oldSSP = Super(0);
+            setVideoBase((UINT16*)base);
+            Super(oldSSP);
+           } else {
+            clearGame(screen2);
+            renderAsteroids(model.asteroids, (UINT8*)screen2);
+            renderRocketship(&model.player, (UINT32*)screen2);
+            oldSSP = Super(0);
+            setVideoBase((UINT16*)screen2);
+            Super(oldSSP);
+           }
+           */
+
+            RENDER_REQUEST = false;
             swapScreens = !swapScreens;
 
         }
@@ -133,8 +150,7 @@ void gameLoop() {
     setVideoBase((UINT16*)base);
     Super(oldSSP);
 
-    /*Vsync();
-    stopSound();*/
+    stopSound();
     
 }
 
@@ -142,11 +158,16 @@ void processAsyncEvents(Model *model) {
 
     unsigned long input;
 
-    if(hasUserInput()) {
+    if(hasUserInput() || KEY_REPEATED == true) {
 
         rocketshipHitBoundary(&model->player);
 
-        input = getUserInput();
+        if (hasUserInput()) 
+        { 
+            input = getUserInput();
+        } else {
+            input = repeatedKey;
+        }
 
         rocketshipMove(&model->player, input);
 
