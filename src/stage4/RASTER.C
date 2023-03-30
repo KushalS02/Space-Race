@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "raster.h"
 #include "const.h"
 #include "font.h"
@@ -48,6 +51,7 @@ void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 
 }
 
+/* need to add wrapping to other side*/
 void plotBitmap8(UINT8* base, UINT8* bitmap, int x, int y, int height) {
 
 int i;

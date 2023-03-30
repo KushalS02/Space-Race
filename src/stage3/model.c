@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "model.h"
 #include "TYPES.H"
 #include <stdlib.h>
@@ -73,28 +76,29 @@ void moveAsteroids(Asteroid *asteroids)
     }
 }
 
-    void initializeAsteroids(Asteroid * asteroids)
-    {
+void initializeAsteroids(Asteroid * asteroids) {
 
-        UINT8 currAsteroid; /*array index*/
-        UINT16 currXPos;
-        UINT16 currYPos;
+    UINT8 currAsteroid; /*array index*/
+    UINT16 currXPos;
+    UINT16 currYPos;
 
-        /* Every other asteroid moves left */
-        for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
-        {
-            asteroids[currAsteroid].direction = left;
-        }
+    /* Every other asteroid moves left */
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
 
-        /* Every other asteroid moves right */
-        for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid += 2)
-        {
+        asteroids[currAsteroid].direction = left;
+
+    }
+
+    /* Every other asteroid moves right */
+    for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
+
             asteroids[currAsteroid].direction = right;
-        }
 
-        /* Initializes starting positions */
-        for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++)
-        {
+    }
+
+    /* Initializes starting positions */
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
+
             currYPos = currAsteroid * ASTRV2_HEIGHT + CHKLINE_HEIGHT;
             currXPos = (rand() % HEIGHT_BYTES) * 16; /*40 possible starting postions (Byte 0 to 39)*/
             asteroids[currAsteroid].hitbox.topLeftY = currYPos;
@@ -103,93 +107,100 @@ void moveAsteroids(Asteroid *asteroids)
             asteroids[currAsteroid].hitbox.bottomRightX = currXPos + ASTRV2_WIDTH;
             asteroids[currAsteroid].hitBoundary = false;
             asteroids[currAsteroid].deltaX = ASTEROID_SPEED;
+
         }
-    }
 
-    /*
-    Score Functions
-    */
-    void initializeScore(Scorebox * scorebox)
-    {
+}
 
-        scorebox->score = 0;
-        scorebox->x = SCOREBOX_X;
-        scorebox->y = SCOREBOX_Y;
-    }
+/*
+Score Functions
+*/
+void initializeScore(Scorebox * scorebox) {
 
-    void updateScore(Scorebox * scorebox, int playerScore)
-    {
+    scorebox->score = 0;
+    scorebox->x = SCOREBOX_X;
+    scorebox->y = SCOREBOX_Y;
 
-        scorebox->score += playerScore;
+}
 
-        if (scorebox->score > MAX_SCORE)
-        {
+void updateScore(Scorebox * scorebox, int playerScore) {
+
+    scorebox->score += playerScore;
+
+    if (scorebox->score > MAX_SCORE) {
+
             scorebox->score == MAX_SCORE;
-        }
-    }
-
-    void initializeHighscore(HighscoreBox * highscoreBox)
-    {
-
-        highscoreBox->highscore = 0;
-        highscoreBox->x = HIGHSCOREBOX_X;
-        highscoreBox->y = HIGHSCOREBOX_Y;
-    }
-
-    void updateHighscore(HighscoreBox * highscoreBox, int score)
-    {
-
-        if(score > highscoreBox->highscore) {
-            highscoreBox->highscore = score;
-        }
 
     }
 
-    void initializeNextRound(Rocketship * rocketship, Asteroid * asteroids, Scorebox * scorebox, HighscoreBox* highscoreBox)
-    {
-        initializeRocketship(rocketship);
-        initializeAsteroids(asteroids);
-        updateHighscore(highscoreBox, scorebox->score);
-        initializeScore(scorebox);
+}
+
+void initializeHighscore(HighscoreBox * highscoreBox) {
+
+    highscoreBox->highscore = 0;
+    highscoreBox->x = HIGHSCOREBOX_X;
+    highscoreBox->y = HIGHSCOREBOX_Y;
+
+}
+
+void updateHighscore(HighscoreBox * highscoreBox, int score) {
+
+    if(score > highscoreBox->highscore) {
+
+        highscoreBox->highscore = score;
+        
     }
 
-    /*
-    Model Functions
-    */
-    void initializeModel(Model * model)
-    {
+}
 
-        model->playing = true;
-        model->gameOver = false;
-        initializeRocketship(&model->player);
-        initializeAsteroids(model->asteroids);
-        initializeScore(&model->scorebox);
-        initializeHighscore(&model->highscorebox);
-    }
+void initializeNextRound(Rocketship * rocketship, Asteroid * asteroids, Scorebox * scorebox, HighscoreBox* highscoreBox) {
 
-    void pauseGame(Model * model)
-    {
+    initializeRocketship(rocketship);
+    initializeAsteroids(asteroids);
+    updateHighscore(highscoreBox, scorebox->score);
+    initializeScore(scorebox);
 
-        model->playing = false;
-    }
+}
 
-    void resumeGame(Model * model)
-    {
+/*
+Model Functions
+*/
+void initializeModel(Model * model)
+{
 
-        model->playing = true;
-    }
+    model->playing = true;
+    model->gameOver = false;
+    initializeRocketship(&model->player);
+    initializeAsteroids(model->asteroids);
+    initializeScore(&model->scorebox);
+    initializeHighscore(&model->highscorebox);
 
-    void gameOver(Model * model)
-    {
+}
 
-        model->gameOver = true;
-        model->playing = false;
-    }
+void pauseGame(Model * model) {
 
-    bool hitboxCollision(Hitbox hb1, Hitbox hb2)
-    {
+    model->playing = false;
+
+}
+
+void resumeGame(Model * model) {
+
+    model->playing = true;
+
+}
+
+void gameOver(Model * model) {
+
+    model->gameOver = true;
+    model->playing = false;
+
+}
+
+bool hitboxCollision(Hitbox hb1, Hitbox hb2) {
+
         return hb1.topLeftX < hb2.bottomRightX &&
                hb1.bottomRightX > hb2.topLeftX &&
                hb1.topLeftY < hb2.bottomRightY &&
                hb1.bottomRightY > hb2.topLeftY;
-    }
+
+}

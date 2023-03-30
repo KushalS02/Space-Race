@@ -1,4 +1,9 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "raster.h"
+#include "const.h"
+#include "font.h"
 
 void plotPixel(UINT8* base, int x, int y) {
 
@@ -41,11 +46,12 @@ void plotHorizontalLine(UINT8* base, int x, int y, int length) {
 
 	for (i = 0; i < counter; i++){
 
-		*(drawLine++) |= 0xff;
+		*(drawLine++) ^= 0xff;
 	}
 
 }
 
+/* need to add wrapping to other side*/
 void plotBitmap8(UINT8* base, UINT8* bitmap, int x, int y, int height) {
 
 int i;
@@ -54,7 +60,7 @@ UINT8 *plotLocation = base + (y * 80) + (x >> 3);
 
 	for (i = 0; i < height; i++) {
 
-		*plotLocation &= ~*(bitmap++);
+		*plotLocation ^= *(bitmap++);
 
 		plotLocation += 80;
 
@@ -84,7 +90,7 @@ void plotBitmap32(UINT32* base, UINT32* bitmap, int x, int y, int height) {
 	UINT32 *plotLocation = base + (y * 20) + (x >> 5);
 
 	for (i = 0; i < height; i++) {
-		*plotLocation &= ~*(bitmap++);
+		*plotLocation ^= *(bitmap++);
 		plotLocation += 20;
 	}
 }
@@ -157,7 +163,7 @@ void clearHorizontalLine32(UINT32* base, int x, int y, int length) {
 
 	for(i = 0; i < counter; i++) {
 
-		*(clearLine) |= 0xffffffff;
+		*(clearLine) = 0xffffffff;
 		
 	}
 }

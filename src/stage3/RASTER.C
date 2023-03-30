@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "raster.h"
 #include "const.h"
 #include "font.h"
