@@ -98,35 +98,6 @@ void gameLoop() {
             currScore = model.scorebox.score;
         }
 
-        /*timeNow = getTime();
-        timeElapsed = timeNow - timeThen;
-        
-        
-        if (timeElapsed > 0) {
-
-            if (swapScreens){
-                currScreen = base;
-                clearGame(currScreen);
-            } else {
-                currScreen = screen2;
-                clearGame(currScreen);
-            }
-
-            timeThen = timeNow;
-            processSyncEvents(&model);
-
-            renderAsteroids(model.asteroids, (UINT8*)currScreen);
-            renderRocketship(&model.player, (UINT32*)currScreen);
-
-            oldSSP = Super(0);
-            setVideoBase((UINT16*)currScreen);
-            Super(oldSSP);
-
-            Vsync();
-            swapScreens = !swapScreens;
-            
-        }
-        */
         if (RENDER_REQUEST = true) {
 
             if (swapScreens){

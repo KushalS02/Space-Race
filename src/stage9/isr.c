@@ -86,7 +86,7 @@ void ikbdReq() {
                     mouseState = MOUSE_STATE_DELTA_X;
                     MOUSE_MOVED = (scancode == MOVE_MOUSE_CODE);
 
-                } else if (!(scancode & 0x80)) {
+                } else if ((scancode & 0x80) == 0x00) {
 
                     /* Scancode represents a key press */
                     writeToIkbdBuffer(scancode);
@@ -118,7 +118,7 @@ void ikbdReq() {
         }
 
         /* Clear bit 6 of ISRB MFP register */
-        *isrbMfpRegister &= ~(1 << 6);
+        *isrbMfpRegister = MFB_BIT_6_MASK_OFF;
     }
 
     *ikbdControl = 0x96;
@@ -177,17 +177,17 @@ unsigned long readFromIkbdBuffer() {
     
     unsigned long character;
     long oldSSP = Super(0);
+    
 
-    bufferHead++;
-    if (bufferHead >= IKBD_BUFFER_SIZE) {
+    if (bufferHead == IKBD_BUFFER_SIZE-1) {
         bufferHead = 0;
     }
 
-    *isrbMfpRegister &= ~(1 << 6);
+    *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
 
-    character = (ikbdBuffer[bufferHead] << 16) + ASCII_TABLE[ikbdBuffer[bufferHead]];
+    character = (ikbdBuffer[bufferHead] << 16) + *(ASCII_TABLE + ikbdBuffer[bufferHead++]);
 
-    *isrbMfpRegister |= (1 << 6);
+    *isrbMfpRegister |= MFB_BIT_6_MASK_ON;
 
     Super(oldSSP);
 
