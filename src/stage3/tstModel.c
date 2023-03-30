@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include <osbind.h>
 #include <stdlib.h>
 #include "const.h"

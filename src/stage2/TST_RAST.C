@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include <osbind.h>
 #include "raster.h"
 #include "sprites.h"

@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef CONST_H
 #define CONST_H
 
@@ -41,11 +44,5 @@ Highscore box Position
 */
 #define HIGHSCOREBOX_X 518
 #define HIGHSCOREBOX_Y 0
-
-/*
-Keyboard key codes
-*/
-#define UP_KEY 0x00480000
-#define DOWN_KEY 0x00500000
 
 #endif
