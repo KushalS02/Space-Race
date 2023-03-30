@@ -203,4 +203,8 @@ DOCUMENT
 */
 void renderMouse(UINT16* base, int x, int y);
 
+void saveMouseBackground(UINT16* base, int x, int y);
+
+void restoreMouseBackground(UINT16* base, int x, int y);
+
 #endif 

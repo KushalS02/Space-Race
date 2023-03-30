@@ -128,3 +128,9 @@ unsigned long getUserInput() {
     return readFromIkbdBuffer();
 
 }
+
+bool hasMouseInput() {
+
+    return ikbdMouseMoved();
+
+}

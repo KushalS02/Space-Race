@@ -268,3 +268,9 @@ void updateMouseEvents(UINT16* base) {
     }
 
 }
+
+bool ikbdMouseMoved() {
+
+    return MOUSE_MOVED;
+
+}

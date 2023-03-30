@@ -101,4 +101,6 @@ void initializeMouse(UINT16* base);
 
 void updateMouseEvents(UINT16* base);
 
+bool ikbdMouseMoved();
+
 #endif

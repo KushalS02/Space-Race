@@ -22,6 +22,7 @@ Menu options
 #define INVALID_CHOICE -1
 
 extern bool VALID_CLICK;
+extern int MENU_STATE;
 
 /*
 Menu functions 

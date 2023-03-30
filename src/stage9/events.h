@@ -100,4 +100,6 @@ bool hasUserInput();
 */
 unsigned long getUserInput();
 
+bool hasMouseInput();
+
 #endif
