@@ -65,4 +65,11 @@ Other stuff
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
 
+/*
+Keyboard key codes
+*/
+#define UP_KEY 0x48
+#define DOWN_KEY 0x50
+#define ESC_KEY 0x01
+
 #endif

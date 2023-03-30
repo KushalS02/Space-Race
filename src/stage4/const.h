@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef CONST_H
 #define CONST_H
 
@@ -59,19 +62,14 @@ Score Stuff
 /*
 Keyboard key codes
 */
-#define UP_KEY 0x00480000
-#define DOWN_KEY 0x00500000
+#define UP_KEY 0x48
+#define DOWN_KEY 0x50
+#define ESC_KEY 0x01
 
 /*
 Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
-
-/*
-System stuff
-*/
-#define SYSTEM_CLOCK 0x462
-#define SCREEN_BUFFER_SIZE 32256
 
 #endif
