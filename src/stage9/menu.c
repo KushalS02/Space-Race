@@ -16,9 +16,16 @@ void processMenuChoice() {
     
     int prevChoice = userChoice;
 
+    int mouseChoice, prevMouseChoice;
+
+    UINT16* base = getVideoBase();
+    initializeMouse(base);
+
     drawChoiceSelector(userChoice);
 
     while (input != ESC_KEY && input != ENTER_KEY) {
+
+        updateMouseEvents(base);
 
         if (hasUserInput()) {
 

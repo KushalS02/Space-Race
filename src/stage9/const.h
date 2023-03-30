@@ -69,7 +69,7 @@ Keyboard key codes
 #define UP_KEY 0x00480000
 #define DOWN_KEY 0x00500000
 #define ENTER_KEY 0x001C000D
-#define LEFT_MOUSE_CLICK 2
+#define LEFT_MOUSE_CLICK_CODE 2
 
 /*
 Other stuff

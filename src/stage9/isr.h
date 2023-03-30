@@ -94,4 +94,11 @@ unsigned long readFromIkbdBuffer();
 
 void clearIkbdBuffer();
 
+/*
+mouse
+*/
+void initializeMouse(UINT16* base);
+
+void updateMouseEvents(UINT16* base);
+
 #endif
