@@ -103,10 +103,10 @@ void renderSplashscreen(UINT32* base) {
 
 }
 
-void renderGameOver(UINT32* base) {
+void renderGameOver(void* base) {
 
-    printString((UINT8*)base, 284, 200, "GAME OVER");
-    printString((UINT8*) base, 212, 216, "PRESS ANY KEY TO CONTINUE");
+    plotScreen((UINT32*)base, endGameScreen);
+    printNumber((UINT8*)base, END_GAME_SCORE_X, END_GAME_SCORE_X, model->scorebox.score);
 
 }
 

@@ -1,6 +1,5 @@
         xdef    _getVideoBase
         xdef    _setVideoBase
-
 SCREEN	equ 	$FFFF8201
 OFFSET 	equ 	8   
 
@@ -27,4 +26,5 @@ _setVideoBase:
         movem.l (sp)+,d0/a0    
         unlk    a6
         rts
+
 

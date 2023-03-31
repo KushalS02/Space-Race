@@ -148,8 +148,8 @@ void gameLoop() {
 
     oldSSP = Super(0);
     setVideoBase((UINT16*)base);
+    renderGameOver(base);
     Super(oldSSP);
-
     stopSound();
     
 }

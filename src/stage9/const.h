@@ -100,4 +100,10 @@ mouse
 */
 #define MOUSE_SIZE 16
 
+/*
+end screen consts
+*/
+#define END_GAME_SCORE_X 170
+#define END_GAME_SCORE_Y 156
+
 #endif
