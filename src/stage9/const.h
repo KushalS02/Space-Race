@@ -76,7 +76,7 @@ Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
-#define SEED 1
+#define SEED 99
 
 /*
 System stuff
