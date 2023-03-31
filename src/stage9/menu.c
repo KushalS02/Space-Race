@@ -18,6 +18,8 @@ void processMenuChoice() {
 
     int mouseChoice, prevMouseChoice;
 
+    drawChoiceSelector(userChoice);
+
     while (input != ESC_KEY && input != ENTER_KEY) {
 
         if (hasUserInput()) {
