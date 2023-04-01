@@ -110,20 +110,3 @@ void renderGameOver(Model *model, void* base) {
 
 }
 
-void renderMouse(UINT16* base, int x, int y) {
-
-    plotBitmap16(base, mousePointer, x, y, SPRITE_HEIGHT);
-
-}
-
-void saveMouseBackground(UINT16* base, int x, int y) {
-
-
-
-}
-
-void restoreMouseBackground(UINT16* base, int x, int y) {
-
-
-    
-}

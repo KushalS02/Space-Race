@@ -37,6 +37,5 @@ void drawChoiceSelector(int choice);
 
 void clearChoiceSelector(int choice);
 
-int mouseLocation();
 
 #endif
