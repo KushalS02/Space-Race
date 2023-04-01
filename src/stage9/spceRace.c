@@ -97,7 +97,7 @@ void gameLoop() {
             currScore = model.scorebox.score;
         }
 
-        if (RENDER_REQUEST = true) {
+        if (RENDER_REQUEST == true) {
 
             if (swapScreens){
 
