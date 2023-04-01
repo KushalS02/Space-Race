@@ -32,7 +32,7 @@ Rocketship Constants
 */
 #define ROCKETSHIP_STARTING_X 288
 #define ROCKETSHIP_STARTING_Y 353
-#define ROCKETSHIP_SPEED 2
+#define ROCKETSHIP_SPEED 4
 
 /*
 Asteroids Constants
