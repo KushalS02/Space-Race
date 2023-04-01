@@ -84,8 +84,6 @@ void gameLoop() {
 
     while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
 
-        processAsyncEvents(&model);
-
         if(updateMusic(MUSIC_TIMER)) {
 
             MUSIC_TIMER = 0;
@@ -111,6 +109,7 @@ void gameLoop() {
                 
             }
 
+            processAsyncEvents(&model);
             processSyncEvents(&model);
 
             renderAsteroids(model.asteroids, (UINT8*)currScreen);
@@ -124,7 +123,7 @@ void gameLoop() {
            processSyncEvents(&model);
            if (swapScreens) {
             clearGame(base);
-            renderAsteroids(model.asteroids, (UINT8*)base);
+            renderAsteroids(model.astero36002ids, (UINT8*)base);
             renderRocketship(&model.player, (UINT32*)base);
             oldSSP = Super(0);
             setVideoBase((UINT16*)base);
@@ -150,11 +149,6 @@ void gameLoop() {
     setVideoBase((UINT16*)base);
     Super(oldSSP);
 
-    oldSSP = Super(0);
-    base = getVideoBase();
-    renderGameOver(&model, base);
-    Super(oldSSP);
-    
     stopSound();
     
 }
