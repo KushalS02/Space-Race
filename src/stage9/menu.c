@@ -189,10 +189,3 @@ void clearChoiceSelector(int choice) {
 
 }
 
-int mouseLocation() {
-
-    int mouseLocation = INVALID_CHOICE;
-
-    
-
-}
