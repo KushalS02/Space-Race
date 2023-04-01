@@ -1,5 +1,8 @@
-spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o video.o clearG.o clearQK.o ikbd.o vbl.o
-	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o video.o clearG.o clearQK.o ikbd.o vbl.o -o spceRace
+spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o endGame.o video.o clearG.o clearQK.o ikbd.o vbl.o
+	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o endGame.o video.o clearG.o clearQK.o ikbd.o vbl.o -o spceRace
+
+endGame.o: endGame.c endGame.h
+	cc68x -g -c endGame.c
 
 isr.o: isr.c isr.h
 	cc68x -g -c isr.c

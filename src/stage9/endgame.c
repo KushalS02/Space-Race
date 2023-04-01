@@ -1,4 +1,4 @@
-#include "endgame.h"
+#include "endGame.h"
 
 UINT32 endGameScreen[] = {
 

@@ -12,7 +12,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "sprites.h"
 #include "font.h"
 #include "menu.h"
-#include "endgame.h"
+#include "endGame.h"
 
 /*
 
@@ -197,7 +197,7 @@ void renderSplashscreen(UINT32* base);
 /*
 DOCUMENT
 */
-void renderGameOver(void* base);
+void renderGameOver(Model *model, void* base);
 
 /*
 DOCUMENT
