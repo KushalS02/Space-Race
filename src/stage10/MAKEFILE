@@ -1,0 +1,66 @@
+spceRace: spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o endGame.o video.o clearG.o clearQK.o ikbd.o vbl.o
+	cc68x -g spceRace.o render.o raster.o sprites.o model.o events.o font.o psg.o music.o effects.o menu.o splash.o isr.o endGame.o video.o clearG.o clearQK.o ikbd.o vbl.o -o spceRace
+
+endGame.o: endGame.c endGame.h
+	cc68x -g -c endGame.c
+
+isr.o: isr.c isr.h
+	cc68x -g -c isr.c
+
+menu.o: menu.c menu.h
+	cc68x -g -c menu.c
+
+splash.o: splash.c splash.h
+	cc68x -g -c splash.c
+
+psg.o: psg.c psg.h
+	cc68x -g -c psg.c
+
+music.o: music.c music.h
+	cc68x -g -c music.c 
+
+effects.o: effects.c effects.h
+	cc68x -g -c effects.c
+
+spceRace.o: spceRace.c spceRace.h
+	cc68x -g -c spceRace.c
+
+render.o: render.c render.h 
+	cc68x -g -c render.c
+
+raster.o: raster.c raster.h const.h
+	cc68x -g -c raster.c
+
+sprites.o: sprites.c sprites.h const.h
+	cc68x -g -c sprites.c
+
+model.o: model.c model.h const.h
+	cc68x -g -c model.c
+
+events.o: events.c events.h const.h
+	cc68x -g -c events.c
+	
+font.o: font.c font.h
+	cc68x -g -c font.c
+
+clearG.o: clearG.s clear.h
+	gen -D -L2 clearG.s
+
+clearQK.o: clearQK.s clear.h
+	gen -D -L2 clearQK.s	
+
+rast_asm.o: rast_asm.s
+	gen -D -L2 rast_asm.s
+
+video.o: video.s raster.h
+	gen -D -L2 video.s
+
+ikbd.o: ikbd.s ikbd.h
+	gen -D -L2 ikbd.s
+
+vbl.o: vbl.s vbl.h
+	gen -D -L2 vbl.s
+
+clean:
+	!Rm *.o
+	!Rm spcerace
