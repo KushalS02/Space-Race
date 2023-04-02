@@ -227,7 +227,7 @@ int mouseLocation() {
 
     int mouseLocation = INVALID_CHOICE;
 
-    bool validX = (MOUSE_X = VALID_X_LEFT && MOUSE_X <= VALID_X_RIGHT);
+    bool validX = (MOUSE_X >= VALID_X_LEFT && MOUSE_X <= VALID_X_RIGHT);
     bool validOnePlayer = (MOUSE_Y >= VALID_1_PLAYER_TOP_Y && MOUSE_Y <= VALID_1_PLAYER_BOTTOM_Y);
     bool validTwoPlayer = (MOUSE_Y >= VALID_2_PLAYER_TOP_Y && MOUSE_Y <= VALID_2_PLAYER_BOTTOM_Y);
     bool validTutorial = (MOUSE_Y >= VALID_TUTORIAL_TOP_Y && MOUSE_Y <= VALID_TUTORIAL_BOTTOM_Y);

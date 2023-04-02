@@ -70,7 +70,7 @@ UINT16 *plotLocation = base + (y * 40) + (x >> 4);
 
 for (i = 0; i < height; i++) {
 
-	*plotLocation ^= ~*(bitmap++);
+	*plotLocation ^= *(bitmap++);
 
 	plotLocation += 40;
 

@@ -73,6 +73,9 @@ extern int PREV_MOUSE_Y;
 extern bool MOUSE_MOVED;
 extern bool KEY_REPEATED;
 
+#define MOUSE_MOVE_CODE 0xf8
+#define MOUSE_LEFT_BUTTON_CODE 0xfa
+
 /*
 FUNCTIONS 
 */

@@ -51,6 +51,7 @@ int PREV_MOUSE_Y = 0;
 
 
 void vblReq() {
+    
     MUSIC_TIMER++;
 
     RENDER_REQUEST = true;
@@ -78,7 +79,7 @@ void ikbdReq() {
                     /* Scancode represents a mouse movement or button press */
                     MOUSE_BUTTON = scancode;
                     mouseState = MOUSE_STATE_DELTA_X;
-                    MOUSE_MOVED = (scancode == MOVE_MOUSE_CODE);
+                    MOUSE_MOVED = scancode == MOVE_MOUSE_CODE;
 
                 } else if ((scancode & 0x80) == 0x00) {
 
@@ -228,16 +229,6 @@ void updateMouseEvents(UINT16* base) {
     MOUSE_X += (int) ((char) MOUSE_DELTA_X);
     MOUSE_Y += (int) ((char) MOUSE_DELTA_Y);
 
-    if (MOUSE_Y < 0) {
-
-        MOUSE_Y = 0;
-
-    } else if (MOUSE_Y > 384) {
-
-        MOUSE_Y = 384;
-
-    }
-
     if (MOUSE_X < 0) {
 
         MOUSE_X = 0;
@@ -248,7 +239,17 @@ void updateMouseEvents(UINT16* base) {
 
     }
 
-    MOUSE_LEFT_CLICK = MOUSE_BUTTON == LEFT_MOUSE_CLICK_CODE;
+    if (MOUSE_Y < 0) {
+
+        MOUSE_Y = 0;
+
+    } else if (MOUSE_Y > 384) {
+
+        MOUSE_Y = 384;
+
+    }
+
+    MOUSE_LEFT_CLICK = MOUSE_BUTTON == MOUSE_LEFT_BUTTON_CODE;
 
     MOUSE_DELTA_X = 0;
     MOUSE_DELTA_Y = 0;

@@ -126,11 +126,7 @@ void gameLoop() {
 
     oldSSP = Super(0);
     setVideoBase((UINT16*)base);
-
-    displayGameOver(base);
-
     Super(oldSSP);
-
 
     stopSound();
     
@@ -144,11 +140,14 @@ void processAsyncEvents(Model *model) {
 
         rocketshipHitBoundary(&model->player);
 
-        if (hasUserInput()) 
-        { 
+        if (hasUserInput()) {
+
             input = getUserInput();
+
         } else {
+
             input = repeatedKey;
+        
         }
 
         rocketshipMove(&model->player, input);
@@ -211,7 +210,7 @@ void displayGameOver(UINT16* base) {
 
     input = getUserInput();
 
-    if(input == ENTER_KEY) {
+    if (input == ENTER_KEY) {
 
         start();
 
