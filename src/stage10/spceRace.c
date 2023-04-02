@@ -76,8 +76,6 @@ void gameLoop() {
 
     screen2 = getBase(secondBuff);
 
-    /*prevCall = getTime();*/
-
     gameSetup(&model, base);
     render(&model, screen2);
     startMusic();
@@ -97,7 +95,7 @@ void gameLoop() {
 
         if (RENDER_REQUEST == true) {
 
-            if (swapScreens){
+            if (swapScreens) {
 
                 currScreen = base;
                 clearGame(currScreen);
@@ -128,7 +126,11 @@ void gameLoop() {
 
     oldSSP = Super(0);
     setVideoBase((UINT16*)base);
+
+    displayGameOver(base);
+
     Super(oldSSP);
+
 
     stopSound();
     
@@ -198,3 +200,22 @@ void gameSetup(Model* model, void *base) {
     return timeNow;
 
 }*/
+
+void displayGameOver(UINT16* base) {
+
+    Model model;
+    unsigned long input;
+
+    clearGame(base);
+    renderGameOver(&model, base);
+
+    input = getUserInput();
+
+    if(input == ENTER_KEY) {
+
+        start();
+
+    }
+
+}
+

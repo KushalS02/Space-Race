@@ -99,22 +99,6 @@ void renderScoreBox(const Model* model, UINT8 *base);
 
 /*
 
-Name: renderHighscoreBox
-
-Purpose: render the highscore box to the screen
-
-Details: calls printString to display "Highscore:" then printNumber to display the 
-         highscore score of player
-
-Parameters:
-
-    const Model *model - render the highscore from the model
-    
-    UINT16 *base - start of the screen frame buffer
-
-*/
-void renderHighscoreBox(const Model *model, UINT8 *base);
-
 /*
 
 Name: renderCheckeredLine 

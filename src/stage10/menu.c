@@ -1,5 +1,6 @@
 #include "menu.h"
 
+int MENU_STATE = MENU_CHOICE_1_PLAYER;
 bool VALID_CLICK = false;
 
 void menu() {
@@ -18,15 +19,27 @@ void processMenuChoice() {
 
     int mouseChoice, prevMouseChoice;
 
+    long oldSSP = Super(0);
+
+    UINT16 *base = getVideoBase();
+
+    Super(oldSSP);
+
+    initializeMouse(base);
+
     drawChoiceSelector(userChoice);
 
-    while (input != ESC_KEY && input != ENTER_KEY) {
+    while (MENU_STATE != MENU_CHOICE_EXIT) {
+
+        updateMouseEvents(base);
 
         if (hasUserInput()) {
 
-            input = getUserInput();
+            clearChoiceSelector(mouseChoice);
 
             prevChoice = userChoice;
+
+            input = getUserInput();
             
             switch (input) {
 
@@ -72,6 +85,22 @@ void processMenuChoice() {
 
             } 
 
+        } else if (hasMouseInput()) {
+
+            prevMouseChoice = mouseChoice;
+
+            mouseChoice = mouseLocation();
+
+            if (mouseChoice != INVALID_CHOICE) {
+
+                if (VALID_CLICK && MOUSE_LEFT_CLICK) {
+
+                    selectOption(mouseChoice);
+
+                }
+
+            }
+
         }
 
     }
@@ -84,6 +113,7 @@ void selectOption(int choice) {
 
     case MENU_CHOICE_1_PLAYER:
 
+        MENU_STATE = MENU_CHOICE_1_PLAYER;
         gameLoop();
         stopSound();
         break;
@@ -91,17 +121,21 @@ void selectOption(int choice) {
     case MENU_CHOICE_2_PLAYER:
 
         /* Two player mode goes here */
+        MENU_STATE = MENU_CHOICE_2_PLAYER;
 
         break;  
 
     case MENU_CHOICE_HELP:
 
-        /* Help choice goes here */  
+        MENU_STATE = MENU_CHOICE_HELP;
 
         break;
     
+    case MENU_CHOICE_EXIT:
     default:
+
         /* Default option, QUIT */
+        MENU_STATE = MENU_CHOICE_EXIT;
         break;
     }
 
@@ -193,6 +227,35 @@ int mouseLocation() {
 
     int mouseLocation = INVALID_CHOICE;
 
+    bool validX = (MOUSE_X = VALID_X_LEFT && MOUSE_X <= VALID_X_RIGHT);
+    bool validOnePlayer = (MOUSE_Y >= VALID_1_PLAYER_TOP_Y && MOUSE_Y <= VALID_1_PLAYER_BOTTOM_Y);
+    bool validTwoPlayer = (MOUSE_Y >= VALID_2_PLAYER_TOP_Y && MOUSE_Y <= VALID_2_PLAYER_BOTTOM_Y);
+    bool validTutorial = (MOUSE_Y >= VALID_TUTORIAL_TOP_Y && MOUSE_Y <= VALID_TUTORIAL_BOTTOM_Y);
+    bool validExit = (MOUSE_Y >= VALID_EXIT_TOP_Y && MOUSE_Y <= VALID_EXIT_BOTTOM_Y);
     
+    if (validX && validOnePlayer) {
+
+        mouseLocation = MENU_CHOICE_1_PLAYER;
+
+    } else if (validX && validTwoPlayer) {
+
+        mouseLocation = MENU_CHOICE_2_PLAYER;
+        
+    } else if (validX && validTutorial) {
+
+        mouseLocation = MENU_CHOICE_HELP;
+        
+    } else if (validX && validExit) {
+
+        mouseLocation = MENU_CHOICE_EXIT;
+        
+    }
+
+    VALID_CLICK = (validX && validOnePlayer) || 
+                  (validX && validTwoPlayer) ||
+                  (validX && validTutorial) ||
+                  (validX && validExit);
+
+    return mouseLocation;
 
 }

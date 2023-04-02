@@ -45,12 +45,7 @@ void renderScoreBox(const Model* model, UINT8 *base) {
 
 }
 
-void renderHighscoreBox(const Model* model, UINT8 *base) {
 
-    printString(base, model->highscorebox.x, model->highscorebox.y, "Highscore:");
-    printNumber(base, model->highscorebox.x + 80, model->highscorebox.y, model->highscorebox.highscore);
-
-}
 
 void renderCheckeredLine(UINT32 *base) {
 
@@ -77,7 +72,6 @@ void render(Model *model, void *base) {
     renderCheckeredLine((UINT32*) base);
     renderAsteroids(model->asteroids, (UINT8*) base);
     renderScoreBox(model, (UINT8*) base);
-    renderHighscoreBox(model, (UINT8*) base);
 
 }
 
@@ -87,7 +81,6 @@ void renderNextRound(Model *model, void *base) {
     renderCheckeredLine((UINT32*) base);
     renderAsteroids(model->asteroids, (UINT8*) base);
     renderScoreBox(model, (UINT8*) base);
-    renderHighscoreBox(model, (UINT8*) base);
 }
 
 void disableCursor() {
@@ -118,12 +111,24 @@ void renderMouse(UINT16* base, int x, int y) {
 
 void saveMouseBackground(UINT16* base, int x, int y) {
 
+    int i, j;
 
+    for (i = 0, j = 0; i < MOUSE_BACKGROUND_SIZE; i++) {
+
+        mouseBackground[j++] = *(base + (y + i) * 40 + (x >> 4));
+
+    }
 
 }
 
 void restoreMouseBackground(UINT16* base, int x, int y) {
 
+    int i, j;
 
-    
+    for (i = 0, j = 0; i < MOUSE_BACKGROUND_SIZE; i++) {
+
+        *(base + (y + i) * 40 + (x >> 4)) = mouseBackground[j++];
+
+    }
+
 }

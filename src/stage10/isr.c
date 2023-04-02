@@ -218,6 +218,7 @@ void initializeMouse(UINT16* base) {
     PREV_MOUSE_X = MOUSE_X;
     PREV_MOUSE_Y = MOUSE_Y;
 
+    saveMouseBackground(base, MOUSE_X, MOUSE_Y);
     renderMouse(base, MOUSE_X, MOUSE_Y);
 
 }
@@ -231,9 +232,9 @@ void updateMouseEvents(UINT16* base) {
 
         MOUSE_Y = 0;
 
-    } else if (MOUSE_Y > 400) {
+    } else if (MOUSE_Y > 384) {
 
-        MOUSE_Y = 400;
+        MOUSE_Y = 384;
 
     }
 
@@ -241,9 +242,9 @@ void updateMouseEvents(UINT16* base) {
 
         MOUSE_X = 0;
 
-    } else if (MOUSE_X > 640) {
+    } else if (MOUSE_X > 624) {
 
-        MOUSE_X = 640;
+        MOUSE_X = 624;
 
     }
 
@@ -255,6 +256,8 @@ void updateMouseEvents(UINT16* base) {
     if (RENDER_MOUSE_REQUEST) {
 
         clearRegion16(base, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);
+        restoreMouseBackground(base, PREV_MOUSE_X, PREV_MOUSE_Y);
+        saveMouseBackground(base, MOUSE_X, MOUSE_Y);
         renderMouse(base, MOUSE_X, MOUSE_Y);
 
         PREV_MOUSE_X = MOUSE_X;

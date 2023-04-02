@@ -99,6 +99,7 @@ Menu stuff
 mouse
 */
 #define MOUSE_SIZE 16
+#define MOUSE_BACKGROUND_SIZE 16
 
 /*
 end screen consts
