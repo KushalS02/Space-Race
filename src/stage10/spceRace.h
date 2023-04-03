@@ -94,7 +94,7 @@ UINT8 *getBase(UINT8 *secondBuffer);
 
 void start();
 
-void displayGameOver(UINT16* base);
+void displayGameOver(void* base);
 
 void clearInterrupts();
 

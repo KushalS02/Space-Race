@@ -181,7 +181,7 @@ void renderSplashscreen(UINT32* base);
 /*
 DOCUMENT
 */
-void renderGameOver(Model *model, void* base);
+void renderGameOver(void* base);
 
 /*
 DOCUMENT

@@ -126,7 +126,15 @@ void gameLoop() {
 
     oldSSP = Super(0);
     setVideoBase((UINT16*)base);
+
+    base = getVideoBase();
+    displayGameOver(base);
+    clearQuick(base);
+    renderSplashscreen(base);
+
     Super(oldSSP);
+
+    
 
     stopSound();
     
@@ -200,13 +208,13 @@ void gameSetup(Model* model, void *base) {
 
 }*/
 
-void displayGameOver(UINT16* base) {
+void displayGameOver(void* base) {
 
     Model model;
     unsigned long input;
 
-    clearGame(base);
-    renderGameOver(&model, base);
+    clearQuick(base);
+    renderGameOver(base);
 
     input = getUserInput();
 
