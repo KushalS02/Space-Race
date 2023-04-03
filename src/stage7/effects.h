@@ -7,6 +7,15 @@
 /*
 Functions for effects 
 */
+
+/*
+    Function: collisionEffect
+
+    Purpose: plays an explosion effect when the rocketship
+             and an asteroid collides 
+
+
+*/
 void collisionEffect();
 
 #endif

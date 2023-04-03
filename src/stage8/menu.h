@@ -24,14 +24,40 @@ Menu options
 /*
 Menu functions 
 */
+
+/*
+
+    Function: 
+
+*/
 void menu();
 
+/*
+
+    Function: 
+
+*/
 void processMenuChoice();
 
+/*
+
+    Function: 
+
+*/
 void selectOption(int choice);
 
+/*
+
+    Function: 
+
+*/
 void drawChoiceSelector(int choice);
 
+/*
+
+    Function: 
+
+*/
 void clearChoiceSelector(int choice);
 
 #endif

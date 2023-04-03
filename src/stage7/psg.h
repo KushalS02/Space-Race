@@ -68,20 +68,61 @@ Regs
 /*
 Functions for PSG 
 */
+
+/*
+
+    Function: writePSG
+
+*/
 void writePSG(int reg, UINT8 val);
 
+/*
+
+    Function: 
+
+*/
 int readPSG(int reg);
 
+/*
+
+    Function: 
+
+*/
 void setTone(int channel, int tuning);
 
+/*
+
+    Function: 
+
+*/
 void setVolume(int channel, int volume);
 
+/*
+
+    Function: 
+
+*/
 void enableChannel(int channel, int toneOn, int noiseOn);
 
+/*
+
+    Function: 
+
+*/
 void stopSound();
 
+/*
+
+    Function: 
+
+*/
 void setEnvelope(envelopeShapeType shape, UINT16 sustain);
 
+/*
+
+    Function: 
+
+*/
 void setNoise(int tuning);
 
 #endif 

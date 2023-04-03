@@ -79,31 +79,92 @@ extern bool KEY_REPEATED;
 /*
 FUNCTIONS 
 */
+
+/*
+
+    Function: 
+
+*/
 void vblReq();
 
+/*
+
+    Function: 
+
+*/
 void ikbdReq();
 
+/*
+
+    Function: 
+
+*/
 Vector installVector(int num, Vector vector);
 
+/*
+
+    Function: 
+
+*/
 void installVectors();
 
+/*
+
+    Function: 
+
+*/
 void removeVectors();
 
+/*
+
+    Function: 
+
+*/
 bool ikbdIsWaiting();
 
+/*
+
+    Function: 
+
+*/
 void writeToIkbdBuffer(UINT8 scancode);
 
+/*
+
+    Function: 
+
+*/
 unsigned long readFromIkbdBuffer();
 
+/*
+
+    Function: 
+
+*/
 void clearIkbdBuffer();
 
 /*
 mouse
 */
+/*
+
+    Function: 
+
+*/
 void initializeMouse(UINT16* base);
 
+/*
+
+    Function: 
+
+*/
 void updateMouseEvents(UINT16* base);
 
+/*
+
+    Function: 
+
+*/
 bool ikbdMouseMoved();
 
 #endif
