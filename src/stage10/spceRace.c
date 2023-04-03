@@ -130,7 +130,7 @@ void gameLoop() {
     base = getVideoBase();
     displayGameOver(base);
     clearQuick(base);
-    renderSplashscreen(base);
+    renderSplashscreen((UINT32*)base);
 
     Super(oldSSP);
 
