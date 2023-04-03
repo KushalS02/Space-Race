@@ -128,13 +128,12 @@ void gameLoop() {
     setVideoBase((UINT16*)base);
 
     base = getVideoBase();
-    displayGameOver(base);
-    clearQuick(base);
-    renderSplashscreen((UINT32*)base);
 
     Super(oldSSP);
 
-    
+    displayGameOver(base);
+    clearQuick(base);
+    renderSplashscreen((UINT32*)base);
 
     stopSound();
     
@@ -194,20 +193,6 @@ void gameSetup(Model* model, void *base) {
 
 }
 
-/*long getTime() {
-
-    long* timer = (long*) SYSTEM_CLOCK;
-    
-    long oldSSP = Super(0);
-
-    long timeNow = *timer;
-
-    Super(oldSSP);
-
-    return timeNow;
-
-}*/
-
 void displayGameOver(void* base) {
 
     Model model;
@@ -218,11 +203,13 @@ void displayGameOver(void* base) {
 
     input = getUserInput();
 
-    if (input == ENTER_KEY) {
-
-        start();
-
+    while (input != ESC_KEY)
+    {
+        input = getUserInput();
+        if (input == ENTER_KEY)
+        {
+            start();
+        }
     }
-
 }
 
