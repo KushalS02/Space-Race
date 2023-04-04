@@ -42,21 +42,12 @@ void start() {
 
 UINT8 *getBase(UINT8 *secondBuffer) {
 
-    UINT8 *base;
+    unsigned long add = (unsigned long) secondBuffer;
+    unsigned long base = (add + 0xFF) & ~(unsigned long) 0xFF;
 
-    UINT16 difference;
-
-    base = secondBuffer;
-
-    difference = (int) base;
-
-    difference %= 0x100;
-
-    difference = 0x100 - difference;
-
-    return base + difference;
-
+    return (UINT8*) base;
 }
+
 
 void gameLoop() {
     
