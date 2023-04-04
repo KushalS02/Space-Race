@@ -3,13 +3,7 @@
 int MENU_STATE = MENU_CHOICE_1_PLAYER;
 bool VALID_CLICK = false;
 
-void menu() {
-
-    processMenuChoice();
-
-}
-
-void processMenuChoice() {
+int menu() {
 
     unsigned long input;
 
@@ -75,13 +69,13 @@ void processMenuChoice() {
 
             if (input == ENTER_KEY) {
 
-                selectOption(userChoice);
+                return userChoice;
 
             }
 
             if (input == ESC_KEY) {
 
-                selectOption(MENU_CHOICE_EXIT);
+                return userChoice;
 
             } 
 
@@ -95,7 +89,7 @@ void processMenuChoice() {
 
                 if (VALID_CLICK && MOUSE_LEFT_CLICK) {
 
-                    selectOption(mouseChoice);
+                    return userChoice;
 
                 }
 
@@ -103,40 +97,6 @@ void processMenuChoice() {
 
         }
 
-    }
-
-}
-
-void selectOption(int choice) {
-
-    switch (choice) {
-
-    case MENU_CHOICE_1_PLAYER:
-
-        MENU_STATE = MENU_CHOICE_1_PLAYER;
-        gameLoop();
-        stopSound();
-        break;
-
-    case MENU_CHOICE_2_PLAYER:
-
-        /* Two player mode goes here */
-        MENU_STATE = MENU_CHOICE_2_PLAYER;
-
-        break;  
-
-    case MENU_CHOICE_HELP:
-
-        MENU_STATE = MENU_CHOICE_HELP;
-
-        break;
-    
-    case MENU_CHOICE_EXIT:
-    default:
-
-        /* Default option, QUIT */
-        MENU_STATE = MENU_CHOICE_EXIT;
-        break;
     }
 
 }

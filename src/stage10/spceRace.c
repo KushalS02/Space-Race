@@ -7,11 +7,10 @@ Authours: Alexander Pham and Kushal Saini
 const UINT8 secondBuff[SCREEN_BUFFER_SIZE];
 
 extern int MUSIC_TIMER;
-extern int GAME_TIMER;
-extern int ASTEROIDS_TIMER;
-extern int KEY_REPEAT_TICKS;
 extern bool RENDER_REQUEST;
 extern bool KEY_REPEATED;
+
+bool quit = false;
 
 int main() {
 
@@ -26,18 +25,52 @@ void start() {
 
     UINT16* base;
     long oldSSP;
+    int userChoice;
 
     oldSSP = Super(0);
-
     base = getVideoBase();
-
     Super(oldSSP);
 
     disableCursor();
-    clearQuick(base);
-    renderSplashscreen((UINT32*) base);
-    menu();
 
+    while (quit == false)
+    {
+        clearQuick(base);
+        renderSplashscreen((UINT32 *)base);
+        userChoice = menu();
+
+        switch (userChoice)
+        {
+        case MENU_CHOICE_1_PLAYER:
+
+            MENU_STATE = MENU_CHOICE_1_PLAYER;
+            gameLoop();
+            quit = displayGameOver(base);
+
+            break;
+
+        case MENU_CHOICE_2_PLAYER:
+
+            /* Two player mode goes here */
+            MENU_STATE = MENU_CHOICE_2_PLAYER;
+
+            break;
+
+        case MENU_CHOICE_HELP:
+
+            MENU_STATE = MENU_CHOICE_HELP;
+
+            break;
+
+        case MENU_CHOICE_EXIT:
+        default:
+
+            /* Default option, QUIT */
+            MENU_STATE = MENU_CHOICE_EXIT;
+            quit = true;
+            break;
+        }
+    }
 }
 
 UINT8 *getBase(UINT8 *secondBuffer) {
@@ -117,14 +150,7 @@ void gameLoop() {
 
     oldSSP = Super(0);
     setVideoBase((UINT16*)base);
-
-    base = getVideoBase();
-
     Super(oldSSP);
-
-    displayGameOver(base);
-    clearQuick(base);
-    renderSplashscreen((UINT32*)base);
 
     stopSound();
     
@@ -184,9 +210,8 @@ void gameSetup(Model* model, void *base) {
 
 }
 
-void displayGameOver(void* base) {
+bool displayGameOver(void* base) {
 
-    Model model;
     unsigned long input;
 
     clearQuick(base);
@@ -199,8 +224,9 @@ void displayGameOver(void* base) {
         input = getUserInput();
         if (input == ENTER_KEY)
         {
-            start();
+            return false;
         }
     }
+    return true;
 }
 

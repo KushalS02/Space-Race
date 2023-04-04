@@ -41,7 +41,7 @@ mouse valid locations
 /*
 Menu functions 
 */
-void menu();
+int menu();
 
 void processMenuChoice();
 
