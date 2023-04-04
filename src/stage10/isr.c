@@ -55,7 +55,20 @@ void vblReq() {
     MUSIC_TIMER++;
 
     RENDER_REQUEST = true;
-    RENDER_MOUSE_REQUEST = true;
+    
+    if (RENDER_MOUSE_REQUEST) {
+
+        clearRegion16(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);
+        restoreMouseBackground(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y);
+        saveMouseBackground(MENU_BUFFER, MOUSE_X, MOUSE_Y);
+        renderMouse(MENU_BUFFER, MOUSE_X, MOUSE_Y);
+
+        PREV_MOUSE_X = MOUSE_X;
+        PREV_MOUSE_Y = MOUSE_Y;
+
+        RENDER_MOUSE_REQUEST = false;
+
+    }
 }
 
 void ikbdReq() {
@@ -226,6 +239,8 @@ void initializeMouse(UINT16* base) {
 
 void updateMouseEvents(UINT16* base) {
 
+    RENDER_MOUSE_REQUEST = false;
+
     MOUSE_X += (int) ((char) MOUSE_DELTA_X);
     MOUSE_Y += (int) ((char) MOUSE_DELTA_Y);
 
@@ -254,19 +269,7 @@ void updateMouseEvents(UINT16* base) {
     MOUSE_DELTA_X = 0;
     MOUSE_DELTA_Y = 0;
 
-    if (RENDER_MOUSE_REQUEST) {
-
-        clearRegion16(base, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);
-        restoreMouseBackground(base, PREV_MOUSE_X, PREV_MOUSE_Y);
-        saveMouseBackground(base, MOUSE_X, MOUSE_Y);
-        renderMouse(base, MOUSE_X, MOUSE_Y);
-
-        PREV_MOUSE_X = MOUSE_X;
-        PREV_MOUSE_Y = MOUSE_Y;
-
-        RENDER_MOUSE_REQUEST = false;
-
-    }
+    RENDER_MOUSE_REQUEST = true;
 
 }
 

@@ -2,6 +2,7 @@
 
 int MENU_STATE = MENU_CHOICE_1_PLAYER;
 bool VALID_CLICK = false;
+UINT16* MENU_BUFFER;
 
 int menu() {
 
@@ -15,17 +16,17 @@ int menu() {
 
     long oldSSP = Super(0);
 
-    UINT16 *base = getVideoBase();
+    MENU_BUFFER = getVideoBase();
 
     Super(oldSSP);
 
-    initializeMouse(base);
+    initializeMouse(MENU_BUFFER);
 
     drawChoiceSelector(userChoice);
 
     while (MENU_STATE != MENU_CHOICE_EXIT) {
 
-        updateMouseEvents(base);
+        updateMouseEvents(MENU_BUFFER);
 
         if (hasUserInput()) {
 
@@ -105,7 +106,7 @@ void drawChoiceSelector(int choice) {
 
     long oldSSP = Super(0);
 
-    UINT16 *base = getVideoBase();
+    /*MENU_BUFFER = getVideoBase();*/
 
     Super(oldSSP);
 
@@ -115,27 +116,27 @@ void drawChoiceSelector(int choice) {
 
         case 1:
 
-            plotBitmap16(base, menuArrow, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
+            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
         case 2:
 
-            plotBitmap16(base, menuArrow, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
+            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
 
             break;
 
 
         case 3:
 
-            plotBitmap16(base, menuArrow, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
+            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
 
             break;
 
 
         case 4:
 
-            plotBitmap16(base, menuArrow, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
+            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
 
             break;
 
@@ -147,7 +148,7 @@ void clearChoiceSelector(int choice) {
 
     long oldSSP = Super(0);
 
-    UINT16 *base = getVideoBase();
+    /*MENU_BUFFER = getVideoBase();*/
 
     Super(oldSSP);
 
@@ -157,25 +158,25 @@ void clearChoiceSelector(int choice) {
 
         case 1:
 
-            clearRegion16(base, ARROW_X, ARROW_1_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
+            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_1_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 2:
 
-            clearRegion16(base, ARROW_X, ARROW_2_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
+            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_2_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 3:
 
-            clearRegion16(base, ARROW_X, ARROW_TUTORIAL_Y, ARROW_WIDTH, ARROW_HEIGHT);
+            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_TUTORIAL_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 
         case 4:
 
-            clearRegion16(base, ARROW_X, ARROW_HELP_Y, ARROW_WIDTH, ARROW_HEIGHT);
+            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_HELP_Y, ARROW_WIDTH, ARROW_HEIGHT);
 
             break;
 

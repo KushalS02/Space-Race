@@ -23,6 +23,7 @@ Menu options
 
 extern bool VALID_CLICK;
 extern int MENU_STATE;
+extern UINT16* MENU_BUFFER;
 
 /*
 mouse valid locations
