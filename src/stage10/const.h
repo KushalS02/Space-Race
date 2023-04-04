@@ -100,6 +100,7 @@ mouse
 */
 #define MOUSE_SIZE 16
 #define MOUSE_BACKGROUND_SIZE 16
+#define MOUSE_MAX_Y 139
 
 /*
 end screen consts
