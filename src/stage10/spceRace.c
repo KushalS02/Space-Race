@@ -9,6 +9,7 @@ const UINT8 secondBuff[SCREEN_BUFFER_SIZE];
 extern int MUSIC_TIMER;
 extern bool RENDER_REQUEST;
 extern bool KEY_REPEATED;
+UINT8 currScore;
 
 bool quit = false;
 
@@ -87,8 +88,8 @@ void gameLoop() {
     void *screen2;
     UINT16* base;
     UINT16 *currScreen = base;
-    UINT8 currScore = 0;
     UINT32 prevCall;
+    currScore = 0;
 
     oldSSP = Super(0);
     base = getVideoBase();
@@ -212,11 +213,13 @@ bool displayGameOver(void* base) {
     unsigned long input;
 
     clearQuick(base);
-    renderGameOver(base);
+    renderGameOver(base, currScore);
 
     while (input != ESC_KEY)
     {
-        input = getUserInput();
+        if (hasUserInput()) {
+            input = getUserInput();
+        }
         if (input == ENTER_KEY)
         {
             return false;

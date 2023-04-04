@@ -1,9 +1,6 @@
 - Convert bitmap
     - replace bitmap codes
 
-- Fix enter key problem
-- Fix score
-
 - Documentation
 
 - Testing
@@ -12,6 +9,10 @@
 - Following naming conventions
     - constants all caps
     - Everything else camel case
+- Readable
+    - whitespaces
+    - indentation
+    - functions up to 30 lines (exceptions allowed)
 
 - Deplagerize
 

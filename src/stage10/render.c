@@ -96,12 +96,10 @@ void renderSplashscreen(UINT32* base) {
 
 }
 
-void renderGameOver(void* base) {
-
-    Model model;
+void renderGameOver(void* base, UINT8 currScore) {
 
     plotScreen((UINT32*)base, endGameScreen);
-    printNumber((UINT8*)base, END_GAME_SCORE_X, END_GAME_SCORE_X, model.scorebox.score);
+    printNumber((UINT8*)base, END_GAME_SCORE_X, END_GAME_SCORE_X, currScore);
 
 }
 

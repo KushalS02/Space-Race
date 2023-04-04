@@ -181,7 +181,7 @@ void renderSplashscreen(UINT32* base);
 /*
 DOCUMENT
 */
-void renderGameOver(void* base);
+void renderGameOver(void* base, UINT8 currScore);
 
 /*
 DOCUMENT
