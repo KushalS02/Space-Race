@@ -37,14 +37,15 @@ void start() {
     {
         clearQuick(base);
         renderSplashscreen((UINT32 *)base);
+        clearIkbdBuffer();
         userChoice = menu();
 
         switch (userChoice)
         {
         case MENU_CHOICE_1_PLAYER:
 
-            MENU_STATE = MENU_CHOICE_1_PLAYER;
             gameLoop();
+            clearIkbdBuffer();
             quit = displayGameOver(base);
 
             break;
@@ -52,13 +53,10 @@ void start() {
         case MENU_CHOICE_2_PLAYER:
 
             /* Two player mode goes here */
-            MENU_STATE = MENU_CHOICE_2_PLAYER;
 
             break;
 
         case MENU_CHOICE_HELP:
-
-            MENU_STATE = MENU_CHOICE_HELP;
 
             break;
 
@@ -66,7 +64,6 @@ void start() {
         default:
 
             /* Default option, QUIT */
-            MENU_STATE = MENU_CHOICE_EXIT;
             quit = true;
             break;
         }
@@ -216,8 +213,6 @@ bool displayGameOver(void* base) {
 
     clearQuick(base);
     renderGameOver(base);
-
-    input = getUserInput();
 
     while (input != ESC_KEY)
     {
