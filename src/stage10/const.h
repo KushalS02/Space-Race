@@ -59,7 +59,7 @@ Highscore box Position
 /*
 Score Stuff
 */
-#define MAX_SCORE 999
+#define MAX_SCORE 9999
 #define SCORE_INCREMENT 1
 
 /*
@@ -69,7 +69,6 @@ Keyboard key codes
 #define UP_KEY 0x00480000
 #define DOWN_KEY 0x00500000
 #define ENTER_KEY 0x001C000D
-/*#define ENTER_KEY 0x00390020*/
 #define LEFT_MOUSE_CLICK_CODE 2
 
 /*
@@ -77,7 +76,7 @@ Other stuff
 */
 #define SPRITE_SIZE 16
 #define SPRITE_HEIGHT 16
-#define SEED 99
+#define SEED 9999
 
 /*
 System stuff
@@ -101,7 +100,7 @@ mouse
 */
 #define MOUSE_SIZE 16
 #define MOUSE_BACKGROUND_SIZE 16
-#define MOUSE_MAX_Y 139
+#define MOUSE_MAX_Y 0
 
 /*
 end screen consts

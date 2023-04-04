@@ -1,3 +1,7 @@
+- Ask Paul about
+    - mouse x-axis skipping
+    - the lines when screen changes
+
 - Convert bitmap
     - replace bitmap codes
 
@@ -18,4 +22,13 @@
 
 - update game specs
 
-- Go over stage specs
+- Go over stage specs and folders
+    - Stage 2
+    - Stage 3
+    - Stage 4
+    - Stage 5
+    - Stage 6
+    - Stage 7
+    - Stage 8
+    - Stage 9
+    - Stage 10

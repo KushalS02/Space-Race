@@ -1,6 +1,6 @@
 #include "splash.h"
 
-UINT32 splashScreen[] = {
+const UINT32 splashScreen[] = {
 
     0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 
 	0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 

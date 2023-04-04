@@ -54,7 +54,7 @@ void vblReq() {
     
     if (RENDER_MOUSE_REQUEST) {
 
-        clearRegion16(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);
+        /*clearRegion16(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);*/
         restoreMouseBackground(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y);
         saveMouseBackground(MENU_BUFFER, MOUSE_X, MOUSE_Y);
         renderMouse(MENU_BUFFER, MOUSE_X, MOUSE_Y);

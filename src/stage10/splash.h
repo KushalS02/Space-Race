@@ -4,6 +4,6 @@
 #include "TYPES.H"
 #include "const.h"
 
-extern UINT32 splashScreen[];
+extern const UINT32 splashScreen[];
 
 #endif

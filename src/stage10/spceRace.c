@@ -36,7 +36,6 @@ void start() {
 
     while (quit == false)
     {
-        clearQuick(base);
         renderSplashscreen((UINT32 *)base);
         clearIkbdBuffer();
         userChoice = menu();
@@ -202,8 +201,6 @@ void gameSetup(Model* model, void *base) {
 
     onGameStart(model);
 
-    clearQuick(base);
-
     render(model, base);
 
 }
@@ -212,7 +209,6 @@ bool displayGameOver(void* base) {
 
     unsigned long input;
 
-    clearQuick(base);
     renderGameOver(base, currScore);
 
     while (input != ESC_KEY)

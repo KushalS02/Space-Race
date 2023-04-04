@@ -2,6 +2,7 @@
 Authours: Alexander Pham and Kushal Saini
 */
 #include "render.h"
+#include <string.h>
 
 void renderRocketship(const Rocketship *rocketship, UINT32 *base) {
 
@@ -61,7 +62,8 @@ void renderCheckeredLine(UINT32 *base) {
 
 void renderBackground(UINT8 *base) {
 
-    plotRectangle(base, RECT_PLOT_X, RECT_PLOT_Y, SCREEN_WIDTH, SCREEN_HEIGHT);
+    /*plotRectangle(base, RECT_PLOT_X, RECT_PLOT_Y, SCREEN_WIDTH, SCREEN_HEIGHT);*/
+    clearQuick(base);
 
 }
 
@@ -92,13 +94,13 @@ void disableCursor() {
 
 void renderSplashscreen(UINT32* base) {
 
-    plotScreen(base, splashScreen);
+    memcpy(base, splashScreen, 32000); 
 
 }
 
 void renderGameOver(void* base, UINT8 currScore) {
 
-    plotScreen((UINT32*)base, endGameScreen);
+    memcpy(base, endGameScreen, 32000);
     printNumber((UINT8*)base, END_GAME_SCORE_X, END_GAME_SCORE_X, currScore);
 
 }
@@ -127,7 +129,7 @@ void restoreMouseBackground(UINT16* base, int x, int y) {
 
     for (i = 0, j = 0; i < MOUSE_BACKGROUND_SIZE; i++) {
 
-        *(base + (y + i) * 40 + (x >> 4)) &= mouseBackground[j++];
+        *(base + (y + i) * 40 + (x >> 4)) = mouseBackground[j++];
 
     }
 
