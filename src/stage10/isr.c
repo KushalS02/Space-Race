@@ -52,10 +52,6 @@ int PREV_MOUSE_Y = 0;
 
 void vblReq() {
     
-    MUSIC_TIMER++;
-
-    RENDER_REQUEST = true;
-    
     if (RENDER_MOUSE_REQUEST) {
 
         clearRegion16(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);
@@ -69,6 +65,10 @@ void vblReq() {
         RENDER_MOUSE_REQUEST = false;
 
     }
+    
+    MUSIC_TIMER++;
+
+    RENDER_REQUEST = true;
 }
 
 void ikbdReq() {

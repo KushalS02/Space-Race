@@ -129,7 +129,7 @@ void restoreMouseBackground(UINT16* base, int x, int y) {
 
     for (i = 0, j = 0; i < MOUSE_BACKGROUND_SIZE; i++) {
 
-        *(base + (y + i) * 40 + (x >> 4)) = mouseBackground[j++];
+        *(base + (y + i) * 40 + (x >> 4)) &= mouseBackground[j++];
 
     }
 

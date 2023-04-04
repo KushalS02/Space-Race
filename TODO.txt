@@ -1,0 +1,20 @@
+- Convert bitmap
+    - replace bitmap codes
+
+- Fix enter key problem
+- Fix score
+
+- Documentation
+
+- Testing
+
+- No hardcoded literals
+- Following naming conventions
+    - constants all caps
+    - Everything else camel case
+
+- Deplagerize
+
+- update game specs
+
+- Go over stage specs
