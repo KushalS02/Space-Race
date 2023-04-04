@@ -69,6 +69,7 @@ Keyboard key codes
 #define UP_KEY 0x00480000
 #define DOWN_KEY 0x00500000
 #define ENTER_KEY 0x001C000D
+/*#define ENTER_KEY 0x00390020*/
 #define LEFT_MOUSE_CLICK_CODE 2
 
 /*

@@ -226,7 +226,7 @@ UINT8 getRepeatedKey() {
 
 void initializeMouse(UINT16* base) {
 
-    MOUSE_X = 320;
+    MOUSE_X = 200;
     MOUSE_Y = 200;
 
     PREV_MOUSE_X = MOUSE_X;
@@ -254,9 +254,9 @@ void updateMouseEvents(UINT16* base) {
 
     }
 
-    if (MOUSE_Y < 0) {
+    if (MOUSE_Y < MOUSE_MAX_Y) {
 
-        MOUSE_Y = 0;
+        MOUSE_Y = MOUSE_MAX_Y;
 
     } else if (MOUSE_Y > 384) {
 

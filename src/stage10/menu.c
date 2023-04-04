@@ -76,7 +76,7 @@ int menu() {
 
             if (input == ESC_KEY) {
 
-                return userChoice;
+                return MENU_CHOICE_EXIT;
 
             } 
 
@@ -90,7 +90,7 @@ int menu() {
 
                 if (VALID_CLICK && MOUSE_LEFT_CLICK) {
 
-                    return userChoice;
+                    return mouseChoice;
 
                 }
 
