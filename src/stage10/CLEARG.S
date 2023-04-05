@@ -18,8 +18,7 @@ fillLoopGame:   movem.l		d1-7/a1-6,-(a0)
 	        rts
 
 blackFill:      dc.l        $FFFFFFFF
-                dc.l		$FFFFFFFF
-	        dc.l		$FFFFFFFF
+            dc.l		$FFFFFFFF
 	        dc.l		$FFFFFFFF
 	        dc.l		$FFFFFFFF
 	        dc.l		$FFFFFFFF
