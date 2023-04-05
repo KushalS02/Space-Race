@@ -53,7 +53,7 @@ Menu functions
     Purpose: to control the main and loop it through
 
 */
-void menu();
+int menu();
 
 /*
 
