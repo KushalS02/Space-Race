@@ -6,6 +6,7 @@ Authours: Alexander Pham and Kushal Saini
 
 #include "psg.h"
 #include "TYPES.H"
+#include "spcerace.h"
 
 /*
     Function: collisionEffect

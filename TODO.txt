@@ -1,9 +1,4 @@
-- Ask Paul about
-    - mouse x-axis skipping
-    - the lines when screen changes
-
-- Convert bitmap
-    - replace bitmap codes
+- mouse x-axis skipping
 
 - Documentation
 

@@ -16,5 +16,9 @@ void collisionEffect() {
     setVolume(channelB, volume);
 
     setEnvelope(triangleInvPeriod, sustain);
+
+    MUSIC_TIMER = 0;
+    while(MUSIC_TIMER < 70)
+    ;
     
 }
