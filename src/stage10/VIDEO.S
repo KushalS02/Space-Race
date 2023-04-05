@@ -2,6 +2,7 @@
 
         xdef    _getVideoBase
         xdef    _setVideoBase
+        
 SCREEN	equ 	$FFFF8201
 OFFSET 	equ 	8   
 

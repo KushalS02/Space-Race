@@ -1,8 +1,8 @@
 - mouse x-axis skipping
 
-- Documentation
+- X Documentation (CHECK OVER, I THINK I FINISHED)
 
-- Testing
+- Testing (esp stage 3)
 
 - No hardcoded literals
 - Following naming conventions
@@ -18,7 +18,7 @@
 - update game specs
 
 - Go over stage specs and folders
-    - Stage 2
+    - X Stage 2 (CHECKED)
     - Stage 3
     - Stage 4
     - Stage 5
