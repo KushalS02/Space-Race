@@ -81,9 +81,10 @@ Purpose: get the time of the system
 
 long getTime();
 */
+
 /*
 
-Name getBase
+Name: getBase
 
 Purpose: get 256 byte aligned base
 
@@ -92,10 +93,31 @@ Parameter: 256 byte alinged screen based used for the second buffer
 */
 UINT8 *getBase(UINT8 *secondBuffer);
 
+/*
+    Function: start
+
+    Purpose: install the vectors, start the game and remove vectors 
+             at the end of game
+*/
 void start();
 
+/*
+
+    Function: displayGameOver
+
+    Purpose: if a asteroid and rocketship collide, display an end
+             screen along with the player's score and if enter
+             is pressed to continued
+
+    Parameter: 
+
+        - void* base - the start of the frame buffer
+
+    Returns: true or false if enter is pressed or not
+
+*/
 bool displayGameOver(void* base);
 
-void clearInterrupts();
+
 
 #endif

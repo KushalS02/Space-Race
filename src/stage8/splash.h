@@ -4,6 +4,9 @@
 #include "TYPES.H"
 #include "const.h"
 
+/*
+the splash screen bitmap
+*/
 extern UINT32 splashScreen[];
 
 #endif

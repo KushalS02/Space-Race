@@ -79,63 +79,101 @@ FUNCTIONS
 
 /*
 
-    Function: 
+    Function: vblReq
+
+    Purpose: updates the VBL IQR to time the page flipping of 
+             double buffered graphics, timing of music and
+             synchronous events
 
 */
 void vblReq();
 
 /*
 
-    Function: 
+    Function: ikbdReq
+
+    Purpose: processes the keyboard and mouse input
+             on the IKBD IRQ
 
 */
 void ikbdReq();
 
 /*
 
-    Function: 
+    Function: installVector
+
+    Purpose: installs a single vector 
+
+    Parameters:
+
+        - int num - the trap number to be installed
+
+        - Vector vector - the vector to be installed
+                          for the trap number
 
 */
 Vector installVector(int num, Vector vector);
 
 /*
 
-    Function: 
+    Function: installVectors
+
+    Purpose: to intsall the VBL and IKBD vectors
 
 */
 void installVectors();
 
 /*
 
-    Function: 
+    Function: removeVectors 
+
+    Purpose: remove the VBL and IKBD vectors 
 
 */
 void removeVectors();
 
 /*
 
-    Function: 
+    Function: ikbdIsWaiting
+
+    Purpose: check to see if the keyboard 
+             is waiting for input
+
+    Return: if true or false if the keyboard is waiting
 
 */
 bool ikbdIsWaiting();
 
 /*
 
-    Function: 
+    Function: writeToIkbdBuffer
+
+    Purpose: write the keyboard valye to the 
+             keyboard buffer
+
+    Parameter:
+
+        - UINT8 scancode - the key code of the keyboard
 
 */
 void writeToIkbdBuffer(UINT8 scancode);
 
 /*
 
-    Function: 
+    Function: readFrormIkbdBuffer
+
+    Purpose: read the keyboard value from the keyboard buffer
+
+    Returns: the keyboard scancode
 
 */
 unsigned long readFromIkbdBuffer();
 
 /*
 
-    Function: 
+    Function: clearIkbdBuffer
+
+    Purpose: clears the ikbd buffer
 
 */
 void clearIkbdBuffer();

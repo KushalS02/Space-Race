@@ -174,22 +174,82 @@ Purpose: disable the cursor when running the game using the terminal command
 void disableCursor();
 
 /*
-DOCUMENT
+
+    Function: renderSplashScreen
+
+    Purpose: to render the splash screen 
+
+    Parameters:
+
+        - UINT32* base - the start of the frame buffer
+
 */
 void renderSplashscreen(UINT32* base);
 
 /*
-DOCUMENT
+
+    Function: renderGameOver
+
+    Purpose: render the game over screen
+
+    Parameters:
+
+        - void* base - the start of the frame buffer
+
+        - UINT8 currScore - the score to display at the end of game
+
 */
 void renderGameOver(void* base, UINT8 currScore);
 
 /*
-DOCUMENT
+
+    Function: renderMouse
+
+    Purpose: plot the mouse bitmap onto the screen at an x and y
+
+    Parameters:
+
+        - UINT16* base - start of the frame buffer
+
+        - int x - top left corner x location
+
+        - int y - top left corner y location
+
 */
 void renderMouse(UINT16* base, int x, int y);
 
+/*
+
+    Function: saveMouseBackground
+
+    Purpose: save the background of the mouse
+
+    Parameters:
+
+        - UINT16* base - start of the frame buffer
+
+        - int x - top left corner x location
+
+        - int y - top left corner y location
+
+*/
 void saveMouseBackground(UINT16* base, int x, int y);
 
+/*
+
+    Function: restoreMouseBackground
+
+    Purpose: restore the background of the mouse that was saved
+
+    Parameters:
+
+        - UINT16* base - start of the frame buffer
+
+        - int x - top left corner x location
+
+        - int y - top left corner y location
+
+*/
 void restoreMouseBackground(UINT16* base, int x, int y);
 
 #endif 

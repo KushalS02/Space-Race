@@ -19,6 +19,14 @@
 
 #define NOTES_SIZE 168
 
+/*
+    Structure to hold the notes of the music
+
+    frequency - the frequency of the note
+
+    duration - how long the note is played for
+
+*/
 typedef struct {
 
     int frequency;
@@ -26,8 +34,29 @@ typedef struct {
 
 } noteType;
 
+/*
+
+    Function: startMusic
+
+    Purpose: starts playing music by loading the first note of the
+             circular array into the PSG 
+
+*/
 void startMusic();
 
+/*
+
+    Function: updateMusic
+
+    Purpose: goes to the next note of the song based on the time elapsed 
+             from the previous call
+
+    Parameter: 
+
+        - UINT32 timeElapsed - the time that is elapsed since
+                               the last call
+
+*/
 bool updateMusic(UINT32 timeElapsed);
 
 #endif

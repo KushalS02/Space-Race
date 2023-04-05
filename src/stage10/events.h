@@ -100,6 +100,15 @@ bool hasUserInput();
 */
 unsigned long getUserInput();
 
+/*
+
+    Function: hasMouseInput
+
+    Purpose: check if the mouse has moved
+
+    Returns: true if the mouse has been moved
+
+*/
 bool hasMouseInput();
 
 #endif

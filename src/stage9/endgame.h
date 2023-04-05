@@ -4,6 +4,9 @@
 #include "TYPES.H"
 #include "const.h"
 
+/*
+the game over splash screen
+*/
 extern UINT32 endGameScreen[];
 
 #endif

@@ -189,7 +189,15 @@ Purpose: disable the cursor when running the game using the terminal command
 void disableCursor();
 
 /*
-DOCUMENT
+
+    Function: renderSplashScreen
+
+    Purpose: to render the splash screen 
+
+    Parameters:
+
+        - UINT32* base - the start of the frame buffer
+
 */
 void renderSplashscreen(UINT32* base);
 

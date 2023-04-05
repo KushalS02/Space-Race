@@ -1,5 +1,8 @@
 #include "splash.h"
 
+/*
+the splash screen bitmap
+*/
 UINT32 splashScreen[] = {
 
     0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 

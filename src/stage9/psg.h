@@ -68,20 +68,120 @@ Regs
 /*
 Functions for PSG 
 */
+
+/*
+
+    Function: writePSG
+
+    Purpose: write the byte value to a PSG register 
+
+    Parameters: 
+
+        int reg - the number of a PSG register that is
+                  being written to
+
+        UINT8 val - the value that is written to the PSG
+                    the register 
+
+*/
 void writePSG(int reg, UINT8 val);
 
+/*
+
+    Function: readPSG
+
+    Purpose: read the value in the given register
+
+    Parameter:
+
+        int reg - the register number
+
+    Returns: it returns the value that is stored in the 
+             register 
+                  
+
+*/
 int readPSG(int reg);
 
+/*
+
+    Function: setTone
+
+    Purpose:
+
+*/
 void setTone(int channel, int tuning);
 
+/*
+
+    Function: setVolume
+
+    Purpose: to load the volume register for one of
+             the three channels 
+
+    Parameters:
+
+        int channel - the channel to set the volume to
+
+        int volume - the volume value 
+
+*/
 void setVolume(int channel, int volume);
 
+/*
+
+    Function: enableChannel
+
+    Purpose: to turn the given channel tone/noise on or off
+
+    Parameters:
+
+        int channel - the channel to turn on/off the tone or noise
+
+        int toneOn - value on tone one
+
+        int noiseOn - value of noise on
+
+*/
 void enableChannel(int channel, int toneOn, int noiseOn);
 
+/*
+
+    Function: stopSound
+
+    Purpose: to stop all the sound on the PSG
+
+*/
 void stopSound();
 
+/*
+
+    Function: setEnvelope
+
+    Purpose: loads the PSG envelope control register with
+             one of the envelopes
+
+    Parameters:
+
+        envelopeShapeType shape - the envelope shape type
+
+        UINT16 sustain - 16 bit value of the sustain 
+
+*/
 void setEnvelope(envelopeShapeType shape, UINT16 sustain);
 
+/*
+
+    Function: setNoise
+
+    Purpose: load the register (noise) with the given 
+             tuning value
+
+    Parameters:
+
+        int tuning - the tuning value 
+
+*/
 void setNoise(int tuning);
 
-#endif 
+#endif s

@@ -81,9 +81,10 @@ Purpose: get the time of the system
 
 long getTime();
 */
+
 /*
 
-Name getBase
+Name: getBase
 
 Purpose: get 256 byte aligned base
 
@@ -92,6 +93,12 @@ Parameter: 256 byte alinged screen based used for the second buffer
 */
 UINT8 *getBase(UINT8 *secondBuffer);
 
+/*
+    Function: start
+
+    Purpose: install the vectors, start the game and remove vectors 
+             at the end of game
+*/
 void start();
 
 #endif

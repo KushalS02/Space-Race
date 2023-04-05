@@ -42,16 +42,78 @@ mouse valid locations
 /*
 Menu functions 
 */
-int menu();
 
+/*
+
+    Function: menu
+
+    Purpose: to control the main and loop it through
+
+*/
+void menu();
+
+/*
+
+    Function: processMenuChoice
+
+    Purpose: based on the up and down arrows, update the 
+             selection based on the user's choice
+
+*/
 void processMenuChoice();
 
+/*
+
+    Function: selectOption
+
+    Purpose: selects one of the menu options by pressing enter
+
+    Parameters:
+
+        - int choice - the user will be able to select one of the
+                       four options, 1 player, 2 player, tutorial 
+                       or exit from 1 to 4
+
+*/
 void selectOption(int choice);
 
+/*
+
+    Function: drawChoiceSelector
+
+    Purpose: draw the menu arrow based on user's choice
+
+    Parameter: 
+
+        - int choice - the menu choice number the user selects
+
+*/
 void drawChoiceSelector(int choice);
 
+/*
+
+    Function: clearChoiceSelector
+
+    Purpose: clear the menu selector from the previous choice
+
+    Parameter:
+
+        - int choice - the previous menu choice that is to be 
+                       cleared
+
+*/
 void clearChoiceSelector(int choice);
 
+/*
+
+    Function: mouseLocation
+
+    Purpose: get the current location of where the mouse
+
+    Returns: the menu choice if the mouse pointer is within the x and y of
+             the menu options
+
+*/
 int mouseLocation();
 
 #endif
