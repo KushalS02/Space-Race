@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: RASTER.C
+
+Instructor: Paul Pospisil
+
 */
 #include "raster.h"
 #include "const.h"

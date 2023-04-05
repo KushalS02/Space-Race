@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: tstModel.c
+
+Instructor: Paul Pospisil
+
 */
 #include <osbind.h>
 #include <stdlib.h>
@@ -15,6 +22,8 @@ int main() {
 
     Model model;
     int currAstr;
+    unsigned long keyInput;
+    int i;
     initializeModel(&model);
 
     printf("rocket top left X: %d \n", model.player.hitbox.topLeftX);
@@ -32,8 +41,6 @@ int main() {
                model.asteroids[currAstr].hitbox.bottomRightX,
                model.asteroids[currAstr].hitbox.bottomRightY);
     }
-
-    
 
    return 0;
 }

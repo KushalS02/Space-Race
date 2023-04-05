@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: events.c
+
+Instructor: Paul Pospisil
+
 */
 #include "events.h"
 #include "model.h"
@@ -91,12 +98,6 @@ void rocketshipAsteroidCollision(Model *model) {
 void onGameStart(Model* model){ 
 
     initializeModel(model);
-
-}
-
-void onGamePause(Model* model) {
-
-    pauseGame(model);
 
 }
 
