@@ -14,6 +14,7 @@
     - functions up to 30 lines (exceptions allowed)
 
 - Deplagerize
+    - remove unuseded envelope types, add some new ones
 
 - update game specs
 
@@ -24,6 +25,7 @@
     - Stage 5
     - Stage 6
     - Stage 7
+        - add another sound effect
     - Stage 8
     - Stage 9
     - Stage 10
