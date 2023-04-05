@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "music.h"
 
 static int currentNote = 0;

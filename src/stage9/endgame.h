@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef END_GAME_SCREEN_H
 #define END_GAME_SCREEN_H
 

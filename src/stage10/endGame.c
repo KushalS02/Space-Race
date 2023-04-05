@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "endGame.h"
 
 UINT32 endGameScreen[] = {

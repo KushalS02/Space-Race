@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef PSG_H
 #define PSG_H
 

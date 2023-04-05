@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef MENU_H
 #define MENU_H
 

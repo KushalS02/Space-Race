@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #ifndef EFFECTS_H
 #define EFFECTS_H
 

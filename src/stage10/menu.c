@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "menu.h"
 
 int MENU_STATE = MENU_CHOICE_1_PLAYER;

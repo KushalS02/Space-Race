@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "menu.h"
 
 bool VALID_CLICK = false;

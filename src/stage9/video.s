@@ -1,3 +1,5 @@
+; Authours: Alexander Pham and Kushal Saini
+
         xdef    _getVideoBase
         xdef    _setVideoBase
 SCREEN	equ 	$FFFF8201

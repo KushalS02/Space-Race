@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "sprites.h"
 
 UINT8 astrv2[] = {

@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "raster.h"
 
 void plotPixel(UINT8* base, int x, int y) {

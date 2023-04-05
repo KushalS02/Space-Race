@@ -1,3 +1,6 @@
+/*
+Authours: Alexander Pham and Kushal Saini
+*/
 #include "splash.h"
 
 UINT32 splashScreen[] = {
