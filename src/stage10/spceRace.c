@@ -3,6 +3,7 @@ Authours: Alexander Pham and Kushal Saini
 */
 #include "spceRace.h"
 #include <osbind.h>
+#include <string.h>
 
 const UINT8 secondBuff[SCREEN_BUFFER_SIZE];
 
@@ -98,7 +99,8 @@ void gameLoop() {
     screen2 = getBase(secondBuff);
 
     gameSetup(&model, base);
-    render(&model, screen2);
+    memcpy(screen2, base, 32000);
+    /*render(&model, screen2);*/
     startMusic();
 
     while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
