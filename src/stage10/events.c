@@ -26,7 +26,7 @@ void rocketshipMove(Rocketship *rocketship, unsigned long key)
 
     }
 
-    clearEffects();
+    /*clearEffects();*/
 
 }
 

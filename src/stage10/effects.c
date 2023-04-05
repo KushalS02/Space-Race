@@ -5,7 +5,7 @@ Authours: Alexander Pham and Kushal Saini
 
 void collisionEffect() {
 
-    int volume = 15;
+    int volume = 14;
     int noiseTone = 30;
     int sustain = 15;
 
@@ -24,7 +24,7 @@ void collisionEffect() {
 }
 
 void rocketshipMoveEffect() {
-    int volume = 15;
+    int volume = 14;
     int noiseTone = 999;
     int sustain = 5;
 
@@ -41,4 +41,5 @@ void rocketshipMoveEffect() {
 void clearEffects() {
     setVolume(channelB, 0);
     enableChannel(channelB, false, false);
+    enableChannel(channelA, true, false);
 }

@@ -112,6 +112,8 @@ void startMusic() {
 
   int volume = 10;
 
+  currentNote = 0;
+
     setEnvelope(triangleInvPeriod, sustain);
 
     enableChannel(channelA, true, false);

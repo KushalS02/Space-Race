@@ -30,6 +30,5 @@ blackFill:      dc.l		$FFFFFFFF
 	        dc.l		$FFFFFFFF
 	        dc.l		$FFFFFFFF
 			dc.l		$FFFFFFFF
-			dc.l		$FFFFFFFF
 
 
