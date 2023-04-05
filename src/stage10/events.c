@@ -6,6 +6,7 @@ Authours: Alexander Pham and Kushal Saini
 #include "const.h"
 #include "TYPES.H"
 #include <stdio.h>
+#include "effects.h"
 
 void rocketshipMove(Rocketship *rocketship, unsigned long key)
 {
@@ -13,6 +14,7 @@ void rocketshipMove(Rocketship *rocketship, unsigned long key)
     if (key == UP_KEY) {
 
         moveRocketship(rocketship, up);
+        rocketshipMoveEffect();
 
     }
 
@@ -20,8 +22,11 @@ void rocketshipMove(Rocketship *rocketship, unsigned long key)
     else if (key == DOWN_KEY && rocketship->hitBoundary == false) {
 
             moveRocketship(rocketship, down);
+            rocketshipMoveEffect();
 
     }
+
+    clearEffects();
 
 }
 

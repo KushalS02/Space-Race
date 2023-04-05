@@ -22,3 +22,23 @@ void collisionEffect() {
     ;
     
 }
+
+void rocketshipMoveEffect() {
+    int volume = 15;
+    int noiseTone = 999;
+    int sustain = 5;
+
+    setNoise(noiseTone);
+    
+    enableChannel(channelB, false, true);
+
+    setVolume(channelB, volume);
+
+    setEnvelope(triangleInvPeriod, sustain);
+
+}
+
+void clearEffects() {
+    setVolume(channelB, 0);
+    enableChannel(channelB, false, false);
+}

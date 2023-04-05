@@ -19,4 +19,8 @@ Authours: Alexander Pham and Kushal Saini
 */
 void collisionEffect();
 
+void rocketshipMoveEffect();
+
+void clearEffects();
+
 #endif

@@ -20,7 +20,7 @@ Authours: Alexander Pham and Kushal Saini
 #define NOTE_A 268
 #define NOTE_B_FLAT 253
 
-#define NOTES_SIZE 168
+#define NOTES_SIZE 92
 
 /*
     Structure to hold the notes of the music
