@@ -37,6 +37,7 @@ void start() {
 
     while (quit == false)
     {
+        RENDER_MOUSE_REQUEST = false;
         renderSplashscreen((UINT32 *)base);
         clearIkbdBuffer();
         userChoice = menu();
