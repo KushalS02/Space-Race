@@ -1,4 +1,7 @@
 - mouse x-axis skipping
+- mouse clones after clicking
+
+- music doesn't restart after starting new game
 
 - X Documentation (CHECK OVER, I THINK I FINISHED)
 
