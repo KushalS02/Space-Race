@@ -119,11 +119,11 @@ void startMusic() {
 
   int volume = 10;
 
-    setEnvelope(triangleInvPeriod, sustain);
+    setEnvelope(triangle, sustain);
 
-    enableChannel(channelA, true, false);
+    enableChannel(A, true, false);
 
-    setVolume(channelA, volume);
+    setVolume(A, volume);
 
 }
 
@@ -145,7 +145,7 @@ bool updateMusic(UINT32 timeElapsed) {
 
     }
 
-    setTone(channelA, mainSong[currentNote].frequency);
+    setTone(A, mainSong[currentNote].frequency);
 
     return updated;
 

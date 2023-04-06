@@ -18,10 +18,10 @@ void collisionEffect() {
 
     setNoise(noiseTone);
     
-    enableChannel(channelB, false, true);
+    enableChannel(B, false, true);
 
-    setVolume(channelB, volume);
+    setVolume(B, volume);
 
-    setEnvelope(triangleInvPeriod, sustain);
+    setEnvelope(triangle, sustain);
     
 }
