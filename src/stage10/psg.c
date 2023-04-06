@@ -74,7 +74,7 @@ void setTone(Channel channel, UINT16 tuning) {
 
     if (tuning < TONE_MAX && tuning > TONE_MIN) {
 
-        /*Extract 4 bit fine val and 8 bit rough val from tuning*/
+        /*Extract fine val (low 4 bits) and rough val (bits 11-4) from tuning*/
         fine = (UINT8) (tuning % 0x000F);
         rough = (UINT8) (tuning >> 4);
 
@@ -199,6 +199,7 @@ void setEnvelope(envelopeShape shape, UINT16 sustain) {
 
     if (sustain >= ENV_FREQ_MIN && sustain < +ENV_FREQ_MAX) {
 
+        /*Extract fine (low 8 bits) and rough (high 8 bits) adjustments from sustain*/
         fine = (UINT8)sustain;
         rough = (UINT8)sustain >> 8;
 

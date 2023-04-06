@@ -138,6 +138,9 @@ UINT8 readPSG(UINT16 reg);
         int channel - the channel to set tone on
 
         int tuning - the 12 bit tuning
+            - low 4 bits: rough adjustment
+            - bits 11-4: fine adjustment
+            - bits 15-12: unused
 
 */
 void setTone(Channel channel, UINT16 tuning);
@@ -210,6 +213,8 @@ void setEnvelope(envelopeShape shape, UINT16 sustain);
     Parameters:
 
         UINT16 tuning - the tuning value 
+            - Low 8 bits: fine adjustment
+            - High 8 bits: rought adjustment
 
 */
 void setNoise(UINT16 tuning);

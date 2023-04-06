@@ -86,14 +86,11 @@ void ikbdReq() {
 
     UINT8 scancode = 0;
 
-    /* Request data from IKBD controller */
     *ikbdControl = 0x16;
 
     if (*ikbdStatus & 0x1) {
-        /* Read scancode */
         scancode = *ikbdReader;
 
-        /* Process scancode based on mouse state */
         switch (mouseState) {
 
             case MOUSE_STATE_FIRST_PACKET:
@@ -122,14 +119,12 @@ void ikbdReq() {
 
             case MOUSE_STATE_DELTA_X:
 
-                /* Store scancode as X delta */
                 MOUSE_DELTA_X = scancode;
                 mouseState = MOUSE_STATE_DELTA_Y;
                 break;
 
             case MOUSE_STATE_DELTA_Y:
 
-                /* Store scancode as Y delta */
                 MOUSE_DELTA_Y = scancode;
                 mouseState = MOUSE_STATE_FIRST_PACKET;
                 break;
