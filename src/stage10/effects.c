@@ -7,15 +7,15 @@ void collisionEffect() {
 
     int volume = 14;
     int noiseTone = 30;
-    int sustain = 15;
+    int sustain = 200;
 
     setNoise(noiseTone);
     
-    enableChannel(channelB, false, true);
+    enableChannel(B, false, true);
 
-    setVolume(channelB, volume);
+    setVolume(B, volume);
 
-    setEnvelope(triangleInvPeriod, sustain);
+    setEnvelope(saw, sustain);
 
     MUSIC_TIMER = 0;
     while(MUSIC_TIMER < 70)
@@ -25,21 +25,21 @@ void collisionEffect() {
 
 void rocketshipMoveEffect() {
     int volume = 14;
-    int noiseTone = 999;
-    int sustain = 5;
+    int noiseTone = 30;
+    int sustain = 1;
 
     setNoise(noiseTone);
     
-    enableChannel(channelB, false, true);
+    enableChannel(B, false, true);
 
-    setVolume(channelB, volume);
+    setVolume(B, volume);
 
-    setEnvelope(triangleInvPeriod, sustain);
+    setEnvelope(saw, sustain);
 
 }
 
 void clearEffects() {
-    setVolume(channelB, 0);
-    enableChannel(channelB, false, false);
-    enableChannel(channelA, true, false);
+    setVolume(B, 0);
+    enableChannel(B, false, false);
+    enableChannel(A, true, false);
 }

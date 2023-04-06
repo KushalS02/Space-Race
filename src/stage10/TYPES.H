@@ -31,9 +31,9 @@ typedef enum {
 
 typedef enum {
 
-    channelA, channelB, channelC
+    A, B, C
 
-} channelType;
+} Channel;
 
 typedef enum {
 

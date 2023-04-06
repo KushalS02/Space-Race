@@ -32,7 +32,7 @@ Authours: Alexander Pham and Kushal Saini
 */
 typedef struct {
 
-    int frequency;
+    UINT16 frequency;
     int duration;
 
 } noteType;
