@@ -1,5 +1,11 @@
 ;Authours: Alexander Pham and Kushal Saini
 
+;Course: COMP 2659 - 001
+
+;File name: video.s
+
+;Instructor: Paul Pospisil
+
         xdef    _getVideoBase
         xdef    _setVideoBase
 

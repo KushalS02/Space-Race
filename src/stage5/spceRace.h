@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: SpceRace.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef SPACE_RACE_H
 #define SPACE_RACE_H
@@ -13,8 +20,6 @@ Authours: Alexander Pham and Kushal Saini
 #include "RASTER.H"
 #include "sprites.h"
 #include "TYPES.H"
-#include "clearG.h"
-#include "clearQK.h"
 
 /*
 
@@ -38,8 +43,10 @@ Parameters:
 
     Model *model - process the async events based from the model
 
+    void *base - start of the frame buffer
+
 */
-void processAsyncEvents(Model *model);
+void processAsyncEvents(Model *model, void *base);
 
 /*
 
@@ -52,7 +59,7 @@ Parameters:
     Model *model - process the sync events based from the model
 
 */
-void processSyncEvents(Model *model);
+void processSyncEvents(Model *model, void *base);
 
 /*
 
@@ -77,16 +84,5 @@ Purpose: get the time of the system
 
 */
 long getTime();
-
-/*
-
-Name getBase
-
-Purpose: get 256 byte aligned base
-
-Parameter: 256 byte alinged screen based used for the second buffer 
-
-*/
-UINT8 *getBase(UINT8 *secondBuffer);
 
 #endif

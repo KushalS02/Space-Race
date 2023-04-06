@@ -1,5 +1,13 @@
 /*
-* Authours: Alexander Pham and Kushal Saini
+* 
+Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: model.h
+
+Instructor: Paul Pospisil
+
 *
 * model.h contains all the structs used in the game as well as functions to manipulate the structs.
 * 
@@ -201,6 +209,6 @@ Helper functions
 * Output:
 *   - bool: False = no collision, True = collision
 */
-bool hitboxCollision(Hitbox* hb1, Hitbox* hb2);
+bool hitboxCollision(Hitbox hb1, Hitbox hb2);
 
 #endif

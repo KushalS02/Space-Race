@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: spceRace.c
+
+Instructor: Paul Pospisil
+
 */
 #include "spceRace.h"
 #include <osbind.h>
@@ -36,30 +43,17 @@ void processAsyncEvents(Model *model, void *base) {
 
     unsigned long input;
 
-    if(hasUserInput()) {
+    rocketshipHitBoundary(&(model->player), model->asteroids, &(model->scorebox), &(model->highscorebox));
 
-        rocketshipHitBoundary(&model->player);
+    if(hasUserInput()) {
 
         input = getUserInput();
 
-        clearRocketship(&model->player, base);
         rocketshipMove(&model->player, input);
-        renderRocketship(&model->player, base);
-
-        if (rocketshipHitFinish(model)) {
-            clearAsteroids(model->asteroids, base);
-            clearRocketship(&model->player, base);
-            initializeNextRound(&model->player, &model->asteroids, &model->scorebox, &model->highscorebox);
-            renderNextRound(model, base);
-        }
-
-        if (input == ESC_KEY) {
-
-            onGameOver(model);
-
-        }
 
     }
+
+    renderRocketship(&model->player, base);
 
 }
 
@@ -72,13 +66,10 @@ void processSyncEvents(Model *model, void *base) {
     timeElapsed = timeNow - timeThen;
 
     if (timeElapsed > 0) {
-        clearAsteroids(&model->asteroids, base);
 
-        moveAsteroids(&model->asteroids);
+        moveAsteroids(model->asteroids);
 
-        renderAsteroids(&model->asteroids, base);
-
-        rocketshipAsteroidCollision(model);
+        renderAsteroids(model->asteroids, (UINT8*)base);
 
         timeThen = timeNow;
 

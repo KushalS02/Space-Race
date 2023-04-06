@@ -1,3 +1,13 @@
+;
+;Authours: Alexander Pham and Kushal Saini
+;
+;Course: COMP 2659 - 001 
+;
+;File name: clearG.s
+;
+;Instructor: Paul Pospisil
+
+
                 xdef        _clearG
 
 base	        equ         64

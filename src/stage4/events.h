@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: events.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef EVENTS_H
 #define EVENTS_H
@@ -23,17 +30,7 @@ void rocketshipMove(Rocketship* rocketship, unsigned long key);
 * Input:
 *   - Rocketship*: the rocketship being checked
 */
-void rocketshipHitBoundary(Rocketship* rocketship);
-
-/*
-* Function: rocketshipHitFinish
-* Purpose: checks if the rocketship has reached the finish line
-* Input:
-*   - Rocketship*: rocketship being checked
-* Output:
-*   - bool: False = has not reached finish, True = reached finish
-*/
-bool rocketshipHitFinish(Rocketship* rocketship);
+void rocketshipHitBoundary(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox);
 
 /*
 * Function: asteroidsHitBoundry

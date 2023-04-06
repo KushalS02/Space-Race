@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: sprites.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef SPRITES_H
 #define SPRITES_H

@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: spceRace.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef SPACE_RACE_H
 #define SPACE_RACE_H

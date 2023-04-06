@@ -1,5 +1,11 @@
 ;Authours: Alexander Pham and Kushal Saini
 
+;Course: COMP 2659 - 001
+
+;File name: clearQK.s
+
+;Instructor: Paul Pospisil
+
                 xdef        _clearQuick
 
 base            equ         64

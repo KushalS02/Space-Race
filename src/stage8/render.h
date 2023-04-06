@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: render.H
+
+Instructor: Paul Pospisil
+
 */
 #ifndef RENDER_H
 #define RENDER_H

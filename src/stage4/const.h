@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: const.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef CONST_H
 #define CONST_H
