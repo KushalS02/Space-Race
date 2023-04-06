@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: video.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef VIDEO_H
 #define VIDEO_H

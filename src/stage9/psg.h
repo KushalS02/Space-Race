@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: psg.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef PSG_H
 #define PSG_H
@@ -187,4 +194,4 @@ void setEnvelope(envelopeShapeType shape, UINT16 sustain);
 */
 void setNoise(int tuning);
 
-#endif s
+#endif 

@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: music.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef MUSIC_H
 #define MUSIC_H

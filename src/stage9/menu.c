@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: menu.c
+
+Instructor: Paul Pospisil
+
 */
 #include "menu.h"
 

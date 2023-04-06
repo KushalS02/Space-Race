@@ -1,6 +1,12 @@
 /*
 * Authours: Alexander Pham and Kushal Saini
 *
+*Course: COMP 2659 - 001 
+*
+*File name: sprites.h
+*
+*Instructor: Paul Pospisil
+*
 * sprites.h contains all the bitmaps that are used in the game
 */
 
