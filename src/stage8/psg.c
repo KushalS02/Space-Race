@@ -10,11 +10,12 @@ Instructor: Paul Pospisil
 */
 #include "psg.h"
 
-void writePSG(int reg, UINT8 val) {
+void writePSG(UINT16 reg, UINT8 val) {
 
     long oldSSP;
 
-    if (regIsValid(reg)) {
+    if (reg <= REG_MAX && reg >= REG_MIN &&
+        val <= VAL_MAX && val >= VAL_MIN) {
 
         oldSSP = Super(0);
 
@@ -28,15 +29,15 @@ void writePSG(int reg, UINT8 val) {
 
 }
 
-int readPSG(int reg) {
+UINT8 readPSG(UINT16 reg) {
 
     long oldSSP;
 
-    int val = -1;
+    UINT8 val;
 
     oldSSP = Super(0);
 
-    if (regIsValid(reg)) {
+    if (reg <= REG_MAX && reg >= REG_MIN) {
 
         *psgRegSelect = reg;
 
@@ -50,92 +51,113 @@ int readPSG(int reg) {
 
 }
 
-void setTone(channelType channel, int tuning) {
+void setTone(Channel channel, UINT16 tuning) {
 
-    const UINT8 channelToneRegisters[] = {
-        CHANNEL_A_TONE,
-        CHANNEL_B_TONE,
-        CHANNEL_C_TONE
-    };
+    UINT8 fine;
+    UINT8 rough;
     
-    if (channel >= channelA && channel <= channelC) {
+    const UINT8 roughRegisters[] = {
 
-        writePSG(channelToneRegisters[channel], (UINT8)tuning);
+            A_FINE_TONE,
+            B_FINE_TONE,
+            C_FINE_TONE 
+
+    };
+
+    const UINT8 fineRegisters[] = {
+
+            A_ROUGH_TONE,
+            B_ROUGH_TONE,
+            C_ROUGH_TONE
+            
+    };
+
+    if (tuning < TONE_MAX && tuning > TONE_MIN) {
+
+        /*Extract 4 bit fine val and 8 bit rough val from tuning*/
+        fine = (UINT8) (tuning % 0x000F);
+        rough = (UINT8) (tuning >> 4);
+
+        if (channel >= A && channel <= C) {
+
+            writePSG(roughRegisters[channel], rough);
+            writePSG(fineRegisters[channel], fine);
+
+        }
 
     }
 
 }
 
-void setVolume(channelType channel, int volume) {
+void setVolume(Channel channel, UINT16 volume) {
 
-    const UINT8 channelVolRegisters[] = {
-        CHANNEL_A_VOL,
-        CHANNEL_B_VOL,
-        CHANNEL_C_VOL
+    const UINT8 volRegisters[] = {
+
+        A_VOL,
+        B_VOL,
+        C_VOL
+
     };
     
-    if (channel >= channelA && channel <= channelC) {
+    if (channel >= A && channel <= C &&
+        volume >= VOL_MIN && volume <= VOL_MAX) {
 
-        writePSG(channelVolRegisters[channel], (UINT8)volume);
+        writePSG(volRegisters[channel], (UINT8)volume);
 
     }
+
 }
 
-void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
+void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
 
-    int mixerVal = readPSG(MIXER_REG);
-    int toneMask, noiseMask;
+    UINT16 mixerVal = readPSG(MIXER_REG);
+    UINT16 toneMask, noiseMask;
 
     switch (channel) {
 
-        case channelA:
+        case A:
 
-            toneMask = MIXER_TONE_CHANNEL_A;
-            noiseMask = MIXER_NOISE_CHANNEL_A;
-
-            break;
-
-        case channelB:
-
-            toneMask = MIXER_TONE_CHANNEL_B;
-            noiseMask = MIXER_NOISE_CHANNEL_B;
+            toneMask = MIXER_TONE_A;
+            noiseMask = MIXER_NOISE_A;
 
             break;
 
-        case channelC:
+        case B:
 
-            toneMask = MIXER_TONE_CHANNEL_C;
-            noiseMask = MIXER_NOISE_CHANNEL_C;
+            toneMask = MIXER_TONE_B;
+            noiseMask = MIXER_NOISE_B;
+
+            break;
+
+        case C:
+
+            toneMask = MIXER_TONE_C;
+            noiseMask = MIXER_NOISE_C;
 
             break;
 
         default:
             
-            break;
+            /* If invalid channel */
+            return;
 
     }
 
     
     if (!toneOn && !noiseOn) {
         
-        /*
-        Disable both tone and noise
-        */
+        /* Disable both tone and noise */
         mixerVal &= ~(toneMask | noiseMask);
 
     } else if (toneOn && !noiseOn) {
         
-        /*
-        enable tone only
-        */
+        /* enable tone only */
         mixerVal |= toneMask;
         mixerVal &= ~noiseMask;
 
     } else if (!toneOn && noiseOn) {
         
-        /*
-        enable noise only
-        */
+        /* enable noise only */
         mixerVal |= noiseMask;
         mixerVal &= ~toneMask;
 
@@ -154,82 +176,66 @@ void enableChannel(channelType channel, bool toneOn, bool noiseOn) {
 
 void stopSound() {
 
-    channelType channel;
-
-    const UINT8 stopValue = 0x00;
+    Channel channel;
     
-    writePSG(MIXER_REG, stopValue);
-    writePSG(NOISE_FREQUENCY_REG, stopValue);
-    writePSG(ENVELOPE_FINE_REG, stopValue);
-    writePSG(ENVELOPE_ROUGH_REG, stopValue);
-    writePSG(ENVELOPE_SHAPE_CONTROL_REG, stopValue);
+    writePSG(MIXER_REG, VAL_MIN);
+    writePSG(NOISE_FREQ, VAL_MIN);
+    writePSG(ENVELOPE_FINE, VAL_MIN);
+    writePSG(ENVELOPE_ROUGH, VAL_MIN);
+    writePSG(ENVELOPE_SHAPE, VAL_MIN);
     
-    for (channel = channelA; channel <= channelC; channel++) {
+    for (channel = A; channel <= C; channel++) {
 
-        setVolume(channel, 0);
+        setVolume(channel, VOL_MIN);
 
     }
 
 }
 
-void setEnvelope(envelopeShapeType shape, UINT16 sustain) {
+void setEnvelope(envelopeShape shape, UINT16 sustain) {
 
-    int shapeVal;
+    UINT8 fine;
+    UINT8 rough;
 
-    writePSG(ENVELOPE_FINE_REG, sustain);
-    
-    writePSG(ENVELOPE_ROUGH_REG, sustain);
+    if (sustain >= ENV_FREQ_MIN && sustain < +ENV_FREQ_MAX) {
 
-    switch (shape) {
+        fine = (UINT8)sustain;
+        rough = (UINT8)sustain >> 8;
 
-        case saw:
+        writePSG(ENVELOPE_FINE, fine);
+        writePSG(ENVELOPE_ROUGH, rough);
 
-            shapeVal = ENVELOPE_SAW_SHAPE;
-
-            break;
-
-        case sawInv:
-
-            shapeVal = ENVELOPE_SAW_SHAPE_INV;
-
-            break;
-
-        case sawPeriod:
-
-            shapeVal = ENVELOPE_SAW_PERIOD_SHAPE;
-
-            break;
+        switch (shape) {
 
         case triangle:
 
-            shapeVal = ENVELOPE_TRIANGLE_SHAPE;
+            writePSG(ENVELOPE_SHAPE, TRIANGLE_SHAPE);
 
             break;
 
-        case triangleInv:
+        case saw:
 
-            shapeVal = ENVELOPE_TRIANGLE_INV_SHAPE;
-            
-            break;
-
-        case trianglePeriod:
-
-            shapeVal = ENVELOPE_TRIANGLE_PERIOD_SHAPE;
+            writePSG(ENVELOPE_SHAPE, SAW_SHAPE);
 
             break;
 
-        case triangleInvPeriod:
+        default:
 
-            shapeVal = ENVELOPE_TRIANGLE_INV_PERIOD_SHAPE;
+            /*Invalid Shape*/
+            return;
 
-            break;
+        }
 
     }
 
 }
 
-void setNoise(int tuning) {
+void setNoise(UINT16 tuning) {
 
-    writePSG(NOISE_FREQUENCY_REG, tuning);
+    if (tuning < NOISE_FREQ_MAX && tuning >> NOISE_FREQ_MIN) {
+
+        writePSG(NOISE_FREQ, tuning);
+
+    }
     
 }
