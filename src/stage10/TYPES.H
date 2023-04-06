@@ -37,9 +37,8 @@ typedef enum {
 
 typedef enum {
 
-    saw, sawInv, sawPeriod, sawInvPeriod,
-    triangle, triangleInv, trianglePeriod, triangleInvPeriod
+    saw, triangle
 
-} envelopeShapeType;
+} envelopeShape;
 
 #endif

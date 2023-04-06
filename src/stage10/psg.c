@@ -7,7 +7,8 @@ void writePSG(UINT16 reg, UINT8 val) {
 
     long oldSSP;
 
-    if (reg <= REG_MAX && reg >= REG_MIN) {
+    if (reg <= REG_MAX && reg >= REG_MIN &&
+        val <= VAL_MAX && val >= VAL_MIN) {
 
         oldSSP = Super(0);
 
@@ -81,7 +82,8 @@ void setVolume(Channel channel, UINT16 volume) {
         C_VOL
     };
     
-    if (channel >= A && channel <= C) {
+    if (channel >= A && channel <= C &&
+        volume >= VOL_MIN && volume <= VOL_MAX) {
 
         writePSG(volRegisters[channel], (UINT8)volume);
 
@@ -118,7 +120,8 @@ void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
 
         default:
             
-            break;
+            /*If invalid channel*/
+            return;
 
     }
 
@@ -162,51 +165,62 @@ void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
 void stopSound() {
 
     Channel channel;
-
-    const UINT8 stopValue = 0x00;
     
-    writePSG(MIXER_REG, stopValue);
-    writePSG(NOISE_FREQUENCY_REG, stopValue);
-    writePSG(ENVELOPE_FINE_REG, stopValue);
-    writePSG(ENVELOPE_ROUGH_REG, stopValue);
-    writePSG(ENVELOPE_SHAPE_CONTROL_REG, stopValue);
+    writePSG(MIXER_REG, VAL_MIN);
+    writePSG(NOISE_FREQ, VAL_MIN);
+    writePSG(ENVELOPE_FINE, VAL_MIN);
+    writePSG(ENVELOPE_ROUGH, VAL_MIN);
+    writePSG(ENVELOPE_SHAPE, VAL_MIN);
     
     for (channel = A; channel <= C; channel++) {
 
-        setVolume(channel, 0);
+        setVolume(channel, VOL_MIN);
 
     }
 
 }
 
-void setEnvelope(envelopeShapeType shape, UINT16 sustain) {
+void setEnvelope(envelopeShape shape, UINT16 sustain)
+{
 
-    UINT16 shapeVal;
+    UINT8 fine;
+    UINT8 rough;
 
-    writePSG(ENVELOPE_FINE_REG, sustain);
-    
-    writePSG(ENVELOPE_ROUGH_REG, sustain);
+    if (sustain >= ENV_FREQ_MIN && sustain < +ENV_FREQ_MAX)
+    {
 
-    switch (shape) {
+        fine = (UINT8)sustain;
+        rough = (UINT8)sustain >> 8;
+
+        writePSG(ENVELOPE_FINE, fine);
+        writePSG(ENVELOPE_ROUGH, rough);
+
+        switch (shape)
+        {
 
         case triangle:
 
-            writePSG(ENVELOPE_SHAPE_CONTROL_REG, ENVELOPE_TRIANGLE_SHAPE);
+            writePSG(ENVELOPE_SHAPE, TRIANGLE_SHAPE);
 
             break;
 
         case saw:
-        
-            writePSG(ENVELOPE_SHAPE_CONTROL_REG, ENVELOPE_SAW_SHAPE);
+
+            writePSG(ENVELOPE_SHAPE, SAW_SHAPE);
 
             break;
-    }
 
+        default:
+
+            /*Invalid Shape*/
+            return;
+        }
+    }
 }
 
 void setNoise(UINT16 tuning) {
 
     if (tuning < NOISE_FREQ_MAX && tuning >> NOISE_FREQ_MIN) {
-        writePSG(NOISE_FREQUENCY_REG, tuning);
+        writePSG(NOISE_FREQ, tuning);
     }
 }

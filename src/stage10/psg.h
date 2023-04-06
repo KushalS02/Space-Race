@@ -10,12 +10,18 @@ Authours: Alexander Pham and Kushal Saini
 /*
 Valid ranges
 */
-#define REG_MAX 15
+#define REG_MAX 0xF
 #define REG_MIN 0
+#define VAL_MAX 0xFF
+#define VAL_MIN 0
 #define NOISE_FREQ_MAX 31
 #define NOISE_FREQ_MIN 0
 #define TONE_MAX 0x0FFF
 #define TONE_MIN 0
+#define VOL_MAX 0xF
+#define VOL_MIN 0
+#define ENV_FREQ_MAX 0xFFFF
+#define ENV_FREQ_MIN 0
 
 /*
 Addresses of PSG select and write 
@@ -24,7 +30,7 @@ extern volatile char* psgRegSelect = 0xFF8800;
 extern volatile char* psgRegWrite = 0xFF8802;
 
 /*
-Channel A, B, C tones
+Channel A, B, C tone registers
 */
 #define A_FINE_TONE 0x0
 #define B_FINE_TONE 0x2
@@ -35,14 +41,19 @@ Channel A, B, C tones
 #define C_ROUGH_TONE 0x5
 
 /*
-Channel A, B, C volume
+Channel A, B, C volume registers
 */
 #define A_VOL 0x8
 #define B_VOL 0x9
 #define C_VOL 0xa
 
 /*
-Mixer
+Mixer registers
+*/
+#define MIXER_REG 0x7
+
+/*
+Mixer masks
 */
 #define MIXER_ALL_OFF 0xff
 #define MIXER_TONE_A 0x3e
@@ -53,25 +64,22 @@ Mixer
 #define MIXER_NOISE_C 0x1f
 
 /*
-Envelope 
+Envelope registers
 */
-#define ENVELOPE_FINE_REG 0xb
-#define ENVELOPE_ROUGH_REG 0xc
-#define ENVELOPE_SHAPE_CONTROL_REG 0xd
+#define ENVELOPE_FINE 0xb
+#define ENVELOPE_ROUGH 0xc
+#define ENVELOPE_SHAPE 0xd
 
-#define ENVELOPE_SAW_SHAPE 0xc
-#define ENVELOPE_SAW_SHAPE_INV 0x8
-#define ENVELOPE_SAW_PERIOD_SHAPE  0xf
-#define ENVELOPE_TRIANGLE_SHAPE 0xe
-#define ENVELOPE_TRIANGLE_INV_SHAPE 0xa
-#define ENVELOPE_TRIANGLE_PERIOD_SHAPE  0xd
-#define ENVELOPE_TRIANGLE_INV_PERIOD_SHAPE 0x00
+/*
+Shape masks
+*/
+#define SAW_SHAPE 0xc
+#define TRIANGLE_SHAPE 0xe
 
 /* 
-Regs
+Noise registers
 */
-#define NOISE_FREQUENCY_REG 0x6
-#define MIXER_REG 0x7
+#define NOISE_FREQ 0x6
 
 /*
 Functions for PSG 
@@ -171,12 +179,12 @@ void stopSound();
 
     Parameters:
 
-        envelopeShapeType shape - the envelope shape type
+        envelopeShape shape - the envelope shape type
 
         UINT16 sustain - 16 bit value of the sustain 
 
 */
-void setEnvelope(envelopeShapeType shape, UINT16 sustain);
+void setEnvelope(envelopeShape shape, UINT16 sustain);
 
 /*
 

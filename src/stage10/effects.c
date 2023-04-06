@@ -15,7 +15,7 @@ void collisionEffect() {
 
     setVolume(B, volume);
 
-    setEnvelope(saw, sustain);
+    setEnvelope(triangle, sustain);
 
     MUSIC_TIMER = 0;
     while(MUSIC_TIMER < 70)
