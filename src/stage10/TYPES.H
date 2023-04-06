@@ -24,24 +24,44 @@ typedef int bool;
 #define false 0
 #define true 1
 
+/* 
+
+The directions that the rocketship is allowed to move, up or down
+
+*/
 typedef enum {
 
-    up, down, stop
+    up, down
 
 } rocketShipDirection;
 
+/*
+
+The directions that asteroids are allowed to move, left and right
+
+*/
 typedef enum {
 
     left, right
 
 } asteroidDirecton;
 
+/*
+
+The three channels for PSG
+
+*/
 typedef enum {
 
     A, B, C
 
 } Channel;
 
+/*
+
+The envelope shapes
+
+*/
 typedef enum {
 
     saw, triangle

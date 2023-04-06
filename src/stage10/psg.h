@@ -130,7 +130,14 @@ UINT8 readPSG(UINT16 reg);
 
     Function: setTone
 
-    Purpose:
+    Purpose: loads the tone registers for one of the channels
+             with the 12 bit tuning
+
+    Parameters:
+
+        int channel - the channel to set tone on
+
+        int tuning - the 12 bit tuning
 
 */
 void setTone(Channel channel, UINT16 tuning);

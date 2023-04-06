@@ -51,42 +51,52 @@ UINT8 readPSG(UINT16 reg) {
 
 }
 
-void setTone(Channel channel, UINT16 tuning)
-{
+void setTone(Channel channel, UINT16 tuning) {
+
     UINT8 fine;
     UINT8 rough;
+    
     const UINT8 roughRegisters[] = {
+
             A_FINE_TONE,
             B_FINE_TONE,
-            C_FINE_TONE};
+            C_FINE_TONE 
+
+    };
 
     const UINT8 fineRegisters[] = {
+
             A_ROUGH_TONE,
             B_ROUGH_TONE,
-            C_ROUGH_TONE};
+            C_ROUGH_TONE
+            
+    };
 
-    if (tuning < TONE_MAX && tuning > TONE_MIN)
-    {
+    if (tuning < TONE_MAX && tuning > TONE_MIN) {
 
         /*Extract 4 bit fine val and 8 bit rough val from tuning*/
         fine = (UINT8) (tuning % 0x000F);
         rough = (UINT8) (tuning >> 4);
 
-        if (channel >= A && channel <= C)
-        {
+        if (channel >= A && channel <= C) {
 
             writePSG(roughRegisters[channel], rough);
             writePSG(fineRegisters[channel], fine);
+
         }
+
     }
+
 }
 
 void setVolume(Channel channel, UINT16 volume) {
 
     const UINT8 volRegisters[] = {
+
         A_VOL,
         B_VOL,
         C_VOL
+
     };
     
     if (channel >= A && channel <= C &&
@@ -95,6 +105,7 @@ void setVolume(Channel channel, UINT16 volume) {
         writePSG(volRegisters[channel], (UINT8)volume);
 
     }
+
 }
 
 void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
@@ -127,7 +138,7 @@ void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
 
         default:
             
-            /*If invalid channel*/
+            /* If invalid channel */
             return;
 
     }
@@ -135,24 +146,18 @@ void enableChannel(Channel channel, bool toneOn, bool noiseOn) {
     
     if (!toneOn && !noiseOn) {
         
-        /*
-        Disable both tone and noise
-        */
+        /* Disable both tone and noise */
         mixerVal &= ~(toneMask | noiseMask);
 
     } else if (toneOn && !noiseOn) {
         
-        /*
-        enable tone only
-        */
+        /* enable tone only */
         mixerVal |= toneMask;
         mixerVal &= ~noiseMask;
 
     } else if (!toneOn && noiseOn) {
         
-        /*
-        enable noise only
-        */
+        /* enable noise only */
         mixerVal |= noiseMask;
         mixerVal &= ~toneMask;
 
@@ -187,14 +192,12 @@ void stopSound() {
 
 }
 
-void setEnvelope(envelopeShape shape, UINT16 sustain)
-{
+void setEnvelope(envelopeShape shape, UINT16 sustain) {
 
     UINT8 fine;
     UINT8 rough;
 
-    if (sustain >= ENV_FREQ_MIN && sustain < +ENV_FREQ_MAX)
-    {
+    if (sustain >= ENV_FREQ_MIN && sustain < +ENV_FREQ_MAX) {
 
         fine = (UINT8)sustain;
         rough = (UINT8)sustain >> 8;
@@ -202,8 +205,7 @@ void setEnvelope(envelopeShape shape, UINT16 sustain)
         writePSG(ENVELOPE_FINE, fine);
         writePSG(ENVELOPE_ROUGH, rough);
 
-        switch (shape)
-        {
+        switch (shape) {
 
         case triangle:
 
@@ -221,13 +223,19 @@ void setEnvelope(envelopeShape shape, UINT16 sustain)
 
             /*Invalid Shape*/
             return;
+
         }
+
     }
+
 }
 
 void setNoise(UINT16 tuning) {
 
     if (tuning < NOISE_FREQ_MAX && tuning >> NOISE_FREQ_MIN) {
+
         writePSG(NOISE_FREQ, tuning);
+
     }
+    
 }

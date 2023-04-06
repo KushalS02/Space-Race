@@ -52,6 +52,7 @@ void rocketshipHitBoundary(Rocketship* rocketship) {
 }
 
 bool rocketshipHitFinish(Rocketship* rocketship) {
+
     if (rocketship->hitbox.topLeftY <= CHKLINE_HEIGHT) {
 
         return true;
@@ -73,21 +74,23 @@ void asteroidsHitBoundary(Asteroid* asteroids) {
 
         if(asteroids[currAsteroid].hitbox.topLeftX <= 0) {
 
-            asteroids[currAsteroid].hitbox.topLeftX = SCREEN_WIDTH-1;
+            asteroids[currAsteroid].hitbox.topLeftX = SCREEN_WIDTH - 1;
             asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
         }
+
     }
 
     /*Check right boundry for right moving asteroids*/
     for (currAsteroid = 1; currAsteroid < ASTEROID_MAX; currAsteroid+=2) {
 
-        if(asteroids[currAsteroid].hitbox.bottomRightX >= SCREEN_WIDTH-1) {
+        if(asteroids[currAsteroid].hitbox.bottomRightX >= SCREEN_WIDTH - 1) {
 
             asteroids[currAsteroid].hitbox.topLeftX=0;
             asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
         }
+
     }
 
 }

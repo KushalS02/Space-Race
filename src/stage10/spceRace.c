@@ -42,8 +42,7 @@ void start() {
 
     disableCursor();
 
-    while (quit == false)
-    {
+    while (quit == false) {
         RENDER_MOUSE_REQUEST = false;
         renderSplashscreen((UINT32 *)base);
         clearIkbdBuffer();
@@ -75,8 +74,11 @@ void start() {
             /* Default option, QUIT */
             quit = true;
             break;
+
         }
+
     }
+
 }
 
 UINT8 *getBase(UINT8 *secondBuffer) {
@@ -85,6 +87,7 @@ UINT8 *getBase(UINT8 *secondBuffer) {
     unsigned long base = (add + 0xFF) & ~(unsigned long) 0xFF;
 
     return (UINT8*) base;
+
 }
 
 
@@ -115,7 +118,7 @@ void gameLoop() {
         if(updateMusic(MUSIC_TIMER)) {
 
             MUSIC_TIMER = 0;
-       }
+        }
 
         if(currScore < model.scorebox.score) {
             renderNextRound(&model, base);

@@ -10,6 +10,9 @@ Instructor: Paul Pospisil
 */
 #include "endGame.h"
 
+/*
+Bitmap for the end game screen (when a collision happens)
+*/
 UINT32 endGameScreen[] = {
 
     0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 

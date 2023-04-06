@@ -25,12 +25,14 @@ void collisionEffect() {
     setEnvelope(triangle, sustain);
 
     MUSIC_TIMER = 0;
+
     while(MUSIC_TIMER < 70)
     ;
     
 }
 
 void rocketshipMoveEffect() {
+    
     int volume = 14;
     int noiseTone = 30;
     int sustain = 1;
@@ -46,7 +48,9 @@ void rocketshipMoveEffect() {
 }
 
 void clearEffects() {
+
     setVolume(B, 0);
     enableChannel(B, false, false);
     enableChannel(A, true, false);
+
 }

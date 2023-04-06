@@ -18,6 +18,7 @@ Rocketship Functions
 void moveRocketship(Rocketship* rocketship, rocketShipDirection direction) {
 
     switch (direction) {
+
     case up:
         
         rocketship->hitbox.topLeftY -= ROCKETSHIP_SPEED;
@@ -57,6 +58,7 @@ void moveAsteroids(Asteroid *asteroids) {
     int topLeftX;
 
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
+
         direction = asteroids[currAsteroid].direction;
         deltaX = asteroids[currAsteroid].deltaX;
         topLeftX = asteroids[currAsteroid].hitbox.topLeftX;
@@ -70,8 +72,7 @@ void moveAsteroids(Asteroid *asteroids) {
 
                 asteroids[currAsteroid].hitbox.topLeftX = 0;
                 
-            }
-            else {
+            } else {
 
                 asteroids[currAsteroid].hitbox.topLeftX -= deltaX;
 
@@ -86,8 +87,7 @@ void moveAsteroids(Asteroid *asteroids) {
 
                 asteroids[currAsteroid].hitbox.topLeftX = SCREEN_WIDTH - ASTRV2_WIDTH;
 
-            }
-            else {
+            } else {
 
                 asteroids[currAsteroid].hitbox.topLeftX += deltaX;
 
@@ -99,6 +99,7 @@ void moveAsteroids(Asteroid *asteroids) {
         asteroids[currAsteroid].hitbox.bottomRightX = asteroids[currAsteroid].hitbox.topLeftX + ASTRV2_WIDTH;
 
     }
+
 }
 
 void initializeAsteroids(Asteroid * asteroids) {
@@ -107,7 +108,7 @@ void initializeAsteroids(Asteroid * asteroids) {
     UINT16 currXPos;
     UINT16 currYPos;
 
-        /* Every other asteroid moves left */
+    /* Every other asteroid moves left */
     for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid += 2) {
 
         asteroids[currAsteroid].direction = left;
@@ -122,7 +123,7 @@ void initializeAsteroids(Asteroid * asteroids) {
     }
 
     /* Initializes starting positions */
-    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++){
+    for (currAsteroid = 0; currAsteroid < ASTEROID_MAX; currAsteroid++) {
 
         currYPos = (currAsteroid * (ASTRV2_HEIGHT + ASTEROID_SPACING) ) + ASTEROID_MAX_Y;
         currXPos = (rand() % WIDTH_BYTES) * 8; /*80 possible starting postions (Byte 0 to 79)*/
@@ -170,7 +171,7 @@ void initializeHighscore(HighscoreBox * highscoreBox) {
 void updateHighscore(HighscoreBox * highscoreBox, int score)
 {
 
-    if(score > highscoreBox->highscore) {
+    if (score > highscoreBox->highscore) {
 
         highscoreBox->highscore = score;
 
@@ -178,7 +179,7 @@ void updateHighscore(HighscoreBox * highscoreBox, int score)
 
 }
 
-void initializeNextRound(Rocketship * rocketship, Asteroid * asteroids, Scorebox * scorebox, HighscoreBox* highscoreBox) {
+void initializeNextRound(Rocketship* rocketship, Asteroid* asteroids, Scorebox* scorebox, HighscoreBox* highscoreBox) {
 
     initializeRocketship(rocketship);
     initializeAsteroids(asteroids);
@@ -190,20 +191,21 @@ void initializeNextRound(Rocketship * rocketship, Asteroid * asteroids, Scorebox
 /*
 Model Functions
 */
-void initializeModel(Model * model) {
+void initializeModel(Model* model) {
 
     model->playing = true;
     model->gameOver = false;
+
     initializeRocketship(&model->player);
     initializeAsteroids(model->asteroids);
     initializeScore(&model->scorebox);
     initializeHighscore(&model->highscorebox);
-    /*replace SEED with call to getTime function for random(ish) value*/
+    
     srand(SEED);
 
 }
 
-void gameOver(Model * model) {
+void gameOver(Model* model) {
 
     model->gameOver = true;
     model->playing = false;

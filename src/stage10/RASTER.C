@@ -78,13 +78,14 @@ int i;
 
 UINT16 *plotLocation = base + (y * 40) + (x >> 4);
 
-for (i = 0; i < height; i++) {
+	for (i = 0; i < height; i++) {
 
-	*plotLocation ^= *(bitmap++);
+		*plotLocation ^= *(bitmap++);
 
-	plotLocation += 40;
+		plotLocation += 40;
 
-}
+	}
+	
 }
 
 void plotBitmap32(UINT32* base, UINT32* bitmap, int x, int y, int height) {
@@ -94,9 +95,12 @@ void plotBitmap32(UINT32* base, UINT32* bitmap, int x, int y, int height) {
 	UINT32 *plotLocation = base + (y * 20) + (x >> 5);
 
 	for (i = 0; i < height; i++) {
+
 		*plotLocation &= ~*(bitmap++);
+
 		plotLocation += 20;
 	}
+
 }
 
 void plotScreen(UINT32* base, UINT32* bitmap) {
@@ -291,11 +295,11 @@ void printString(UINT8 *base, int x, int y, char *string) {
 
   while (string[i] != '\0') {
 
-	 printChar(base, x, y, string[i]); 
+	printChar(base, x, y, string[i]); 
 	i++;
 	x += 8;
 
-  }
+  	}
 
 }
 

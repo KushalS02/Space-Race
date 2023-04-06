@@ -31,7 +31,7 @@ void renderAsteroids(const Asteroid *asteroids, UINT8 *base) {
 
         plotBitmap8(base, astrv2, asteroids[currAstr].hitbox.topLeftX, asteroids[currAstr].hitbox.topLeftY, ASTRV2_HEIGHT);
 
-   }
+    }
 
 }
 
@@ -44,6 +44,7 @@ void clearAsteroids(const Asteroid *asteroids, UINT8* base) {
         plotRectangle(base, asteroids[currAstr].hitbox.topLeftX, asteroids[currAstr].hitbox.topLeftY, ASTRV2_WIDTH, ASTRV2_HEIGHT);
 
     }
+    
 }
 
 void renderScoreBox(const Model* model, UINT8 *base) {
@@ -69,7 +70,6 @@ void renderCheckeredLine(UINT32 *base) {
 
 void renderBackground(UINT8 *base) {
 
-    /*plotRectangle(base, RECT_PLOT_X, RECT_PLOT_Y, SCREEN_WIDTH, SCREEN_HEIGHT);*/
     clearQuick(base);
 
 }

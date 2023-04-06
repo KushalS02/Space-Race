@@ -8,6 +8,7 @@ File name: isr.c
 Instructor: Paul Pospisil
 
 */
+
 #include "isr.h"
 
 /*
@@ -64,7 +65,6 @@ void vblReq() {
     
     if (RENDER_MOUSE_REQUEST) {
 
-        /*clearRegion16(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y, 16, 16);*/
         restoreMouseBackground(MENU_BUFFER, PREV_MOUSE_X, PREV_MOUSE_Y);
         saveMouseBackground(MENU_BUFFER, MOUSE_X, MOUSE_Y);
         renderMouse(MENU_BUFFER, MOUSE_X, MOUSE_Y);
@@ -79,6 +79,7 @@ void vblReq() {
     MUSIC_TIMER++;
 
     RENDER_REQUEST = true;
+
 }
 
 void ikbdReq() {
@@ -137,9 +138,11 @@ void ikbdReq() {
 
         /* Clear bit 6 of ISRB MFP register */
         *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
+
     }
 
     *ikbdControl = 0x96;
+
 }
 
 
@@ -147,6 +150,7 @@ Vector installVector(int num, Vector vector) {
 
     Vector* vectp = (Vector *) ((long) num << 2);
     Vector orig;
+
     long oldSSP = Super(0);
 
     orig = *vectp;
@@ -197,8 +201,10 @@ unsigned long readFromIkbdBuffer() {
     long oldSSP = Super(0);
     
 
-    if (bufferHead >= IKBD_BUFFER_SIZE-1) {
+    if (bufferHead >= IKBD_BUFFER_SIZE - 1) {
+
         bufferHead = 0;
+
     }
 
     *isrbMfpRegister &= MFB_BIT_6_MASK_OFF;
@@ -213,6 +219,7 @@ unsigned long readFromIkbdBuffer() {
     Super(oldSSP);
 
     return character;
+    
 }
 
 

@@ -10,6 +10,7 @@ Instructor: Paul Pospisil
 */
 #include "splash.h"
 
+/* bitmap for splash screen */
 const UINT32 splashScreen[] = {
 
     0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 

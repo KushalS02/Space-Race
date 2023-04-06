@@ -15,7 +15,6 @@ static int currentNote = 0;
 const noteType mainSong[] = {
 
   /* {frequency, duration} */
-
     {349, 10}, 
     {293, 10}, 
     {349, 10}, 
@@ -111,7 +110,7 @@ const noteType mainSong[] = {
     {147, 10},
 
 
-} ;
+};
 
 void startMusic() {
 
@@ -121,11 +120,11 @@ void startMusic() {
 
   currentNote = 0;
 
-    setEnvelope(triangle, sustain);
+  setEnvelope(triangle, sustain);
 
-    enableChannel(A, true, false);
+  enableChannel(A, true, false);
 
-    setVolume(A, volume);
+  setVolume(A, volume);
 
 }
 

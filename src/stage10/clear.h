@@ -8,6 +8,7 @@ File name:
 Instructor: Paul Pospisil
 
 */
+
 #ifndef CLEAR_H
 #define CLEAR_H
 
