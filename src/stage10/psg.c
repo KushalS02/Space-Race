@@ -21,11 +21,11 @@ void writePSG(UINT16 reg, UINT8 val) {
 
 }
 
-UINT16 readPSG(UINT16 reg) {
+UINT8 readPSG(UINT16 reg) {
 
     long oldSSP;
 
-    UINT16 val = -1;
+    UINT8 val;
 
     oldSSP = Super(0);
 

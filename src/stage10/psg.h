@@ -42,7 +42,7 @@ Channel A, B, C volume
 #define C_VOL 0xa
 
 /*
-Channels 
+Mixer
 */
 #define MIXER_ALL_OFF 0xff
 #define MIXER_TONE_A 0x3e
@@ -109,7 +109,7 @@ void writePSG(UINT16 reg, UINT8 val);
                   
 
 */
-UINT16 readPSG(UINT16 reg);
+UINT8 readPSG(UINT16 reg);
 
 /*
 
@@ -118,7 +118,7 @@ UINT16 readPSG(UINT16 reg);
     Purpose:
 
 */
-void setTone(UINT16 channel, UINT16 tuning);
+void setTone(Channel channel, UINT16 tuning);
 
 /*
 
@@ -134,7 +134,7 @@ void setTone(UINT16 channel, UINT16 tuning);
         UINT16 volume - the volume value 
 
 */
-void setVolume(UINT16 channel, UINT16 volume);
+void setVolume(Channel channel, UINT16 volume);
 
 /*
 
@@ -151,7 +151,7 @@ void setVolume(UINT16 channel, UINT16 volume);
         UINT16 noiseOn - value of noise on
 
 */
-void enableChannel(UINT16 channel, UINT16 toneOn, UINT16 noiseOn);
+void enableChannel(Channel channel, bool toneOn, bool noiseOn);
 
 /*
 
