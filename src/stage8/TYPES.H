@@ -1,12 +1,8 @@
 /*
 Authours: Alexander Pham and Kushal Saini
-
 Course: COMP 2659 - 001 
-
 File name: TYPES.H
-
 Instructor: Paul Pospisil
-
 */
 #ifndef TYPES_H
 #define TYPES_H
@@ -24,48 +20,29 @@ typedef int bool;
 #define false 0
 #define true 1
 
-/* 
-
-The directions that the rocketship is allowed to move, up or down
-
-*/
 typedef enum {
 
-    up, down
+    up, down, stop
 
 } rocketShipDirection;
 
-/*
-
-The directions that asteroids are allowed to move, left and right
-
-*/
 typedef enum {
 
     left, right
 
 } asteroidDirecton;
 
-/*
-
-The three channels for PSG
-
-*/
 typedef enum {
 
-    A, B, C
+    channelA, channelB, channelC
 
-} Channel;
+} channelType;
 
-/*
-
-The envelope shapes
-
-*/
 typedef enum {
 
-    saw, triangle
+    saw, sawInv, sawPeriod, sawInvPeriod,
+    triangle, triangleInv, trianglePeriod, triangleInvPeriod
 
-} envelopeShape;
+} envelopeShapeType;
 
 #endif
