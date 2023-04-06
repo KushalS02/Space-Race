@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: effects.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef EFFECTS_H
 #define EFFECTS_H

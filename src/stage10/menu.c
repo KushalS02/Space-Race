@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: menu.c
+
+Instructor: Paul Pospisil
+
 */
 #include "menu.h"
 
@@ -106,86 +113,55 @@ int menu() {
 }
 
 void drawChoiceSelector(int choice) {
+    
+    /* 1 player */
+    if (choice == 1) {
 
-    long oldSSP = Super(0);
+        plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
 
-    /*MENU_BUFFER = getVideoBase();*/
+    } else if (choice == 2) { /* 2 player */
 
-    Super(oldSSP);
+        plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
 
-    switch (choice) {
+    } else if (choice == 3) { /* tutorial */
 
-        default:
+        plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
 
-        case 1:
+    } else if (choice == 4) { /* exit */
 
-            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_1_PLAYER_Y, ARROW_HEIGHT);
+        plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
 
-            break;
-
-        case 2:
-
-            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_2_PLAYER_Y, ARROW_HEIGHT);
-
-            break;
-
-
-        case 3:
-
-            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_TUTORIAL_Y, ARROW_HEIGHT);
-
-            break;
-
-
-        case 4:
-
-            plotBitmap16(MENU_BUFFER, menuArrow, ARROW_X, ARROW_HELP_Y, ARROW_HEIGHT);
-
-            break;
-
-    }
+    } 
 
 }
+
 
 void clearChoiceSelector(int choice) {
+    
+    int arrowY;
 
-    long oldSSP = Super(0);
+    if (choice == 1) { /* 1 player */
 
-    /*MENU_BUFFER = getVideoBase();*/
+        arrowY = ARROW_1_PLAYER_Y;
 
-    Super(oldSSP);
+    } else if (choice == 2) { /* 2 player */
 
-    switch (choice) {
+        arrowY = ARROW_2_PLAYER_Y;
 
-        default:
+    } else if (choice == 3) { /* tutorial */
 
-        case 1:
+        arrowY = ARROW_TUTORIAL_Y;
 
-            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_1_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
+    } else if (choice == 4) { /* exit */
 
-            break;
+        arrowY = ARROW_HELP_Y;
 
-        case 2:
+    } 
 
-            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_2_PLAYER_Y, ARROW_WIDTH, ARROW_HEIGHT);
-
-            break;
-
-        case 3:
-
-            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_TUTORIAL_Y, ARROW_WIDTH, ARROW_HEIGHT);
-
-            break;
-
-        case 4:
-
-            clearRegion16(MENU_BUFFER, ARROW_X, ARROW_HELP_Y, ARROW_WIDTH, ARROW_HEIGHT);
-
-            break;
-
-    }
+    clearRegion16(MENU_BUFFER, ARROW_X, arrowY, ARROW_WIDTH, ARROW_HEIGHT);
 
 }
+
 
 int mouseLocation() {
 

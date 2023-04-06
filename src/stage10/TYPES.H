@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: TYPES.H
+
+Instructor: Paul Pospisil
+
 */
 #ifndef TYPES_H
 #define TYPES_H

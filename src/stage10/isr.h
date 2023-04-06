@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: isr.h
+
+Instructor: Paul Pospisil
+
 */
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H

@@ -1,5 +1,12 @@
 /*
 Authours: Alexander Pham and Kushal Saini
+
+Course: COMP 2659 - 001 
+
+File name: spceRace.c
+
+Instructor: Paul Pospisil
+
 */
 #include "spceRace.h"
 #include <osbind.h>
@@ -101,7 +108,6 @@ void gameLoop() {
 
     gameSetup(&model, base);
     memcpy(screen2, base, 32000);
-    /*render(&model, screen2);*/
     startMusic();
 
     while (!model.gameOver && model.scorebox.score <= MAX_SCORE) {
@@ -214,16 +220,22 @@ bool displayGameOver(void* base) {
 
     renderGameOver(base, currScore);
 
-    while (input != ESC_KEY)
-    {
+    while (input != ESC_KEY) {
+
         if (hasUserInput()) {
+
             input = getUserInput();
+
         }
-        if (input == ENTER_KEY)
-        {
+
+        if (input == ENTER_KEY){
+
             return false;
+
         }
     }
+
     return true;
+
 }
 

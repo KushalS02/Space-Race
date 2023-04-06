@@ -1,5 +1,11 @@
 ;Authours: Alexander Pham and Kushal Saini
 
+;Course: COMP 2659 - 001
+
+;File name: IKBD.S
+
+;Instructor: Paul Pospisil
+
             xdef        _ikbdISR
             xref        _ikbdReq
 
